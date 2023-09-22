@@ -16,38 +16,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.model.Mahasiswa;
-import com.service.MahasiswaService;
+import com.model.User;
+import com.service.UserService;
 
 @RestController
 @CrossOrigin
-public class MahasiswaController {
+public class UserController {
     @Autowired
-    MahasiswaService mahasiswaService;
+    UserService userService;
     
-    @GetMapping("/mahasiswa")
-    private List<Mahasiswa> getAllMahasiswa(){
-        return mahasiswaService.getAllMahasiswa();
+    @GetMapping("/user")
+    private List<User> getAllMahasiswa(){
+        return userService.getAllUser();
+    }
+    
+    @GetMapping("/username")
+    private List<String> ggetUsername(){
+        return userService.getUsername();
     }
 
-    @PostMapping("/add")
-    public Mahasiswa addMahasiswa(@RequestBody Mahasiswa mahasiswa) {
-        return mahasiswaService.addMahasiswa(mahasiswa);
-    }
-
-    @GetMapping("/search")
-    public List<Mahasiswa> getMahasiswaByJurusan(@RequestParam String jurusan) {
-        return mahasiswaService.getMahasiswaByJurusan(jurusan);
-    }
-    
-    @PutMapping("/update")
-    public int updateKelasByNim(@RequestParam String nim,@RequestParam String kelas) {
-    	getNim(nim);
-    	return mahasiswaService.updateKelasByNim(nim, kelas);
-    }
-    
-    public String getNim(String nim) {
-    	System.out.println("Mahasiswa dengan nim " + nim + " berhasil di update");
-    	return nim;
-    }
 }

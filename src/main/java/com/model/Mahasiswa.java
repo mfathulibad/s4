@@ -71,8 +71,7 @@ public class Mahasiswa{
 
     public void setKelas(String kelas) {
         this.kelas = kelas;
-    }
-
+    }   
     
 
 }
