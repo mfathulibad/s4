@@ -15,4 +15,8 @@ public class DosenService {
 	public List<Dosen> getAllDosen(){
 		return dosenRepository.findAll();
 	}
+	
+	public void addDosen(Dosen dosenRequest) {
+		dosenRepository.save(dosenRequest);
+	}
 }
