@@ -27,5 +27,8 @@ public class DosenService {
 	public void deleteDosen(String id_dosen) {
 		dosenRepository.deleteById(id_dosen);
 	}
-
+	
+	public void updateDosen(Dosen dosenRequest) {
+		dosenRepository.save(dosenRequest);
+	}
 }
