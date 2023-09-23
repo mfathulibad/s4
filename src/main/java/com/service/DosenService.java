@@ -16,7 +16,16 @@ public class DosenService {
 		return dosenRepository.findAll();
 	}
 	
+	public Dosen getDosenById(String id_dosen) {
+		return dosenRepository.getById(id_dosen);
+	}
+	
 	public void addDosen(Dosen dosenRequest) {
 		dosenRepository.save(dosenRequest);
 	}
+	
+	public void deleteDosen(String id_dosen) {
+		dosenRepository.deleteById(id_dosen);
+	}
+
 }
