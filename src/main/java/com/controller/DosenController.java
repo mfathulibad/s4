@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,7 +42,7 @@ public class DosenController {
 	}
 	
 	@PostMapping("/dosen/update")
-	public ResponseEntity<String> updateDosen(@RequestBody Dosen dosenRequest){
+	public ResponseEntity<String> updateDosen(@ModelAttribute Dosen dosenRequest){
 		String nama_lengkap = dosenService.getDosenById(dosenRequest.getId_dosen()).getNama_lengkap();
 		dosenService.updateDosen(dosenRequest);
 		return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil diupdate");
