@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.repository.PkmRepository;
 import java.util.List;
 
+import com.model.Dosen;
 import com.model.Pkm;
 
 @Service
@@ -26,6 +27,9 @@ public class PkmService {
 	
 	public void deletePkm(String id_pengabdian) {
 		pkmRepository.deleteById(id_pengabdian);
+	}
+	public void updatePkm(Pkm pkmRequest) {
+		pkmRepository.save(pkmRequest);
 	}
 
 }

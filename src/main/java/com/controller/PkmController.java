@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.service.PkmService;
+import com.model.Dosen;
 import com.model.Pkm;
 
 @RestController
@@ -24,5 +25,24 @@ public class PkmController {
 	@GetMapping("/pkm")
 	public List<Pkm> getAllPkm(){
 		return pkmService.getAllPkm();
+	}
+	
+	@PostMapping("/pkm/insert")
+	public ResponseEntity<String> addPkm(@RequestBody Pkm pkmRequest){
+		String judul_pengabdian = pkmRequest.getJudul_pengabdian();
+		pkmService.addPkm(pkmRequest);
+		return ResponseEntity.ok("PKM dengan judul " + judul_pengabdian + " berhasil ditambahkan");
+	}
+	@DeleteMapping("/pkm/delete")
+	public ResponseEntity<String> deletePkm(@RequestParam String id_pengabdian){
+		String judul_pengabdian = pkmService.getPkmById(id_pengabdian).getJudul_pengabdian();
+		pkmService.deletePkm(id_pengabdian);
+		return ResponseEntity.ok("Pengabdian dengan judul " + judul_pengabdian + " berhasil dihapus");
+	}
+	@PostMapping("/pkm/update")
+	public ResponseEntity<String> updatePkm(@RequestBody Pkm pkmRequest){
+		String judul_pengabdian = pkmService.getPkmById(pkmRequest.getId_pengabdian()).getJudul_pengabdian();
+		pkmService.updatePkm(pkmRequest);
+		return ResponseEntity.ok("Pengabdian dengan judul " + judul_pengabdian + " berhasil diupdate");
 	}
 }
