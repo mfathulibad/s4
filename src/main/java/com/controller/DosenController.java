@@ -39,4 +39,11 @@ public class DosenController {
 		dosenService.deleteDosen(id_dosen);
 		return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil dihapus");
 	}
+	
+	@PostMapping("/dosen/update")
+	public ResponseEntity<String> updateDosen(@RequestBody Dosen dosenRequest){
+		String nama_lengkap = dosenService.getDosenById(dosenRequest.getId_dosen()).getNama_lengkap();
+		dosenService.updateDosen(dosenRequest);
+		return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil diupdate");
+	}
 }
