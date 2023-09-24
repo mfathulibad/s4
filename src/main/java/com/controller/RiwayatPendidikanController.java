@@ -26,17 +26,17 @@ public class RiwayatPendidikanController {
 		return riwayatPendidikanService.getAllRiwayatPendidikan();
 	}
 	
-	// @PostMapping("/dosen/insert")
-	// public ResponseEntity<String> addDosen(@RequestBody Dosen dosenRequest){
-	// 	String nama_lengkap = dosenRequest.getNama_lengkap();
-	// 	dosenService.addDosen(dosenRequest);
-	// 	return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil ditambahkan");
-	// }
+	@PostMapping("/riwayatpendidikan/insert")
+	public ResponseEntity<String> addRiwayatPendidikan(@RequestBody RiwayatPendidikan riwayatPendidikanRequest){
+		String nama_institute = riwayatPendidikanRequest.getInstitusi();
+		riwayatPendidikanService.addRiwayatPendidikan(riwayatPendidikanRequest);
+		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil ditambahkan");
+	}
 	
-	// @DeleteMapping("/dosen/delete")
-	// public ResponseEntity<String> deleteDosen(@RequestParam String id_dosen){
-	// 	String nama_lengkap = dosenService.getDosenById(id_dosen).getNama_lengkap();
-	// 	dosenService.deleteDosen(id_dosen);
-	// 	return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil dihapus");
-	// }
+	@DeleteMapping("/riwayatpendidikan/delete")
+	public ResponseEntity<String> deleteRiwayatPendidikan(@RequestParam String id_riwayat_pendidikan){
+		String nama_institute = riwayatPendidikanService.getRiwayatPendidikanById(id_riwayat_pendidikan).getInstitusi();
+		riwayatPendidikanService.deleteRiwayatPendidikan(id_riwayat_pendidikan);
+		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil dihapus");
+	}
 }
