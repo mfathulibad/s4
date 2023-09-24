@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "dosen")
 public class Dosen{
     @Id
