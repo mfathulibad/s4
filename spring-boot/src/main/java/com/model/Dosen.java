@@ -26,6 +26,8 @@ public class Dosen{
     private String jabatan_fungsional;
     @Column
     private String jurusan;
+	@Column
+    private String nidn;
     
 	public String getId_dosen() {
 		return id_dosen;
@@ -62,6 +64,12 @@ public class Dosen{
 	}
 	public void setJurusan(String jurusan) {
 		this.jurusan = jurusan;
+	}
+	public String getNidn() {
+		return nidn;
+	}
+	public void setNidn(String nidn) {
+		this.nidn = nidn;
 	} 
 	
     

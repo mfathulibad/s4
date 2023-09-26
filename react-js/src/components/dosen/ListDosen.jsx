@@ -50,6 +50,7 @@ function ListDosen() {
                 <tr>
                   <th>ID Dosen</th>
                   <th>ID User</th>
+                  <th>NIDN</th>
                   <th>Email</th>
                   <th>Nama Lengkap</th>
                   <th>Jabatan Fungsional</th>
@@ -62,6 +63,7 @@ function ListDosen() {
                 <tr key={dosen.id_dosen}>
                   <td>{dosen.id_dosen}</td>
                   <td>{dosen.id_user}</td>
+                  <td>{dosen.nidn}</td>
                   <td>{dosen.email}</td>
                   <td>{dosen.nama_lengkap}</td>
                   <td>{dosen.jabatan_fungsional}</td>
