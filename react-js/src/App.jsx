@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Dosen from './pages/dosen/Dosen';
 import AddDosen from './pages/dosen/AddDosen';
 import EditDosen from './pages/dosen/EditDosen';
+import Penelitian from './pages/penelitian/Penelitian';
+import AddPenelitian from './components/penelitian/AddPenelitianComponent';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/dosen" element = {<Dosen/>} />
           <Route path="/dosen/insert" element = {<AddDosen/>} />
           <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
+          <Route path='/penelitian' element ={<Penelitian/>}/>
+          <Route path='/penelitian/insert' element ={<AddPenelitian/>}/>
         </Routes>
     </Router>
   )
