@@ -18,8 +18,8 @@ public class RiwayatPendidikan{
     @Column
     private String institusi;
     @Column
+    private int tahun_lulus;
 
-    private String tahun_lulus;
     public String getId_riwayat_pendidikan() {
         return id_riwayat_pendidikan;
     }
@@ -44,10 +44,10 @@ public class RiwayatPendidikan{
     public void setInstitusi(String institusi) {
         this.institusi = institusi;
     }
-    public String getTahun_lulus() {
+    public int getTahun_lulus() {
         return tahun_lulus;
     }
-    public void setTahun_lulus(String tahun_lulus) {
+    public void setTahun_lulus(int tahun_lulus) {
         this.tahun_lulus = tahun_lulus;
     }
        
