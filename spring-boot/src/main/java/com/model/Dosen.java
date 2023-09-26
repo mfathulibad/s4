@@ -1,6 +1,8 @@
 package com.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "dosen")
 public class Dosen{
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private String id_dosen;
     @Column
