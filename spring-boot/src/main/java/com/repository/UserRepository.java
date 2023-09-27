@@ -11,14 +11,10 @@ import com.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 	
-//	@Query("SELECT m FROM Mahasiswa m WHERE m.jurusan= :jurusan")
-//    List<Mahasiswa> findByJurusan(@Param("jurusan") String jurusan);
-//	
-//	@Modifying
-//	@Query("UPDATE Mahasiswa SET kelas = :kelas WHERE nim = :nim")
-//	int updateKelasByNim(@Param("nim") String nim, @Param("kelas") String kelas);
-	
-	@Query("SELECT u.username FROM User u")
-	List<String> getUsername();
+	@Query(value = "SELECT * FROM \"user\" u WHERE u.username = :username AND u.password = :password", nativeQuery = true)
+	User login(
+		@Param("username") String username,
+		@Param("password") String password
+	);
 	
 }

@@ -20,8 +20,10 @@ public class UserService {
         return userRepository.findAll();
     }
     
-    public List<String> getUsername(){
-    	return userRepository.getUsername();
+    public User login(User userRequest){
+        String username = userRequest.getUsername();
+        String password = userRequest.getPassword();
+        return userRepository.login(username, password);
     }
 	
 }

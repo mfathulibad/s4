@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
 
+import Login from './pages/Login';
 import Home from './pages/Home';
 import Dosen from './pages/dosen/Dosen';
 import AddDosen from './pages/dosen/AddDosen';
@@ -10,12 +11,13 @@ import AddMataKuliah from './pages/matakuliah/AddMataKuliah';
 import Penelitian from './pages/penelitian/Penelitian';
 import AddPenelitian from './components/penelitian/AddPenelitianComponent';
 
+
 function App() {
 
   return (
     <Router>
         <Routes>
-          <Route path="/" element = {<Home/>} />
+          <Route path="/" element = {<Login/>} />
           <Route path="/dosen" element = {<Dosen/>} />
           <Route path="/dosen/insert" element = {<AddDosen/>} />
           <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
