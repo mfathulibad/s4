@@ -17,4 +17,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 		@Param("password") String password
 	);
 	
+	@Query(value = "SELECT d.id_dosen FROM dosen d INNER JOIN \"user\" u ON d.id_user = u.id_user WHERE u.id_user = :id_user ", nativeQuery = true)
+	String getDosenId(@Param("id_user") String id_user);
+
 }

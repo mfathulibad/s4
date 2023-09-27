@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.css'
 
@@ -11,21 +11,19 @@ import AddMataKuliah from './pages/matakuliah/AddMataKuliah';
 import Penelitian from './pages/penelitian/Penelitian';
 import AddPenelitian from './components/penelitian/AddPenelitianComponent';
 
-
 function App() {
-
   return (
-    <Router>
-        <Routes>
-          <Route path="/" element = {<Login/>} />
-          <Route path="/dosen" element = {<Dosen/>} />
-          <Route path="/dosen/insert" element = {<AddDosen/>} />
-          <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
-          <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
-          <Route path='/penelitian' element ={<Penelitian/>}/>
-          <Route path='/penelitian/insert' element ={<AddPenelitian/>}/>
-        </Routes>
-    </Router>
+      <Router>
+          <Routes>
+            <Route path="/" element = {<Login/>} />
+            <Route path="/dosen" element = {<Dosen/>} />
+            <Route path="/dosen/insert" element = {<AddDosen/>} />
+            <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
+            <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
+            <Route path='/penelitian' element ={<Penelitian/>}/>
+            <Route path='/penelitian/insert' element ={<AddPenelitian/>}/>
+          </Routes>
+      </Router>
   )
 }
 

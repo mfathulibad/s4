@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
-function ListDosen() {
+const ListDosen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const userData = Cookies.get('userData');
 
   useEffect(() => {
     async function fetchData() {
@@ -12,12 +14,13 @@ function ListDosen() {
         const response = await axios.get('http://localhost:8082/dosen');
         setData(response.data);
         setLoading(false); // Set loading to false after data is fetched
+        console.log("userData : ")
+        console.log(userData)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false); // Set loading to false on error
       }
     }
-
     fetchData();
   }, []);
 

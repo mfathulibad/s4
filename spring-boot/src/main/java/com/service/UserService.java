@@ -20,6 +20,10 @@ public class UserService {
         return userRepository.findAll();
     }
     
+    public String getDosenId(String id_user){
+        return userRepository.getDosenId(id_user);
+    }
+
     public User login(User userRequest){
         String username = userRequest.getUsername();
         String password = userRequest.getPassword();
