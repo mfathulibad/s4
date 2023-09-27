@@ -20,9 +20,9 @@ function LoginComponent() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-          const response = await axios.post(`http://localhost:8082/dosen/update`, formData);
+          const response = await axios.post(`http://localhost:8082/user/login`, formData);
           console.log(response.data);
-          alert('Data dosen berhasil diperbarui');
+          alert('Login Berhasil !');
         } catch (error) {
           console.error('Error updating data:', error);
         }
@@ -30,7 +30,7 @@ function LoginComponent() {
 
   return (
     <form onSubmit={handleSubmit}>
-        <div class="form-outline mb-4">
+        <div className="form-outline mb-4">
             <input
                 type="text"
                 className="form-control"
@@ -38,10 +38,10 @@ function LoginComponent() {
                 value={formData.username}
                 onChange={handleInputChange}
             />
-            <label class="form-label" for="form2Example1">Username</label>
+            <label className="form-label">Username</label>
         </div>
 
-        <div class="form-outline mb-4">
+        <div className="form-outline mb-4">
             <input
                 type="password"
                 className="form-control"
@@ -49,10 +49,9 @@ function LoginComponent() {
                 value={formData.password}
                 onChange={handleInputChange}
             />
-            <label class="form-label" for="form2Example2">Password</label>
+            <label className="form-label">Password</label>
         </div>
-
-        <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
     </form>
   );
 }
