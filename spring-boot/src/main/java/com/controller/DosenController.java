@@ -40,6 +40,7 @@ public class DosenController {
 		String nama_lengkap = dosenRequest.getNama_lengkap();
 		dosenService.addDosen(dosenRequest);
 		return ResponseEntity.ok("Dosen dengan nama " + nama_lengkap + " berhasil ditambahkan");
+		
 	}
 	
 	@DeleteMapping("/dosen/delete")

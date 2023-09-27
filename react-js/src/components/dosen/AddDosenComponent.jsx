@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddDosenComponent = () => {
   const [formData, setFormData] = useState({
-    id_user: '',
     nidn: '',
     email: '',
     nama_lengkap: '',
@@ -38,17 +37,6 @@ const AddDosenComponent = () => {
     <div className="container">
       <h2 className="mt-4">Add Dosen</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">ID User</label>
-          <input
-            type="text"
-            name="id_user"
-            value={formData.id_user}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
         <div className="mb-3">
           <label className="form-label">NIDN</label>
           <input
