@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.service.PkmService;
@@ -25,6 +27,11 @@ public class PkmController {
 	@GetMapping("/pkm")
 	public List<Pkm> getAllPkm(){
 		return pkmService.getAllPkm();
+	}
+	
+	@GetMapping("/pkm/{id_pengabdian}")
+	public @ResponseBody Pkm getPkmById(@PathVariable("id_pengabdian") String id_pengabdian){
+		return pkmService.getPkmById(id_pengabdian);
 	}
 	
 	@PostMapping("/pkm/insert")
