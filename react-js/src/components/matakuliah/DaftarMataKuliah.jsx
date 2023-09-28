@@ -11,7 +11,7 @@ export default function DaftarMataKuliah() {
     },[]);
 
     const loadMataKuliah=async()=>{
-        const result = await axios.get("http://localhost:8082/mata_kuliah");
+        const result = await axios.get("http://localhost:8082/MataKuliah");
         setMataKuliah(result.data);
     };
 
