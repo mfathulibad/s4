@@ -18,6 +18,7 @@ import AddPkm from "./pages/pkm/AddPkm";
 import EditPkm from "./pages/pkm/EditPkm";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
+import UploadFile from "./components/penelitian/UploadPDF";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         <Route path="/pkm" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
+
+        <Route path="/penelitian/upload-pdf/:id" element={<UploadFile/>}/>
+
       </Routes>
     </Router>
 

@@ -111,32 +111,32 @@ public class PenelitianController {
 	}
 	
 	
-	@GetMapping("/penelitian/download-pdf/{id_penelitian}")
-	public ResponseEntity<Resource> downloadPDF(@PathVariable String id_penelitian) {
-	    Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
-	    String fileName = penelitian.getPath_pdf(); 
-
-	    String filePath = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload" + fileName;
-	    
-	    try {
-	        FileSystemResource resource = new FileSystemResource(filePath);
-
-	        if (resource.exists()) {
-	            HttpHeaders headers = new HttpHeaders();
-	            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
-	            return ResponseEntity.ok()
-	                    .headers(headers)
-	                    .contentType(MediaType.APPLICATION_PDF)
-	                    .body(resource);
-	        } else {
-	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-	        }
-	    } catch (Exception e) {
-	        // Cetak pesan kesalahan ke console
-	        e.printStackTrace();
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-	    }
-	}
+//	@GetMapping("/penelitian/download-pdf/{id_penelitian}")
+//	public ResponseEntity<Resource> downloadPDF(@PathVariable String id_penelitian) {
+//	    Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
+//	    String fileName = penelitian.getPath_pdf(); 
+//
+//	    String filePath = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload" + fileName;
+//	    
+//	    try {
+//	        FileSystemResource resource = new FileSystemResource(filePath);
+//
+//	        if (resource.exists()) {
+//	            HttpHeaders headers = new HttpHeaders();
+//	            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+//	            return ResponseEntity.ok()
+//	                    .headers(headers)
+//	                    .contentType(MediaType.APPLICATION_PDF)
+//	                    .body(resource);
+//	        } else {
+//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//	        }
+//	    } catch (Exception e) {
+//	        // Cetak pesan kesalahan ke console
+//	        e.printStackTrace();
+//	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//	    }
+//	}
 
 	
 	
