@@ -36,18 +36,6 @@ export default function AddPenelitianComponent() {
 
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
-                        <label htmlFor='idPenelitian' className='form-label'>
-                            ID Penelitian
-                        </label>
-                        <input 
-                            type={'text'} 
-                            className='form-control' 
-                            placeholder='Masukkan Id Penelitian' 
-                            name='id_penelitian' 
-                            value={penelitian.id_penelitian}
-                            onChange={onInputChange}/>
-                    </div>
-                    <div className='mb-3'>
                         <label htmlFor='judulPenelitian' className='form-label'>
                             Judul Penelitian
                         </label>
