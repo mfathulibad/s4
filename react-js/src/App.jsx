@@ -10,6 +10,8 @@ import EditDosen from './pages/dosen/EditDosen';
 import AddMataKuliah from './pages/matakuliah/AddMataKuliah';
 import Penelitian from './pages/penelitian/Penelitian';
 import AddPenelitian from './components/penelitian/AddPenelitianComponent';
+import MataKuliah from './pages/matakuliah/MataKuliah';
+import EditMataKuliah from "./pages/matakuliah/EditMataKuliah"; 
 import EditPenelitian from './pages/penelitian/EditPenelitian';
 
 
@@ -21,7 +23,9 @@ function App() {
             <Route path="/dosen" element = {<Dosen/>} />
             <Route path="/dosen/insert" element = {<AddDosen/>} />
             <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
+            <Route path='/matakuliah' element ={<MataKuliah/>}/>
             <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
+            <Route path='/matakuliah/edit/:id' element ={<EditMataKuliah/>}/>
             <Route path='/penelitian' element ={<Penelitian/>}/>
             <Route path='/penelitian/insert' element ={<AddPenelitian/>}/>
             <Route path="/penelitian/edit/:id" element = {<EditPenelitian/>} />
