@@ -59,27 +59,27 @@ public class PenelitianController {
 	}
 	
 	
-	@PostMapping("/penelitian/upload-pdf/{id_penelitian}")
-    public ResponseEntity<String> uploadPDF(
-        @PathVariable String id_penelitian,
-        @RequestParam("file") MultipartFile file
-    ) {
-        if (file.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pilih file PDF untuk diunggah.");
-        }
-
-        try {
-            // Validasi file PDF di sini jika perlu
-        	if (!file.getContentType().equals("application/pdf")) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hanya file PDF yang diizinkan.");
-            }
-
-            penelitianService.uploadPDF(id_penelitian, file);
-            return ResponseEntity.ok("File PDF berhasil diunggah.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Gagal mengunggah file PDF: " + e.getMessage());
-        }
-    }
+//	@PostMapping("/penelitian/upload-pdf/{id_penelitian}")
+//    public ResponseEntity<String> uploadPDF(
+//        @PathVariable String id_penelitian,
+//        @RequestParam("file") MultipartFile file
+//    ) {
+//        if (file.isEmpty()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pilih file PDF untuk diunggah.");
+//        }
+//
+//        try {
+//            // Validasi file PDF di sini jika perlu
+//        	if (!file.getContentType().equals("application/pdf")) {
+//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hanya file PDF yang diizinkan.");
+//            }
+//
+//            penelitianService.uploadPDF(id_penelitian, file);
+//            return ResponseEntity.ok("File PDF berhasil diunggah.");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Gagal mengunggah file PDF: " + e.getMessage());
+//        }
+//    }
 	
 	
 	

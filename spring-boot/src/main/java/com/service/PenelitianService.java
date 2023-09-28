@@ -36,26 +36,25 @@ public class PenelitianService {
 		penelitianRepository.save(penelitianRequest);
 	}
 	
-	public void uploadPDF(String id_penelitian, MultipartFile file) throws IOException {
-        Penelitian penelitian = getPenelitianById(id_penelitian);
-
-        if (penelitian != null && !file.isEmpty()) {
-            // Validasi file PDF di sini jika perlu
-            if (!file.getContentType().equals("application/pdf")) {
-                throw new IllegalArgumentException("Hanya file PDF yang diizinkan.");
-            }
-
-            // Set data PDF ke entitas Penelitian
-            penelitian.setPdfFile(file.getBytes());
-
-            // Simpan perubahan ke database
-            penelitianRepository.save(penelitian);
-        } else {
-            throw new IllegalArgumentException("Penelitian tidak ditemukan atau file tidak diunggah.");
-        }
-	}
+//	public void uploadPDF(String id_penelitian, MultipartFile file) throws IOException {
+//        Penelitian penelitian = getPenelitianById(id_penelitian);
+//
+//        if (penelitian != null && !file.isEmpty()) {
+//            // Validasi file PDF di sini jika perlu
+//            if (!file.getContentType().equals("application/pdf")) {
+//                throw new IllegalArgumentException("Hanya file PDF yang diizinkan.");
+//            }
+//
+//            // Set data PDF ke entitas Penelitian
+//            penelitian.setPdfFile(file.getBytes());
+//
+//            // Simpan perubahan ke database
+//            penelitianRepository.save(penelitian);
+//        } else {
+//            throw new IllegalArgumentException("Penelitian tidak ditemukan atau file tidak diunggah.");
+//        }
+//	}
 	
 	
 	
 }
-

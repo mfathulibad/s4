@@ -22,8 +22,8 @@ public class Penelitian{
     @Column
     private LocalDate tgl_penelitian;
     
-    @Lob
-    private byte[] pdfFile;
+//    @Lob
+//    private byte[] pdfFile;
     
 	
 	public String getId_penelitian() {
@@ -51,11 +51,11 @@ public class Penelitian{
 		this.tgl_penelitian = tgl_penelitian;
 	}
 	
-	public byte[] getPdfFile() {
-		return pdfFile;
-	}
-	public void setPdfFile(byte[] pdfFile) {
-		this.pdfFile = pdfFile;
-	}
+//	public byte[] getPdfFile() {
+//		return pdfFile;
+//	}
+//	public void setPdfFile(byte[] pdfFile) {
+//		this.pdfFile = pdfFile;
+//	}
     
 }
