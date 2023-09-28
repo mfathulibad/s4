@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,10 @@ public class Penelitian{
     @Column
     private LocalDate tgl_penelitian;
     
+    @Lob
+    private byte[] pdfFile;
     
+	
 	public String getId_penelitian() {
 		return id_penelitian;
 	}
@@ -45,6 +49,13 @@ public class Penelitian{
 	}
 	public void setTgl_penelitian(LocalDate tgl_penelitian) {
 		this.tgl_penelitian = tgl_penelitian;
+	}
+	
+	public byte[] getPdfFile() {
+		return pdfFile;
+	}
+	public void setPdfFile(byte[] pdfFile) {
+		this.pdfFile = pdfFile;
 	}
     
 }

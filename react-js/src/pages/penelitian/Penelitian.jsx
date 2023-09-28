@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Penelitian() {
 
-    const [penelitian, setPenelitian] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(()=>{
         loadPenelitian();
@@ -12,8 +12,24 @@ export default function Penelitian() {
 
     const loadPenelitian=async()=>{
         const result = await axios.get("http://localhost:8082/penelitian");
-        setPenelitian(result.data);
+        setData(result.data);
     };
+
+    async function handleDelete(id_penelitian) {
+        const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
+        if (!confirmDelete) {
+          return;
+        }
+        try {
+          // Kirim permintaan DELETE ke server dengan parameter id_penelitian
+          await axios.delete(`http://localhost:8082/penelitian/delete?id_penelitian=${id_penelitian}`);
+          // Perbarui tampilan dengan menghapus entitas dari state lokal
+          setData((prevData) => prevData.filter((penelitian) => penelitian.id_penelitian !== id_penelitian));
+          alert('Data penelitian berhasil dihapus');
+        } catch (error) {
+          console.error('Error deleting data:', error);
+        }
+      }
 
   return (
     <div className='container'>
@@ -32,17 +48,17 @@ export default function Penelitian() {
                 <tbody>
 
                     {
-                        penelitian.map((pl)=>(
-                            <tr key={pl.id_penelitian}>
-                                <td>{pl.id_penelitian}</td>
-                                <td>{pl.judul_penelitian}</td>
-                                <td>{pl.bidang_penelitian}</td>
-                                <td>{pl.tgl_penelitian}</td>
+                        data.map((penelitian)=>(
+                            <tr key={penelitian.id_penelitian}>
+                                <td>{penelitian.id_penelitian}</td>
+                                <td>{penelitian.judul_penelitian}</td>
+                                <td>{penelitian.bidang_penelitian}</td>
+                                <td>{penelitian.tgl_penelitian}</td>
                                 <td>
                                     <Link className='btn btn-outline-primary mx-2'
                                         to={`/editpenelitian/${penelitian.id_penelitian}`}    
                                     >Edit</Link>
-                                    <button className='btn btn-danger mx-2'>Delete</button>
+                                    <button className='btn btn-danger mx-2' onClick={() => handleDelete(penelitian.id_penelitian)}>Delete</button>
                                 </td>
                             </tr>
                         ))
