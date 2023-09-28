@@ -56,7 +56,7 @@ export default function Penelitian() {
                                 <td>{penelitian.tgl_penelitian}</td>
                                 <td>
                                     <Link className='btn btn-outline-primary mx-2'
-                                        to={`/editpenelitian/${penelitian.id_penelitian}`}    
+                                        to={`edit/${penelitian.id_penelitian}`}    
                                     >Edit</Link>
                                     <button className='btn btn-danger mx-2' onClick={() => handleDelete(penelitian.id_penelitian)}>Delete</button>
                                 </td>
