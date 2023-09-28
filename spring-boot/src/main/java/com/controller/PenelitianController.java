@@ -1,5 +1,9 @@
 package com.controller;
 
+import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +21,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
+
+import org.springframework.http.MediaType;
+
+
 import com.service.PenelitianService;
-import com.model.Dosen;
 import com.model.Penelitian;
 
 @RestController
@@ -58,31 +70,74 @@ public class PenelitianController {
 		return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian+ " berhasil diupdate");
 	}
 	
+	@PostMapping("/penelitian/upload-pdf/{id_penelitian}")
+	public ResponseEntity<String> uploadPDF(
+	    @PathVariable String id_penelitian,
+	    @RequestParam("file") MultipartFile file
+	) {
+	    if (file.isEmpty()) {
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pilih file PDF untuk diunggah.");
+	    }
+
+	    try {
+	        // Validasi file PDF di sini jika perlu
+	        if (!file.getContentType().equals("application/pdf")) {
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hanya file PDF yang diizinkan.");
+	        }
+
+	        // Simpan file PDF ke direktori tertentu
+	        String fileName = id_penelitian + ".pdf"; // Nama file sesuai dengan ID penelitian
+	        String uploadDir = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload"; 
+	        File uploadPath = new File(uploadDir);
+
+	        if (!uploadPath.exists()) {
+	            uploadPath.mkdirs(); // Buat direktori jika belum ada
+	        }
+
+	        try (InputStream inputStream = file.getInputStream()) {
+	            File newFile = new File(uploadPath, fileName);
+	            Files.copy(inputStream, newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+	        }
+
+	        // Simpan path file PDF ke entitas Penelitian
+	        Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
+	        penelitian.setPath_pdf(fileName);
+	        penelitianService.updatePenelitian(penelitian);
+
+	        return ResponseEntity.ok("File PDF berhasil diunggah.");
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Gagal mengunggah file PDF: " + e.getMessage());
+	    }
+	}
 	
-//	@PostMapping("/penelitian/upload-pdf/{id_penelitian}")
-//    public ResponseEntity<String> uploadPDF(
-//        @PathVariable String id_penelitian,
-//        @RequestParam("file") MultipartFile file
-//    ) {
-//        if (file.isEmpty()) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Pilih file PDF untuk diunggah.");
-//        }
-//
-//        try {
-//            // Validasi file PDF di sini jika perlu
-//        	if (!file.getContentType().equals("application/pdf")) {
-//                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hanya file PDF yang diizinkan.");
-//            }
-//
-//            penelitianService.uploadPDF(id_penelitian, file);
-//            return ResponseEntity.ok("File PDF berhasil diunggah.");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Gagal mengunggah file PDF: " + e.getMessage());
-//        }
-//    }
 	
-	
-	
+	@GetMapping("/penelitian/download-pdf/{id_penelitian}")
+	public ResponseEntity<Resource> downloadPDF(@PathVariable String id_penelitian) {
+	    Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
+	    String fileName = penelitian.getPath_pdf(); 
+
+	    String filePath = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload" + fileName;
+	    
+	    try {
+	        FileSystemResource resource = new FileSystemResource(filePath);
+
+	        if (resource.exists()) {
+	            HttpHeaders headers = new HttpHeaders();
+	            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+	            return ResponseEntity.ok()
+	                    .headers(headers)
+	                    .contentType(MediaType.APPLICATION_PDF)
+	                    .body(resource);
+	        } else {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	        }
+	    } catch (Exception e) {
+	        // Cetak pesan kesalahan ke console
+	        e.printStackTrace();
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	    }
+	}
+
 	
 	
 }
