@@ -30,15 +30,12 @@ function LoginComponent() {
 
       if (response.data != "") {
         if (response.data.role == "dosen") {
-          Cookies.set("id_user", idUser, {
-            expires: 1,
-          });
 
           try {
             const response = await axios.get(
               "http://localhost:8082/user/" + idUser
             );
-            Cookies.set("id_dosen", response.data, {
+            Cookies.set("userAuth", response.data, {
               expires: 1,
             });
           } catch (error) {
@@ -50,8 +47,7 @@ function LoginComponent() {
           navigate("/dosen");
         } else {
           alert("Login Berhasil (Admin)!");
-          Cookies.remove('id_dosen', { path: '/' });
-          Cookies.set("id_user", idUser, {
+          Cookies.set("userAuth", idUser, {
             expires: 1,
           });
           navigate("/dosen");
