@@ -26,11 +26,14 @@ function LoginComponent() {
         formData
       );
 
-      const idUser = response.data.id_user;
-
       if (response.data != "") {
-        if (response.data.role == "dosen") {
+        const idUser = response.data.id_user;
 
+        Cookies.set("userRole", response.data.role, {
+          expires: 1,
+        });
+
+        if (response.data.role == "dosen") {
           try {
             const response = await axios.get(
               "http://localhost:8082/user/" + idUser

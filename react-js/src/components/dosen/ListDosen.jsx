@@ -7,6 +7,7 @@ const ListDosen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const userAuth = Cookies.get('userAuth');
+  const userRole = Cookies.get('userRole');
 
   useEffect(() => {
     async function fetchData() {
@@ -15,7 +16,7 @@ const ListDosen = () => {
         setData(response.data);
         setLoading(false); // Set loading to false after data is fetched
         console.log("userAuth : " + userAuth)
-        
+        console.log("userRole : " + userRole)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false); // Set loading to false on error
