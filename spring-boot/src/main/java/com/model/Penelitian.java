@@ -28,8 +28,16 @@ public class Penelitian{
     private LocalDate tgl_penelitian;
     @Column
     private String path_pdf;
+    @Column
+    private String url;
     
 	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public String getPath_pdf() {
 		return path_pdf;
 	}
