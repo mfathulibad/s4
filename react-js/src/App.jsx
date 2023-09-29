@@ -24,7 +24,7 @@ function App() {
             <Route path="/dosen/insert" element = {<AddDosen/>} />
             <Route path="/dosen/edit/:id" element = {<EditDosen/>} />
             <Route path='/matakuliah' element ={<MataKuliah/>}/>
-            <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
+            <Route path="/insert" element = {<AddMataKuliah/>} />
             <Route path='/matakuliah/edit/:id' element ={<EditMataKuliah/>}/>
             <Route path='/penelitian' element ={<Penelitian/>}/>
             <Route path='/penelitian/insert' element ={<AddPenelitian/>}/>
