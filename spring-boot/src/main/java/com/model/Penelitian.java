@@ -8,7 +8,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,11 +26,16 @@ public class Penelitian{
     private String bidang_penelitian;
     @Column
     private LocalDate tgl_penelitian;
-    
-//    @Lob
-//    private byte[] pdfFile;
+    @Column
+    private String path_pdf;
     
 	
+	public String getPath_pdf() {
+		return path_pdf;
+	}
+	public void setPath_pdf(String path_pdf) {
+		this.path_pdf = path_pdf;
+	}
 	public String getId_penelitian() {
 		return id_penelitian;
 	}
@@ -57,11 +61,6 @@ public class Penelitian{
 		this.tgl_penelitian = tgl_penelitian;
 	}
 	
-//	public byte[] getPdfFile() {
-//		return pdfFile;
-//	}
-//	public void setPdfFile(byte[] pdfFile) {
-//		this.pdfFile = pdfFile;
-//	}
+
     
 }
