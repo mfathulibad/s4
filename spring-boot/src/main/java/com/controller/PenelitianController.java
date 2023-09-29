@@ -108,36 +108,39 @@ public class PenelitianController {
 	    } catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Gagal mengunggah file PDF: " + e.getMessage());
 	    }
-	}
+	}	
 	
-	
-//	@GetMapping("/penelitian/download-pdf/{id_penelitian}")
-//	public ResponseEntity<Resource> downloadPDF(@PathVariable String id_penelitian) {
-//	    Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
-//	    String fileName = penelitian.getPath_pdf(); 
-//
-//	    String filePath = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload" + fileName;
-//	    
-//	    try {
-//	        FileSystemResource resource = new FileSystemResource(filePath);
-//
-//	        if (resource.exists()) {
-//	            HttpHeaders headers = new HttpHeaders();
-//	            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
-//	            return ResponseEntity.ok()
-//	                    .headers(headers)
-//	                    .contentType(MediaType.APPLICATION_PDF)
-//	                    .body(resource);
-//	        } else {
-//	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//	        }
-//	    } catch (Exception e) {
-//	        // Cetak pesan kesalahan ke console
-//	        e.printStackTrace();
-//	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-//	    }
-//	}
+	@GetMapping("/penelitian/download-pdf/{id_penelitian}")
+	public ResponseEntity<Resource> downloadPDF(@PathVariable String id_penelitian) {
+	    // Dapatkan nama file PDF dari entitas Penelitian
+	    Penelitian penelitian = penelitianService.getPenelitianById(id_penelitian);
+	    String fileName = penelitian.getPath_pdf();
 
-	
+	    // Lokasi direktori tempat file PDF disimpan
+	    String uploadDir = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload";
+
+	    try {
+	        // Buat objek Resource untuk file PDF
+	        Resource resource = new FileSystemResource(uploadDir + File.separator + fileName);
+
+	        // Periksa apakah file ada
+	        if (resource.exists()) {
+	            HttpHeaders headers = new HttpHeaders();
+	            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName);
+
+	            // Set tipe konten sebagai aplikasi PDF
+	            MediaType mediaType = MediaType.APPLICATION_PDF;
+	            return ResponseEntity.ok()
+	                    .headers(headers)
+	                    .contentLength(resource.getFile().length())
+	                    .contentType(mediaType)
+	                    .body(resource);
+	        } else {
+	            return ResponseEntity.notFound().build();
+	        }
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	    }
+	}
 	
 }

@@ -42,6 +42,8 @@ export default function Penelitian() {
                     <th scope="col">Judul Penelitian</th>
                     <th scope="col">Bidang Penelitian</th>
                     <th scope="col">Tanggal Penelitian</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">PDF</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -54,6 +56,13 @@ export default function Penelitian() {
                                 <td>{penelitian.judul_penelitian}</td>
                                 <td>{penelitian.bidang_penelitian}</td>
                                 <td>{penelitian.tgl_penelitian}</td>
+                                <td style={{ maxWidth: '200px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                    <a href={penelitian.url} target="_blank" rel="noopener noreferrer">{penelitian.url}</a>
+                                </td>
+                                <td style={{ maxWidth: '200px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                    <a href={`http://localhost:8082/penelitian/download-pdf/${penelitian.id_penelitian}`} target="_blank" rel="noopener noreferrer">{penelitian.path_pdf}</a>
+                                </td>
+                           
                                 <td>
                                     <Link className='btn btn-outline-primary mx-2'
                                         to={`edit/${penelitian.id_penelitian}`}    
