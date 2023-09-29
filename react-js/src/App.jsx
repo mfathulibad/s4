@@ -16,12 +16,14 @@ import EditPenelitian from "./pages/penelitian/EditPenelitian";
 import Pkm from "./pages/pkm/Pkm";
 import AddPkm from "./pages/pkm/AddPkm";
 import EditPkm from "./pages/pkm/EditPkm";
-// import ProtectedRoute from "../ProtectedRoute";
-// import AdminProtectedRoute from "../AdminProtectedRoute";
 import Dashboard from "./pages/dashboard/Dashboard";
+import ProtectedRoute from "../ProtectedRoute";
+import AdminProtectedRoute from "../AdminProtectedRoute";
+import UploadFile from "./components/penelitian/UploadPDF";
 
 function App() {
   return (
+
     <Router>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
@@ -32,8 +34,8 @@ function App() {
         <Route path="/dosen" element={<Dosen />} />
         <Route path="/dosen/insert" element={<AddDosen />} />
         <Route path="/dosen/edit/:id" element={<EditDosen />} />
-        <Route path="/matakuliah" element={<MataKuliah />} />
-        <Route path="/matakuliah/insert" element={<AddMataKuliah />} />
+        <Route path='/matakuliah' element ={<MataKuliah/>}/>
+        <Route path="/insert" element = {<AddMataKuliah/>} />
         <Route path="/matakuliah/edit/:id" element={<EditMataKuliah />} />
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/penelitian/insert" element={<AddPenelitian />} />
@@ -41,6 +43,9 @@ function App() {
         <Route path="/pkm" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
+
+        <Route path="/penelitian/upload-pdf/:id" element={<UploadFile/>}/>
+
       </Routes>
     </Router>
 
