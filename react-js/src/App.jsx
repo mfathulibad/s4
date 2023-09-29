@@ -19,6 +19,7 @@ import EditPkm from "./pages/pkm/EditPkm";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
 import UploadFile from "./components/penelitian/UploadPDF";
+import DownloadFile from "./components/penelitian/DownloadPDF";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
 
         <Route path="/penelitian/upload-pdf/:id" element={<UploadFile/>}/>
+        <Route path="/penelitian/download-pdf/:id" element={<DownloadFile/>}/>
 
       </Routes>
     </Router>
