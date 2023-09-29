@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -16,13 +16,16 @@ import EditPenelitian from "./pages/penelitian/EditPenelitian";
 import Pkm from "./pages/pkm/Pkm";
 import AddPkm from "./pages/pkm/AddPkm";
 import EditPkm from "./pages/pkm/EditPkm";
-import ProtectedRoute from "../ProtectedRoute";
-import AdminProtectedRoute from "../AdminProtectedRoute";
+// import ProtectedRoute from "../ProtectedRoute";
+// import AdminProtectedRoute from "../AdminProtectedRoute";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
