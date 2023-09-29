@@ -26,6 +26,8 @@ public class Pkm{
     private String bidang_pengabdian;
     @Column
     private LocalDate tgl_pengabdian;
+    @Column
+    private String url;
     
 	public String getId_pengabdian() {
 		return id_pengabdian;
@@ -51,6 +53,14 @@ public class Pkm{
 	public void setTgl_pengabdian(LocalDate tgl_pengabdian) {
 		this.tgl_pengabdian = tgl_pengabdian;
 	} 
+	
+	public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
     
     
 }

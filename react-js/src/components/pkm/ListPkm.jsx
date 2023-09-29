@@ -36,10 +36,11 @@ export default function ListPkm() {
             <table class="table border">
                 <thead>
                     <tr>
-                    <th scope="col">id_pengabdian</th>
+                    <th scope="col">ID Pengabdian</th>
                     <th scope="col">Judul Pengabdian</th>
                     <th scope="col">Bidang Pengabdian</th>
                     <th scope="col">Tanggal</th>
+                    <th scope="col">Link PKM</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -51,6 +52,9 @@ export default function ListPkm() {
                             <td>{pkm.judul_pengabdian}</td>
                             <td>{pkm.bidang_pengabdian}</td>
                             <td>{pkm.tgl_pengabdian}</td>
+                            <td style={{ maxWidth: '200px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                <a href={pkm.url} target="_blank" rel="noopener noreferrer">{pkm.url}</a>
+                            </td>
                             <td>
                             <Link to={`/pkm/edit/${pkm.id_pengabdian}`}>
                                 <button className="btn btn-primary">Edit</button>

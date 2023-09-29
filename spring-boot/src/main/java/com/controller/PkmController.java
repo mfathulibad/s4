@@ -52,4 +52,6 @@ public class PkmController {
 		pkmService.updatePkm(pkmRequest);
 		return ResponseEntity.ok("Pengabdian dengan judul " + judul_pengabdian + " berhasil diupdate");
 	}
+	
+	
 }

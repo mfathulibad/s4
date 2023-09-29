@@ -7,6 +7,7 @@ const AddPkmComponent = () => {
     judul_pengabdian:"",
     bidang_pengabdian:"",
     tgl_pengabdian:"",
+    url:"",
   });
 
   const handleChange = (e) => {
@@ -65,6 +66,18 @@ const AddPkmComponent = () => {
             name="tgl_pengabdian"
             placeholder="YYYY-MM-DD"
             value={pkm.tgl_pengabdian}
+            onChange={handleChange}
+            className="form-control"
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Link PKM</label>
+          <input
+            type="url"
+            name="url"
+            placeholder="masukan link"
+            value={pkm.url}
             onChange={handleChange}
             className="form-control"
             required
