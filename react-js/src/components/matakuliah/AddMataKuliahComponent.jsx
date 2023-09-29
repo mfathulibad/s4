@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const AddMataKuliahComponent = () => {
@@ -10,6 +10,9 @@ const AddMataKuliahComponent = () => {
     perguruan_tinggi: '',
   });
 
+  // State untuk menyimpan daftar mata kuliah
+  const [daftarMataKuliah, setDaftarMataKuliah] = useState([]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,12 +23,24 @@ const AddMataKuliahComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Make a POST request to your backend endpoint
+
+    // Kirim data ke server
     axios.post('http://localhost:8082/matakuliah/insert', formData)
       .then((response) => {
         console.log(response.data);
         // Handle success or redirection here
+
+        // Perbarui daftar mata kuliah dengan data yang baru ditambahkan
+        setDaftarMataKuliah([...daftarMataKuliah, formData]);
+
+        // Reset form
+        setFormData({
+          id_mata_kuliah: '',
+          nama_mata_kuliah: '',
+          semester: '',
+          kode_kelas: '',
+          perguruan_tinggi: '',
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -35,67 +50,83 @@ const AddMataKuliahComponent = () => {
 
   return (
     <div className="container">
-      <h2 className="mt-4">Add Mata Kuliah</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">ID Mata Kuliah</label>
-          <input
-            type="text"
-            name="id_user"
-            value={formData.id_mata_kuliah}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Nama Mata Kuliah</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.nama_mata_kuliah}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Semester</label>
-          <input
-            type="text"
-            name="nama_lengkap"
-            value={formData.semester}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Kode Kelas</label>
-          <input
-            type="text"
-            name="jabatan_fungsional"
-            value={formData.kode_kelas}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Perguruan Tinggi</label>
-          <input
-            type="text"
-            name="jurusan"
-            value={formData.perguruan_tinggi}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      <div className='table-responsive border p-4 shadow'>
+        <h2 className="mt-4">Add Mata Kuliah</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-1">
+            <label htmlFor="id_mata_kuliah" className="form-label">ID Mata Kuliah</label>
+            <input
+              type="text"
+              id="id_mata_kuliah"
+              name="id_mata_kuliah"
+              placeholder='Masukkan ID Mata Kuliah' 
+              value={formData.id_mata_kuliah}
+              onChange={handleChange}
+              className="form-control col-md-8" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="nama_mata_kuliah" className="form-label">Nama Mata Kuliah</label>
+            <input
+              type="text"
+              id="nama_mata_kuliah"
+              name="nama_mata_kuliah"
+              placeholder='Masukkan Nama Mata Kuliah' 
+              value={formData.nama_mata_kuliah}
+              onChange={handleChange}
+              className="form-control col-md-8" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="semester" className="form-label">Semester</label>
+            <input
+              type="text"
+              id="semester"
+              name="semester"
+              placeholder='Masukkan Semester ' 
+              value={formData.semester}
+              onChange={handleChange}
+              className="form-control col-md-8" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="kode_kelas" className="form-label">Kode Kelas</label>
+            <input
+              type="text"
+              id="kode_kelas"
+              name="kode_kelas"
+              placeholder='Masukkan Kode Kelas' 
+              value={formData.kode_kelas}
+              onChange={handleChange}
+              className="form-control col-md-8" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="mb-1">
+            <label htmlFor="perguruan_tinggi" className="form-label">Perguruan Tinggi</label>
+            <input
+              type="text"
+              id="perguruan_tinggi"
+              name="perguruan_tinggi"
+              placeholder='Masukkan Perguruan Tinggi' 
+              value={formData.perguruan_tinggi}
+              onChange={handleChange}
+              className="form-control col-md-8" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <button type="submit" className="btn btn-outline-primary">Submit</button>
+            <button type="button" className="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
 export default AddMataKuliahComponent;
+

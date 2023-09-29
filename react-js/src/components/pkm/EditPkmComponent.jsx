@@ -10,6 +10,7 @@ function EditPkmComponent({ id }) {
     judul_pengabdian:"",
     bidang_pengabdian:"",
     tgl_pengabdian:"",
+    url:"",
   });
 
   useEffect(() => {
@@ -90,6 +91,17 @@ function EditPkmComponent({ id }) {
                 name="tgl_pengabdian"
                 placeholder="YYYY-MM-DD"
                 value={pkm.tgl_pengabdian}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Link PKM:</label>
+              <input
+                type="url"
+                className="form-control"
+                name="url"
+                placeholder="masukan link"
+                value={pkm.url}
                 onChange={handleInputChange}
               />
             </div>
