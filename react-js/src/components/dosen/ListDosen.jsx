@@ -1,24 +1,27 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import React, { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+
+import { FaEye } from "react-icons/fa";
+
 
 const ListDosen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const userAuth = Cookies.get('userAuth');
-  const userRole = Cookies.get('userRole');
+  const userAuth = Cookies.get("userAuth");
+  const userRole = Cookies.get("userRole");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:8082/dosen');
+        const response = await axios.get("http://localhost:8082/dosen");
         setData(response.data);
         setLoading(false); // Set loading to false after data is fetched
-        console.log("userAuth : " + userAuth)
-        console.log("userRole : " + userRole)
+        console.log("userAuth : " + userAuth);
+        console.log("userRole : " + userRole);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
         setLoading(false); // Set loading to false on error
       }
     }
@@ -26,18 +29,24 @@ const ListDosen = () => {
   }, []);
 
   async function handleDelete(id_dosen) {
-    const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
+    const confirmDelete = window.confirm(
+      "Apakah Anda yakin ingin menghapus data ini?"
+    );
     if (!confirmDelete) {
       return;
     }
     try {
       // Kirim permintaan DELETE ke server dengan parameter id_dosen
-      await axios.delete(`http://localhost:8082/dosen/delete?id_dosen=${id_dosen}`);
+      await axios.delete(
+        `http://localhost:8082/dosen/delete?id_dosen=${id_dosen}`
+      );
       // Perbarui tampilan dengan menghapus entitas dari state lokal
-      setData((prevData) => prevData.filter((dosen) => dosen.id_dosen !== id_dosen));
-      alert('Data dosen berhasil dihapus');
+      setData((prevData) =>
+        prevData.filter((dosen) => dosen.id_dosen !== id_dosen)
+      );
+      alert("Data dosen berhasil dihapus");
     } catch (error) {
-      console.error('Error deleting data:', error);
+      console.error("Error deleting data:", error);
     }
   }
 
@@ -63,30 +72,104 @@ const ListDosen = () => {
                 </tr>
               </thead>
               <tbody>
-              {data.map((dosen) => (
-                <tr key={dosen.id_dosen}>
-                  <td>{dosen.id_dosen}</td>
-                  <td>{dosen.id_user}</td>
-                  <td>{dosen.nidn}</td>
-                  <td>{dosen.email}</td>
-                  <td>{dosen.nama_lengkap}</td>
-                  <td>{dosen.jabatan_fungsional}</td>
-                  <td>{dosen.jurusan}</td>
-                  <td>
-                    <Link to={`/dosen/edit/${dosen.id_dosen}`}>
-                      <button className="btn btn-primary">Edit</button>
-                    </Link>
-                    <button className="btn btn-danger" onClick={() => handleDelete(dosen.id_dosen)}>Delete</button>
-                  </td>
-                </tr>
-              ))}
+                {data.map((dosen) => (
+                  <tr key={dosen.id_dosen}>
+                    <td>{dosen.id_dosen}</td>
+                    <td>{dosen.id_user}</td>
+                    <td>{dosen.nidn}</td>
+                    <td>{dosen.email}</td>
+                    <td>{dosen.nama_lengkap}</td>
+                    <td>{dosen.jabatan_fungsional}</td>
+                    <td>{dosen.jurusan}</td>
+                    <td>
+                      <Link to={`/dosen/edit/${dosen.id_dosen}`}>
+                        <button className="btn btn-primary">Edit</button>
+                      </Link>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDelete(dosen.id_dosen)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
+          </div>
+          {/* SEPARATOR */}
+          <div className="row">
+            <div className="col-12">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Day</th>
+                    <th scope="col">Article Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Bootstrap 4 CDN and Starter Template</td>
+                    <td>Cristina</td>
+                    <td>2.846</td>
+                    <td>
+                      <button type="button" className="btn btn-primary">
+                        <i className="far fa-eye" />
+                      </button>
+                      <button type="button" className="btn btn-success">
+                        <i className="fas fa-edit" />
+                      </button>
+                      <button type="button" className="btn btn-danger">
+                        <i className="far fa-trash-alt" />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Bootstrap Grid 4 Tutorial and Examples</td>
+                    <td>Cristina</td>
+                    <td>3.417</td>
+                    <td>
+                      <button type="button" className="btn btn-primary">
+                        <i className="far fa-eye" />
+                      </button>
+                      <button type="button" className="btn btn-success">
+                        <i className="fas fa-edit" />
+                      </button>
+                      <button type="button" className="btn btn-danger">
+                        <i className="far fa-trash-alt" />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Bootstrap Flexbox Tutorial and Examples</td>
+                    <td>Cristina</td>
+                    <td>1.234</td>
+                    <td>
+                      <button type="button" className="btn btn-primary">
+                      <FaEye/>
+                      </button>
+                      <button type="button" className="btn btn-success">
+                        <i className="fas fa-edit" />
+                      </button>
+                      <button type="button" className="btn btn-danger">
+                        <i className="far fa-trash-alt" />
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default ListDosen;

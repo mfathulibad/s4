@@ -1,6 +1,7 @@
 import React from "react";
 import { FiSliders } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
+import { FiLogIn } from "react-icons/fi";
 
 function Sidebar() {
   return (
@@ -25,7 +26,7 @@ function Sidebar() {
           </li>
           <li className="sidebar-item">
             <a className="sidebar-link" href="pages-sign-in.html">
-              <i className="align-middle" data-feather="log-in" />{" "}
+              <FiLogIn />
               <span className="align-middle">Sign In</span>
             </a>
           </li>
