@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 function EditMataKuliahComponent({ id }) {
-  const [matakuliah, setMataKuliah] = useState({});
+  const [matakuliah, setMataKuliah] = useState({})
   const [loading, setLoading] = useState(true);
+
   const [formData, setFormData] = useState({
-    id_mata_kuliah: '',
-    nama_mata_kuliah: '',
-    email: '',
-    semester: '',
-    kode_kelas: '',
-    perguruan_tinggi: '',
+    id_mata_kuliah:``,
+    nama_mata_kuliah:``,
+    semester:``,
+    kode_kelas:``,
+    perguruan_tinggi:``
+
   });
 
   useEffect(() => {
@@ -30,36 +32,39 @@ function EditMataKuliahComponent({ id }) {
     fetchData();
   }, [id]);
 
-  // Handle perubahan input dalam formulir
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  // Handle pengiriman formulir
+ 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post(`http://localhost:8082/matakuliah/update`, formData);
-        console.log(response.data);
-        alert('Data Mata Kuliah berhasil diperbarui');
-      } catch (error) {
-        console.error('Error updating data:', error);
-      }
+      const response = await axios.post(`http://localhost:8082/matakuliah/update`, formData);
+      console.log(response.data);
+      alert('Data Mata Kuliah berhasil diperbarui');
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
   };
 
   return (
     <div className="container">
-        <div>
-          <h2>Edit Mata Kuliah</h2>
-          <form onSubmit={handleSubmit}>
-          <div className="form-group">
+      <div>
+        <h2>Edit Mata Kuliah</h2>
+        <form onSubmit={handleSubmit}>
+        <div className="form-group">
               <label>ID Mata Kuliah:</label>
               <input
                 type="text"
                 className="form-control"
                 name="id_mata_kuliah"
-                value={formData.id_mata_kuliah}
+                value={formData.id_mata_kuliah }
                 onChange={handleInputChange}
                 disabled
               />
@@ -104,11 +109,13 @@ function EditMataKuliahComponent({ id }) {
                 onChange={handleInputChange}
               />
             </div>
-            <button type="submit" className="btn btn-primary">Simpan Perubahan</button>
-          </form>
-        </div>
+          <button type="submit" className="btn btn-outline-primary" >Simpan Perubahan</button>
+          <Link className='btn btn-danger' to="/matakuliah">Batal</Link>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default EditMataKuliahComponent
+
+export default EditMataKuliahComponent;

@@ -77,7 +77,6 @@ export default function AddPenelitianComponent() {
                 onChange={onInputChange}
               />
             </div>
-
             <div className="mb-3">
               <label htmlFor="bidangPenelitian" className="form-label">
                 Bidang Penelitian
@@ -91,7 +90,6 @@ export default function AddPenelitianComponent() {
                 onChange={onInputChange}
               />
             </div>
-
             <div className="mb-3">
               <label htmlFor="tglPenelitian" className="form-label">
                 Tanggal Penelitian

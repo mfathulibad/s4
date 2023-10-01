@@ -50,10 +50,11 @@ public class PenelitianController {
 	}
 	
 	@PostMapping("/penelitian/insert")
-	public ResponseEntity<String> addPenelitian(@RequestBody Penelitian penelitianRequest){
-		String judul_penelitian = penelitianRequest.getJudul_penelitian();
-		penelitianService.addPenelitian(penelitianRequest);
-		return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+	public String addPenelitian(@RequestBody Penelitian penelitianRequest){
+		// String judul_penelitian = penelitianRequest.getJudul_penelitian();
+		String newPenelitianId = penelitianService.addPenelitian(penelitianRequest);
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newPenelitianId;
 	}
 	
 	@DeleteMapping("/penelitian/delete")
@@ -87,7 +88,7 @@ public class PenelitianController {
 
 	        // Simpan file PDF ke direktori tertentu
 	        String fileName = id_penelitian + ".pdf"; // Nama file sesuai dengan ID penelitian
-	        String uploadDir = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload"; 
+	        String uploadDir = "D:\\Kuliah\\Semester 5\\Pengembangan Web\\s4\\react-js\\public\\file_upload"; 
 	        File uploadPath = new File(uploadDir);
 
 	        if (!uploadPath.exists()) {

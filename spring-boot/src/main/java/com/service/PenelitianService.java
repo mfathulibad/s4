@@ -24,8 +24,10 @@ public class PenelitianService {
 		return penelitianRepository.getById(id_penelitian);
 	}
 	
-	public void addPenelitian (Penelitian penelitianRequest) {
-		penelitianRepository.save(penelitianRequest);
+	public String addPenelitian (Penelitian penelitianRequest) {
+		Penelitian saved = penelitianRepository.save(penelitianRequest);
+		String newPenelitianId = saved.getId_penelitian();
+		return newPenelitianId;
 	}
 	
 	public void deletePenelitian(String id_penelitian) {

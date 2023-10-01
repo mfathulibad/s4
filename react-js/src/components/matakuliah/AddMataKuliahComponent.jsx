@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const AddMataKuliahComponent = () => {
@@ -120,7 +121,8 @@ const AddMataKuliahComponent = () => {
           </div>
           <div className="d-flex justify-content-between">
             <button type="submit" className="btn btn-outline-primary">Submit</button>
-            <button type="button" className="btn btn-danger">Cancel</button>
+            <Link className='btn btn-danger' to="/matakuliah">Cancel</Link>
+
           </div>
         </form>
       </div>
