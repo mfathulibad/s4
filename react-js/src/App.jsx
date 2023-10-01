@@ -9,17 +9,16 @@ import AddDosen from "./pages/dosen/AddDosen";
 import EditDosen from "./pages/dosen/EditDosen";
 import AddMataKuliah from "./pages/matakuliah/AddMataKuliah";
 import Penelitian from "./pages/penelitian/Penelitian";
-import AddPenelitian from "./components/penelitian/AddPenelitianComponent";
+import AddPenelitian from "./pages/penelitian/AddPenelitian";
+import EditPenelitian from "./pages/penelitian/EditPenelitian";
 import MataKuliah from "./pages/matakuliah/MataKuliah";
 import EditMataKuliah from "./pages/matakuliah/EditMataKuliah";
-import EditPenelitian from "./pages/penelitian/EditPenelitian";
 import Pkm from "./pages/pkm/Pkm";
 import AddPkm from "./pages/pkm/AddPkm";
 import EditPkm from "./pages/pkm/EditPkm";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
-import UploadFile from "./components/penelitian/UploadPDF";
 
 function App() {
   return (
@@ -44,7 +43,6 @@ function App() {
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
 
-        <Route path="/penelitian/upload-pdf/:id" element={<UploadFile/>}/>
 
       </Routes>
     </Router>
