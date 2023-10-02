@@ -83,7 +83,7 @@ const AddMataKuliahComponent = () => {
           <div className="mb-1">
             <label htmlFor="semester" className="form-label">Semester</label>
             <input
-              type="text"
+              type="number"
               id="semester"
               name="semester"
               placeholder='Masukkan Semester ' 
