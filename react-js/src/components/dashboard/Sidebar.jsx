@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FiSliders } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
+import Cookies from "js-cookie";
 
 function Sidebar() {
+
+  const userAuth = Cookies.get("userAuth");
+
   return (
     <nav id="sidebar" className="sidebar js-sidebar">
       <div className="sidebar-content js-simplebar">
@@ -18,12 +23,14 @@ function Sidebar() {
               <span className="align-middle">Dashboard</span>
             </a>
           </li>
-          <li className="sidebar-item">
-            <a className="sidebar-link" href="pages-profile.html">
-              <FiUser />
-              <span className="align-middle">Profile</span>
-            </a>
-          </li>
+          <Link to={`/dosen/edit/${userAuth}`}>
+            <li className="sidebar-item">
+              <a className="sidebar-link" href="pages-profile.html">
+                <FiUser />
+                <span className="align-middle">Edit Dosen</span>
+              </a>
+            </li>
+          </Link>
           <li className="sidebar-item">
             <a className="sidebar-link" href="pages-sign-in.html">
               <FiLogIn />
@@ -87,20 +94,6 @@ function Sidebar() {
             </a>
           </li>
         </ul>
-        <div className="sidebar-cta">
-          <div className="sidebar-cta-content">
-            <strong className="d-inline-block mb-2">Upgrade to Pro</strong>
-            <div className="mb-3 text-sm">
-              Are you looking for more components? Check out our premium
-              version.
-            </div>
-            <div className="d-grid">
-              <a href="upgrade-to-pro.html" className="btn btn-primary">
-                Upgrade to Pro
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </nav>
   );
