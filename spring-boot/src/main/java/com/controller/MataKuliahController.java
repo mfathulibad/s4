@@ -37,22 +37,22 @@ public class MataKuliahController {
 	
 	@PostMapping("/matakuliah/insert")
 	public ResponseEntity<String> addMataKuliah(@RequestBody MataKuliah mataKuliahRequest){
-		String nama_matkul = mataKuliahRequest.getNama_mata_kuliah();
+		String nama_mata_kuliah = mataKuliahRequest.getNama_mata_kuliah();
 		mataKuliahService.addMataKuliah(mataKuliahRequest);
-		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_matkul + " berhasil ditambahkan");
+		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil ditambahkan");
 	}
 //	
 	@DeleteMapping("/matakuliah/delete")
 	public ResponseEntity<String> deleteMataKuliah(@RequestParam  String id_mata_kuliah){
-		String nama_matkul = mataKuliahService.getMataKuliahbyId(id_mata_kuliah).getNama_mata_kuliah();
+		String nama_mata_kuliah = mataKuliahService.getMataKuliahbyId(id_mata_kuliah).getNama_mata_kuliah();
 		mataKuliahService.deleteMataKuliah(id_mata_kuliah);
-		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_matkul + " berhasil dihapus");
+		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil dihapus");
 	}
 	
 	@PostMapping("/matakuliah/update")
 	public ResponseEntity<String> updateMataKuliah(@RequestBody MataKuliah mataKuliahRequest){
-		String nama_matkul = mataKuliahService.getMataKuliahbyId(mataKuliahRequest.getId_mata_kuliah()).getNama_mata_kuliah();
+		String nama_mata_kuliah = mataKuliahService.getMataKuliahbyId(mataKuliahRequest.getId_mata_kuliah()).getNama_mata_kuliah();
 		mataKuliahService.updateMataKuliah(mataKuliahRequest);
-		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_matkul + " berhasil diupdate");
+		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil diupdate");
 	}
 }
