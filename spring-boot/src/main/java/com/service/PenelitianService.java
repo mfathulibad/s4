@@ -2,13 +2,13 @@ package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.repository.PenelitianRepository;
 
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
+import com.model.Dosen;
 import com.model.Penelitian;
 
 @Service
@@ -24,10 +24,22 @@ public class PenelitianService {
 		return penelitianRepository.getById(id_penelitian);
 	}
 	
-	public String addPenelitian (Penelitian penelitianRequest) {
-		Penelitian saved = penelitianRepository.save(penelitianRequest);
-		String newPenelitianId = saved.getId_penelitian();
-		return newPenelitianId;
+	public String addPenelitian (Penelitian penelitianRequest, String id_dosen) {
+		String judul_penelitian= penelitianRequest.getJudul_penelitian();
+		String bidang_penelitian = penelitianRequest.getBidang_penelitian();
+		LocalDate tgl_penelitian = penelitianRequest.getTgl_penelitian();
+		String url = penelitianRequest.getUrl();
+		
+		return penelitianRepository.addPenelitian(
+				judul_penelitian,
+				bidang_penelitian,
+				tgl_penelitian,
+				url,
+				id_dosen
+			);
+		
+		
+		
 	}
 	
 	public void deletePenelitian(String id_penelitian) {
@@ -38,25 +50,6 @@ public class PenelitianService {
 		penelitianRepository.save(penelitianRequest);
 	}
 	
-//	public void uploadPDF(String id_penelitian, MultipartFile file) throws IOException {
-//        Penelitian penelitian = getPenelitianById(id_penelitian);
-//
-//        if (penelitian != null && !file.isEmpty()) {
-//            // Validasi file PDF di sini jika perlu
-//            if (!file.getContentType().equals("application/pdf")) {
-//                throw new IllegalArgumentException("Hanya file PDF yang diizinkan.");
-//            }
-//
-//            // Set data PDF ke entitas Penelitian
-//            penelitian.setPdfFile(file.getBytes());
-//
-//            // Simpan perubahan ke database
-//            penelitianRepository.save(penelitian);
-//        } else {
-//            throw new IllegalArgumentException("Penelitian tidak ditemukan atau file tidak diunggah.");
-//        }
-//	}
-	
-	
+		
 	
 }

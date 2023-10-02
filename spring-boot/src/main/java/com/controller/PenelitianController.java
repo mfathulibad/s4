@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +30,7 @@ import org.springframework.http.MediaType;
 
 
 import com.service.PenelitianService;
+import com.model.Dosen;
 import com.model.Penelitian;
 
 @RestController
@@ -49,10 +49,10 @@ public class PenelitianController {
 		return penelitianService.getPenelitianById(id_penelitian);
 	}
 	
-	@PostMapping("/penelitian/insert")
-	public String addPenelitian(@RequestBody Penelitian penelitianRequest){
+	@PostMapping("/penelitian/insert/{id_dosen}")
+	public String addPenelitian(@PathVariable("id_dosen") String id_dosen, @RequestBody Penelitian penelitianRequest){
 		// String judul_penelitian = penelitianRequest.getJudul_penelitian();
-		String newPenelitianId = penelitianService.addPenelitian(penelitianRequest);
+		String newPenelitianId = penelitianService.addPenelitian(penelitianRequest, id_dosen);
 		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
 		return newPenelitianId;
 	}
@@ -88,7 +88,7 @@ public class PenelitianController {
 
 	        // Simpan file PDF ke direktori tertentu
 	        String fileName = id_penelitian + ".pdf"; // Nama file sesuai dengan ID penelitian
-	        String uploadDir = "D:\\Kuliah\\Semester 5\\Pengembangan Web\\s4\\react-js\\public\\file_upload"; 
+	        String uploadDir = "/Users/ASUS/Documents/TINGKAT 3/Pengembangan Web/Praktek/2. TUGASKEL/V2/s4/react-js/public/file_upload"; 
 	        File uploadPath = new File(uploadDir);
 
 	        if (!uploadPath.exists()) {

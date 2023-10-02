@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function AddPenelitianComponent() {
   let navigate = useNavigate();
@@ -14,6 +15,7 @@ export default function AddPenelitianComponent() {
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const userAuth = Cookies.get("userAuth");
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,8 +37,20 @@ export default function AddPenelitianComponent() {
       return;
     }
 
-    const response = await axios.post("http://localhost:8082/penelitian/insert", penelitian);
-    let idPenelitian = response.data;
+    // const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
+
+    
+    // let idPenelitian = response.data;
+
+    // try {
+      const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
+      let idPenelitian = response.data;
+    //   // Lakukan sesuatu dengan idPenelitian di sini jika perlu
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   // Tangani error di sini
+    // }
+    
 
     const formData = new FormData();
     formData.append("file", selectedFile);
