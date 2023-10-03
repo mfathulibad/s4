@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 const AddPkmComponent = () => {
   const [pkm, setPkm] = useState({
@@ -18,11 +19,13 @@ const AddPkmComponent = () => {
     });
   };
 
+  const userAuth = Cookies.get("userAuth");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     // Make a POST request to your backend endpoint
-    axios.post('http://localhost:8082/pkm/insert', pkm)
+    axios.post(`http://localhost:8082/pkm/insert/${userAuth}`, pkm)
       .then((response) => {
         console.log(response.data);
         // Handle success or redirection here
