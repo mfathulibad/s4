@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.service.MataKuliahService;
 import com.model.MataKuliah;
+import com.model.Pkm;
 
 @RestController
 @CrossOrigin
@@ -34,14 +35,23 @@ public class MataKuliahController {
 		return mataKuliahService.getMataKuliahbyId(id_mata_kuliah); //
 
 	}
-	
-	@PostMapping("/matakuliah/insert")
-	public ResponseEntity<String> addMataKuliah(@RequestBody MataKuliah mataKuliahRequest){
-		String nama_mata_kuliah = mataKuliahRequest.getNama_mata_kuliah();
-		System.out.println("Id Mata Kuliah : " + mataKuliahRequest.getId_mata_kuliah());
-		mataKuliahService.addMataKuliah(mataKuliahRequest);
-		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil ditambahkan");
+
+	@PostMapping("/matakuliah/insert/{id_dosen}")
+	public String addMataKuliah(@PathVariable("id_dosen") String id_dosen, @RequestBody MataKuliah mataKuliahRequest){
+		// String judul_penelitian = penelitianRequest.getJudul_penelitian();
+		String newMatakuliahId = mataKuliahService.addMataKuliah(mataKuliahRequest, id_dosen);
+
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newMatakuliahId;
 	}
+	
+		//String nama_mata_kuliah = mataKuliahRequest.getNama_mata_kuliah();
+		
+		//System.out.println("Id Mata Kuliah : " + mataKuliahRequest.getId_mata_kuliah());
+		//mataKuliahService.addMataKuliah(mataKuliahRequest);
+		//return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil ditambahkan");
+		
+	
 //	
 	@DeleteMapping("/matakuliah/delete")
 	public ResponseEntity<String> deleteMataKuliah(@RequestParam  String id_mata_kuliah){
