@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "MataKuliah")
 public class MataKuliah {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private String id_mata_kuliah;
     @Column

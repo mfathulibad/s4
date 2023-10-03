@@ -1,14 +1,20 @@
 package com.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "riwayat_pendidikan")
 public class RiwayatPendidikan{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private String id_riwayat_pendidikan;
     @Column

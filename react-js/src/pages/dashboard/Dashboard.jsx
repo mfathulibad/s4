@@ -2,20 +2,27 @@ import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 import ListDosen from "../../components/dosen/ListDosen";
-import ListPenelitian from "../../components/penelitian/ListPenelitian";
-
+import Penelitian from "../../pages/penelitian/Penelitian";
 
 function Dashboard() {
   return (
-    <div className="wrapper">
-      <Sidebar />
+    <>
+      <div id="wrapper">
+        <Sidebar />
 
-      <div className="main">
-        <Navbar />
-        <ListPenelitian/>
-        <Footer />
+        <div id="content-wrapper" className="d-flex flex-column">
+          <div id="content">
+            <Navbar />
+
+            <div className="container-fluid">
+
+              <ListDosen/>
+              
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

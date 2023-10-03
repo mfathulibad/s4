@@ -20,6 +20,7 @@ public class MataKuliahService {
 		return mataKuliahRepository.getById(id_mata_kuliah);
 	}
 	public void addMataKuliah(MataKuliah mataKuliahRequest) {
+		System.out.println(mataKuliahRequest.getId_mata_kuliah());
 		mataKuliahRepository.save(mataKuliahRequest);
 	}
 	public void deleteMataKuliah(String id_mata_kuliah) {

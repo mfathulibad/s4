@@ -25,6 +25,8 @@ const AddMataKuliahComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log(formData.id_mata_kuliah)
+
     // Kirim data ke server
     axios.post('http://localhost:8082/matakuliah/insert', formData)
       .then((response) => {
