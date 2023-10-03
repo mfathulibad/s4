@@ -39,4 +39,11 @@ public class RiwayatPendidikanController {
 		riwayatPendidikanService.deleteRiwayatPendidikan(id_riwayat_pendidikan);
 		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil dihapus");
 	}
+
+	@PostMapping("/riwayatpendidikan/update")
+	public ResponseEntity<String> updateRiwayatPendidikan(@RequestBody RiwayatPendidikan riwayatPendidikanRequest){
+		String nama_institute = riwayatPendidikanService.getRiwayatPendidikanById(riwayatPendidikanRequest.getId_riwayat_pendidikan()).getInstitusi();
+		riwayatPendidikanService.updateRiwayatPendidikan(riwayatPendidikanRequest);
+		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil diupdate");
+	}
 }

@@ -9,11 +9,17 @@ function Dosen() {
     <div className="wrapper">
       <Sidebar />
 
-      <div className="main">
-        <Navbar />
-        <ListDosen />
-        <Footer />
+      <div id="content-wrapper" className="d-flex flex-column">
+
+            <div id="content">
+
+            <div className="container-fluid">
+              <ListDosen />
+            </div>
+              
+            </div>
       </div>
+        
     </div>
   );
 }
