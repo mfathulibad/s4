@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 const AddMataKuliahComponent = () => {
   const [formData, setFormData] = useState({
@@ -22,20 +23,23 @@ const AddMataKuliahComponent = () => {
     });
   };
 
+  const userAuth = Cookies.get("userAuth");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(formData.id_mata_kuliah)
-
+  
+    console.log(formData.id_mata_kuliah);
+  
     // Kirim data ke server
-    axios.post('http://localhost:8082/matakuliah/insert', formData)
+    axios
+      .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
         // Handle success or redirection here
-
+  
         // Perbarui daftar mata kuliah dengan data yang baru ditambahkan
         setDaftarMataKuliah([...daftarMataKuliah, formData]);
-
+  
         // Reset form
         setFormData({
           id_mata_kuliah: '',
@@ -44,12 +48,17 @@ const AddMataKuliahComponent = () => {
           kode_kelas: '',
           perguruan_tinggi: '',
         });
-      })
+  
+        // Tampilkan notifikasi bahwa data telah berhasil disimpan
+        alert('Data berhasil disimpan');
+        window.location.href = '/matakuliah';
+        })
       .catch((error) => {
         console.error(error);
         // Handle error
       });
   };
+  
 
   return (
     <div className="container">

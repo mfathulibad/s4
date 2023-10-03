@@ -34,12 +34,14 @@ public class PkmController {
 		return pkmService.getPkmById(id_pengabdian);
 	}
 	
-	@PostMapping("/pkm/insert")
-	public ResponseEntity<String> addPkm(@RequestBody Pkm pkmRequest){
-		String judul_pengabdian = pkmRequest.getJudul_pengabdian();
-		pkmService.addPkm(pkmRequest);
-		return ResponseEntity.ok("PKM dengan judul " + judul_pengabdian + " berhasil ditambahkan");
+	@PostMapping("/pkm/insert/{id_dosen}")
+	public String addPkm(@PathVariable("id_dosen") String id_dosen, @RequestBody Pkm pkmRequest){
+		// String judul_penelitian = penelitianRequest.getJudul_penelitian();
+		String newPkmId = pkmService.addPkm(pkmRequest, id_dosen);
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newPkmId;
 	}
+	
 	@DeleteMapping("/pkm/delete")
 	public ResponseEntity<String> deletePkm(@RequestParam String id_pengabdian){
 		String judul_pengabdian = pkmService.getPkmById(id_pengabdian).getJudul_pengabdian();

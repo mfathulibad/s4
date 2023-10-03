@@ -48,6 +48,7 @@ function EditMataKuliahComponent({ id }) {
       const response = await axios.post(`http://localhost:8082/matakuliah/update`, formData);
       console.log(response.data);
       alert('Data Mata Kuliah berhasil diperbarui');
+      window.location.href = '/matakuliah';
     } catch (error) {
       console.error('Error updating data:', error);
     }
