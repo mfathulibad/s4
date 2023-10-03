@@ -10,7 +10,8 @@ function EditPenelitianComponent({id}) {
         id_penelitian:``,
         judul_penelitian:``,
         bidang_penelitian:``,
-        tgl_penelitian:``
+        tgl_penelitian:``,
+        url:``
     });
 
     useEffect(() => {
@@ -103,6 +104,20 @@ function EditPenelitianComponent({id}) {
                             value={formData.tgl_penelitian}
                             onChange={onInputChange}/>
                     </div>
+
+                    <div className='mb-3'>
+                        <label htmlFor='URL' className='form-label'>
+                            URL Penelitian
+                        </label>
+                        <input 
+                            type='url'
+                            className='form-control' 
+                            placeholder='Masukkan URL Penelitian' 
+                            name='url' 
+                            value={formData.url}
+                            onChange={onInputChange}/>
+                    </div>
+
                     <button type='submit' className='btn btn-outline-primary'>Simpah Perubahan</button>
                     <Link className='btn btn-outline-danger mx-2' to="/">Cancel</Link>
                 </form>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function AddPenelitianComponent() {
   let navigate = useNavigate();
@@ -10,11 +11,11 @@ export default function AddPenelitianComponent() {
     judul_penelitian: "",
     bidang_penelitian: "",
     tgl_penelitian: "",
+    url:""
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
-
-  // const{id_penelitian, judul_penelitian, bidang_penelitian, tgl_penelitian}=penelitian
+  const userAuth = Cookies.get("userAuth");
 
   const onInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,8 +37,20 @@ export default function AddPenelitianComponent() {
       return;
     }
 
-    const response = await axios.post("http://localhost:8082/penelitian/insert", penelitian);
-    let idPenelitian = response.data;
+    // const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
+
+    
+    // let idPenelitian = response.data;
+
+    // try {
+      const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
+      let idPenelitian = response.data;
+    //   // Lakukan sesuatu dengan idPenelitian di sini jika perlu
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   // Tangani error di sini
+    // }
+    
 
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -56,13 +69,7 @@ export default function AddPenelitianComponent() {
       });
 
      navigate("/");
-
-    
-
-    
   };
-
-  
 
   return (
     <div className="container">
@@ -110,16 +117,36 @@ export default function AddPenelitianComponent() {
                 onChange={onInputChange}
               />
             </div>
-            <div>
-              <h2>Upload File</h2>
-              <input type="file" onChange={handleFileChange} />
+
+            <div className='mb-3'>
+                <label htmlFor='URL' className='form-label'>
+                  URL Penelitian
+                </label>
+                <input 
+                  type='url'
+                  className='form-control' 
+                  placeholder='Masukkan URL Penelitian' 
+                  name='url' 
+                  value={penelitian.url}
+                  onChange={onInputChange}
+                />
             </div>
-            <button type="submit" className="btn btn-outline-primary">
-              Add
-            </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
-              Cancel
-            </Link>
+
+            <div className='mb-3'>
+              <label htmlFor="pdfPenelitian" className="form-label">
+                PDF Penelitian
+              </label>
+              <input 
+                type="file"
+                className="form-control"
+                accept=".pdf"
+                name="file_pdf"
+                onChange={handleFileChange} 
+              />
+            </div>
+
+            <button type="submit" className="btn btn-outline-primary">Add</button>
+            <Link className="btn btn-outline-danger mx-2" to="/">Cancel</Link>
           </form>
         </div>
       </div>

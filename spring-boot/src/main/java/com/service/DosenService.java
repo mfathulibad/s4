@@ -27,7 +27,7 @@ public class DosenService {
 		String nama_lengkap = dosenRequest.getNama_lengkap();
 		String jabatan_fungsional = dosenRequest.getJabatan_fungsional();
 		String jurusan = dosenRequest.getJurusan();
-
+		
 		String CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
 		String DIGITS = "0123456789";
 		Random RANDOM = new Random();

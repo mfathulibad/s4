@@ -25,6 +25,8 @@ const AddMataKuliahComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    console.log(formData.id_mata_kuliah)
+
     // Kirim data ke server
     axios.post('http://localhost:8082/matakuliah/insert', formData)
       .then((response) => {
@@ -83,7 +85,7 @@ const AddMataKuliahComponent = () => {
           <div className="mb-1">
             <label htmlFor="semester" className="form-label">Semester</label>
             <input
-              type="text"
+              type="number"
               id="semester"
               name="semester"
               placeholder='Masukkan Semester ' 
