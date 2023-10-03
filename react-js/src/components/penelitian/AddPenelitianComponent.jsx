@@ -36,21 +36,9 @@ export default function AddPenelitianComponent() {
       alert("Please upload the file !")
       return;
     }
-
-    // const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
-
     
-    // let idPenelitian = response.data;
-
-    // try {
-      const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
-      let idPenelitian = response.data;
-    //   // Lakukan sesuatu dengan idPenelitian di sini jika perlu
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   // Tangani error di sini
-    // }
-    
+    const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
+    let idPenelitian = response.data;
 
     const formData = new FormData();
     formData.append("file", selectedFile);

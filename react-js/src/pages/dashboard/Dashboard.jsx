@@ -2,7 +2,7 @@ import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 import ListDosen from "../../components/dosen/ListDosen";
-import Penelitian from "../../pages/penelitian/Penelitian";
+import ListPenelitian from "../../components/penelitian/ListPenelitian";
 
 
 function Dashboard() {
@@ -12,7 +12,7 @@ function Dashboard() {
 
       <div className="main">
         <Navbar />
-        <Penelitian />
+        <ListPenelitian/>
         <Footer />
       </div>
     </div>
