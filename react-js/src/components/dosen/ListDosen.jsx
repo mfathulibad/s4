@@ -57,53 +57,67 @@ const ListDosen = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="row justify-content-center align-items-center">
-          <div className="col-auto">
-            <table className="table border-dark table-striped table-hover table-bordered w-auto border">
-              <thead className="table-dark">
-                <tr>
-                  <th>ID Dosen</th>
-                  <th>ID User</th>
-                  <th>NIDN</th>
-                  <th>Email</th>
-                  <th>Nama Lengkap</th>
-                  <th>Jabatan Fungsional</th>
-                  <th>Jurusan</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((dosen) => (
-                  <tr key={dosen.id_dosen}>
-                    <td>{dosen.id_dosen}</td>
-                    <td>{dosen.id_user}</td>
-                    <td>{dosen.nidn}</td>
-                    <td>{dosen.email}</td>
-                    <td>{dosen.nama_lengkap}</td>
-                    <td>{dosen.jabatan_fungsional}</td>
-                    <td>{dosen.jurusan}</td>
-                    <td>
-                      <Link to={`/dosen/edit/${dosen.id_dosen}`}>
-                        <button type="button" className="btn btn-primary">
-                          <FaEye />
-                        </button>
-                      </Link>
-                      <Link to={`/dosen/edit/${dosen.id_dosen}`}>
-                        <button type="button" className="btn btn-success">
-                          <FaEdit />
-                        </button>
-                      </Link>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => handleDelete(dosen.id_dosen)}
-                      >
-                        <FaTrash />
-                      </button>
-                    </td>
+        <div className="card shadow mb-4">
+          <div className="card-header py-3">
+            <h6 className="m-0 font-weight-bold text-primary">List Dosen</h6>
+          </div>
+          <div className="card-body">
+            <div className="table-responsive">
+              <table
+                className="table table-bordered"
+                id="dataTable"
+                width="100%"
+                cellspacing="0"
+              >
+                <thead>
+                  <tr>
+                    <th>ID Dosen</th>
+                    <th>ID User</th>
+                    <th>NIDN</th>
+                    <th>Email</th>
+                    <th>Nama Lengkap</th>
+                    <th>Jabatan Fungsional</th>
+                    <th>Jurusan</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.map((dosen) => (
+                    <tr key={dosen.id_dosen}>
+                      <td>{dosen.id_dosen}</td>
+                      <td>{dosen.id_user}</td>
+                      <td>{dosen.nidn}</td>
+                      <td>{dosen.email}</td>
+                      <td>{dosen.nama_lengkap}</td>
+                      <td>{dosen.jabatan_fungsional}</td>
+                      <td>{dosen.jurusan}</td>
+                      <td>
+                        <div className="d-flex justify-content-center">
+                          {/* <Link to={{ pathname: `/dosen/edit/${dosen.id_dosen}` }}>
+                              <button type="button" className="btn btn-primary">
+                                <FaEye />
+                              </button>
+                            </Link> */}
+                          <Link
+                            to={{ pathname: `/dosen/edit/${dosen.id_dosen}` }}
+                          >
+                            <button type="button" className="btn btn-success">
+                              <FaEdit />
+                            </button>
+                          </Link>
+                          <button
+                            className="btn btn-danger ml-2"
+                            onClick={() => handleDelete(dosen.id_dosen)}
+                          >
+                            <FaTrash />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}
