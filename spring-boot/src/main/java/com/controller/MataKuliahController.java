@@ -38,6 +38,7 @@ public class MataKuliahController {
 	@PostMapping("/matakuliah/insert")
 	public ResponseEntity<String> addMataKuliah(@RequestBody MataKuliah mataKuliahRequest){
 		String nama_mata_kuliah = mataKuliahRequest.getNama_mata_kuliah();
+		System.out.println("Id Mata Kuliah : " + mataKuliahRequest.getId_mata_kuliah());
 		mataKuliahService.addMataKuliah(mataKuliahRequest);
 		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil ditambahkan");
 	}
