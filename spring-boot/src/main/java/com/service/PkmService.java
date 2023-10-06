@@ -29,6 +29,11 @@ public class PkmService {
 		return pkmRepository.getById(id_pengabdian);
 	}
 	
+	public List<Pkm> getPkmByDosenId(String idDosen) {
+	    return pkmRepository.getPkmByDosenId(idDosen);
+	}
+
+	
 	public String addPkm(Pkm pkmRequest, String id_dosen) {
 //		String judul_pengabdian = pkmRequest.getJudul_pengabdian();
 //		String bidang_pengabdian = pkmRequest.getBidang_pengabdian();

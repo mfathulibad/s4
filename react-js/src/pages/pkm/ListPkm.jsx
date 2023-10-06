@@ -1,8 +1,10 @@
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import AddPenelitianComponent from "../../components/penelitian/AddPenelitianComponent";
+import ListPkmDosen from "../../components/pkm/ListPkmDosen";
+import Footer from "../../components/dashboard/Footer";
 
-function AddPenelitian() {
+function Pkm(){
+
   return (
     <>
       <div id="wrapper">
@@ -13,13 +15,16 @@ function AddPenelitian() {
             <Navbar />
 
             <div className="container-fluid">
-              <AddPenelitianComponent />
+
+              <ListPkmDosen/>
+              
             </div>
           </div>
         </div>
       </div>
     </>
   );
+    
 }
 
-export default AddPenelitian;
+export default Pkm;

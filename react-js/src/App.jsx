@@ -19,6 +19,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
 import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
+import ListPkm from "./pages/pkm/ListPkm"
 
 function App() {
   return (
@@ -34,15 +35,16 @@ function App() {
         <Route path="/dosen/insert" element={<AddDosen />} />
         <Route path="/dosen/edit/:id" element={<EditDosen />} />
         <Route path='/matakuliah' element ={<MataKuliah/>}/>
-        <Route path="/insert" element = {<AddMataKuliah/>} />
+        <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
         <Route path="/matakuliah/edit/:id" element={<EditMataKuliah />} />
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/penelitian/insert" element={<AddPenelitian />} />
         <Route path="/penelitian/edit/:id" element={<EditPenelitian />} />
-        <Route path="/pkm" element={<Pkm />} />
+        <Route path="/pkm/:id" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
         <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
+        <Route path="/pkm" element={<ListPkm />} />
 
 
       </Routes>
