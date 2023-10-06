@@ -3,6 +3,7 @@ import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 import ListDosen from "../../components/dosen/ListDosen";
+import ListPenelitianDosen from "../../components/penelitian/ListPenelitianDosen";
 
 function penelitian(){
     return (
@@ -14,7 +15,7 @@ function penelitian(){
       //         <div id="content">
 
       //         <div className="container-fluid">
-                <ListPenelitian/>
+                <ListPenelitianDosen/>
       //         </div>
                 
       //         </div>

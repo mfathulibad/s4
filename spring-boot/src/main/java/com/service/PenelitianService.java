@@ -1,6 +1,7 @@
 package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.repository.PenelitianRepository;
@@ -28,6 +29,20 @@ public class PenelitianService {
 	public Penelitian getPenelitianById(String id_penelitian) {
 		return penelitianRepository.getById(id_penelitian);
 	}
+	
+//	public List<Object[]> getPenelitianByDosenId(String id_dosen) {
+//        return penelitianRepository.findByDosenId(id_dosen);
+//    }
+	
+//	public Penelitian getPenelitianByDosenId(String idDosen) {
+//	    return penelitianRepository.getPenelitianByDosenId(idDosen);
+//	}
+	
+	
+	public List<Penelitian> getPenelitianByDosenId(String idDosen) {
+	    return penelitianRepository.getPenelitianByDosenId(idDosen);
+	}
+	
 	
 	public String addPenelitian (Penelitian penelitianRequest, String id_dosen) {
 //		String judul_penelitian= penelitianRequest.getJudul_penelitian();

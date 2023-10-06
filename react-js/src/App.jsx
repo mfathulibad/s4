@@ -18,6 +18,7 @@ import EditPkm from "./pages/pkm/EditPkm";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
+import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/pkm" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
+        <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
 
 
       </Routes>
