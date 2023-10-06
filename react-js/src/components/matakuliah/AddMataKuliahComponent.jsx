@@ -65,19 +65,7 @@ const AddMataKuliahComponent = () => {
       <div className='table-responsive border p-4 shadow'>
         <h2 className="mt-4">Add Mata Kuliah</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-1">
-            <label htmlFor="id_mata_kuliah" className="form-label">ID Mata Kuliah</label>
-            <input
-              type="text"
-              id="id_mata_kuliah"
-              name="id_mata_kuliah"
-              placeholder='Masukkan ID Mata Kuliah' 
-              value={formData.id_mata_kuliah}
-              onChange={handleChange}
-              className="form-control col-md-8" // Added col-md-8
-              required
-            />
-          </div>
+          
           <div className="mb-1">
             <label htmlFor="nama_mata_kuliah" className="form-label">Nama Mata Kuliah</label>
             <input
