@@ -3,19 +3,24 @@ import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 
-function penelitian(){
-    return (
-        <div className="wrapper">
-          <Sidebar />
-    
-          <div className="main">
+function penelitian() {
+  return (
+    <>
+      <div id="wrapper">
+        <Sidebar />
+
+        <div id="content-wrapper" className="d-flex flex-column">
+          <div id="content">
             <Navbar />
-            <ListPenelitian/>
-            <Footer />
+
+            <div className="container-fluid">
+              <ListPenelitian />
+            </div>
           </div>
         </div>
-    );
-    
+      </div>
+    </>
+  );
 }
 
 export default penelitian;
