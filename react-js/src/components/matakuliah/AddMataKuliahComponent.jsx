@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from "js-cookie";
 
+
 const AddMataKuliahComponent = () => {
   const [formData, setFormData] = useState({
     id_mata_kuliah: '',
@@ -35,7 +36,6 @@ const AddMataKuliahComponent = () => {
       .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
-        // Handle success or redirection here
   
         // Perbarui daftar mata kuliah dengan data yang baru ditambahkan
         setDaftarMataKuliah([...daftarMataKuliah, formData]);
@@ -49,15 +49,16 @@ const AddMataKuliahComponent = () => {
           perguruan_tinggi: '',
         });
   
-        // Tampilkan notifikasi bahwa data telah berhasil disimpan
-        alert('Data berhasil disimpan');
-        window.location.href = '/matakuliah';
-        })
+        
+      // alert('Data Mata Kuliah berhasil diperbarui');
+      // window.location.href = '/matakuliah';
+      })
       .catch((error) => {
         console.error(error);
         // Handle error
       });
   };
+  
   
 
   return (

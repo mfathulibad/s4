@@ -35,9 +35,6 @@ export default function MataKuliah() {
     <div className='container'>
       <div className='py-4'>
         <h2>Daftar Mata Kuliah</h2>
-        <Link to={`/insert`}>
-        <button className='btn btn-outline-primary mb-3'>Add Mata Kuliah</button>
-        </Link>
         <div className='table-responsive'>
           <table className='table table-bordered table-striped'>
             <thead className='table-primary'>
