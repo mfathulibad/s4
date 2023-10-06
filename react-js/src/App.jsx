@@ -18,7 +18,7 @@ import EditPkm from "./pages/pkm/EditPkm";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
-
+import ListPkm from "./pages/pkm/ListPkm"
 function App() {
   return (
 
@@ -38,9 +38,11 @@ function App() {
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/penelitian/insert" element={<AddPenelitian />} />
         <Route path="/penelitian/edit/:id" element={<EditPenelitian />} />
-        <Route path="/pkm" element={<Pkm />} />
+        <Route path="/pkm/:id" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
+        <Route path="/pkm" element={<ListPkm />} />
+
 
 
       </Routes>

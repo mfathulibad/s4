@@ -1,6 +1,6 @@
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import ListPkm from "../../components/pkm/ListPkm";
+import ListPkmDosen from "../../components/pkm/ListPkmDosen";
 import Footer from "../../components/dashboard/Footer";
 
 function Pkm(){
@@ -16,7 +16,7 @@ function Pkm(){
 
             <div className="container-fluid">
 
-              <ListPkm/>
+              <ListPkmDosen/>
               
             </div>
           </div>
