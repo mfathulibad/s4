@@ -37,7 +37,7 @@ export default function MataKuliah() {
         <h2>Daftar Mata Kuliah</h2>
         <div className='table-responsive'>
           <table className="table border shadow">
-            <thead className='table-primary'>
+            <thead >
               <tr>
                 <th scope='col'>Id Mata Kuliah</th>
                 <th scope='col'>Mata Kuliah</th>
