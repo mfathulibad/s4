@@ -36,7 +36,7 @@ export default function MataKuliah() {
       <div className='py-4'>
         <h2>Daftar Mata Kuliah</h2>
         <div className='table-responsive'>
-          <table className='table table-bordered table-striped'>
+          <table className="table border shadow">
             <thead className='table-primary'>
               <tr>
                 <th scope='col'>Id Mata Kuliah</th>
