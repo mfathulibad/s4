@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookies from "js-cookie";
 
 
+
 const AddMataKuliahComponent = () => {
   const [formData, setFormData] = useState({
     id_mata_kuliah: '',
@@ -25,7 +26,6 @@ const AddMataKuliahComponent = () => {
   };
 
   const userAuth = Cookies.get("userAuth");
-
   const handleSubmit = (e) => {
     e.preventDefault();
   
@@ -36,22 +36,6 @@ const AddMataKuliahComponent = () => {
       .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
-  
-        // Perbarui daftar mata kuliah dengan data yang baru ditambahkan
-        setDaftarMataKuliah([...daftarMataKuliah, formData]);
-  
-        // Reset form
-        setFormData({
-          id_mata_kuliah: '',
-          nama_mata_kuliah: '',
-          semester: '',
-          kode_kelas: '',
-          perguruan_tinggi: '',
-        });
-  
-        
-      // alert('Data Mata Kuliah berhasil diperbarui');
-      // window.location.href = '/matakuliah';
       })
       .catch((error) => {
         console.error(error);
