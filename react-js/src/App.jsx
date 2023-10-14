@@ -22,6 +22,8 @@ import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
 import ListPkm from "./pages/pkm/ListPkm";
 import DaftarMataKuliahDosen from "./pages/matakuliah/MataKuliahDosen";
 
+import NavbarMain from "./components/main/NavbarMain";
+
 
 function App() {
   return (
@@ -49,7 +51,7 @@ function App() {
         <Route path="/pkm" element={<ListPkm />} />
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
 
-
+        <Route path="/navbar" element={<NavbarMain />} />
 
       </Routes>
     </Router>
