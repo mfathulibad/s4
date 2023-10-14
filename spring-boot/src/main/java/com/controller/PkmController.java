@@ -34,10 +34,16 @@ public class PkmController {
 		return pkmService.getPkmById(id_pengabdian);
 	}
 	
-//	@GetMapping("/pkm/dosen/{id_dosen}")
-//	public @ResponseBody Pkm getPkmByIdDosen(@PathVariable("id_dosen") String id_dosen){
-//		return pkmService.getPkmById(id_dosen);
-//	}
+	@GetMapping("/pkm/judulPengabdian")
+	public List<String> getDaftarJudulPengabdian() {
+	    List<String> daftarJudulPengabdian = pkmService.getDaftarJudulPengabdian();
+	    return daftarJudulPengabdian;
+	}
+	
+	@GetMapping("/penelitian/search")
+	public List<Pkm> searchPkmByJudul(@RequestParam String judul) {
+	    return pkmService.searchPkmByJudul(judul);
+	}
 	
 	@GetMapping("/pkm/dosen/{id_dosen}")
 	public ResponseEntity<List<Pkm>> getPkmByDosenId(@PathVariable("id_dosen") String id_dosen) {

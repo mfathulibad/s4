@@ -17,16 +17,10 @@ public interface PkmRepository extends JpaRepository<Pkm, String> {
 	
 	@Query(value = "SELECT pkm FROM Pkm pkm JOIN RiwayatPkm riwayat ON pkm.id_pengabdian = riwayat.id_pengabdian WHERE riwayat.id_dosen = :idDosen")
 	List<Pkm> getPkmByDosenId(@Param("idDosen") String idDosen);
-
-//	@Transactional
-//    @Modifying(clearAutomatically = true)
-//    @Query(value = "CALL insert_pkm(:judul_pengabdian, :bidang_pengabdian, :tgl_pengabdian, :url, :id_dosen)", nativeQuery = true)
-//    String addPkm(
-//        @Param("judul_pengabdian") String judul_pengabdian,
-//        @Param("bidang_pengabdian") String bidang_pengabdian,
-//        @Param("tgl_pengabdian") LocalDate tgl_pengabdian,
-//        @Param("url") String url,
-//        @Param("id_dosen") String id_dosen
-//    );
 	
+	@Query("SELECT p.id_pengabdian FROM Pkm p WHERE p.judul_pengabdian = :judul")
+    List<String> findIdByJudulPengabdian(@Param("judul") String judul);
+	
+	@Query("SELECT p FROM Pkm p WHERE p.judul_pengabdian LIKE %:judul%")
+	List<Pkm> searchByJudulPengabdian(@Param("judul") String judul);
 }

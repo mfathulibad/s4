@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -62,5 +63,9 @@ public class Pkm{
         this.url = url;
     }
     
+    public List<String> getIdDosenList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }
