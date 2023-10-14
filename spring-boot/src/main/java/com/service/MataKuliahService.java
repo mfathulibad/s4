@@ -15,8 +15,10 @@ import com.model.RiwayatPengajaran;
 @Service
 public class MataKuliahService {
 	@Autowired
-    private RiwayatPengajaranRepository riwayatPengajaranRepository;
 	MataKuliahRepository mataKuliahRepository;
+
+	@Autowired
+    private RiwayatPengajaranRepository riwayatPengajaranRepository;
 	
 	public List<MataKuliah> getAllMataKuliah(){
 		return mataKuliahRepository.findAll();
@@ -24,6 +26,10 @@ public class MataKuliahService {
 	public MataKuliah getMataKuliahbyId(String id_mata_kuliah) {
 		return mataKuliahRepository.getById(id_mata_kuliah);
 	}
+
+	// public List<MataKuliah> getMataKuliahbyDosenId(String idDosen) {
+    // return mataKuliahRepository.getMataKuliahbyDosenId(idDosen);
+	// }
 
 	public String addMataKuliah(MataKuliah mataKuliahRequest, String id_dosen) {
 		MataKuliah newMataKuliah = mataKuliahRepository.save(mataKuliahRequest);
@@ -45,6 +51,7 @@ public class MataKuliahService {
 		//System.out.println(mataKuliahRequest.getId_mata_kuliah());
 		//mataKuliahRepository.save(mataKuliahRequest);
 	}
+
 	public void deleteMataKuliah(String id_mata_kuliah) {
 		mataKuliahRepository.deleteById(id_mata_kuliah);
 	}

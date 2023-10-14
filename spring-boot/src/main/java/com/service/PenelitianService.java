@@ -1,6 +1,7 @@
 package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.repository.PenelitianRepository;
@@ -29,37 +30,42 @@ public class PenelitianService {
 		return penelitianRepository.getById(id_penelitian);
 	}
 	
-	public String addPenelitian (Penelitian penelitianRequest, String id_dosen) {
-//		String judul_penelitian= penelitianRequest.getJudul_penelitian();
-//		String bidang_penelitian = penelitianRequest.getBidang_penelitian();
-//		LocalDate tgl_penelitian = penelitianRequest.getTgl_penelitian();
-//		String url = penelitianRequest.getUrl();
-//		
-//		return penelitianRepository.addPenelitian(
-//				judul_penelitian,
-//				bidang_penelitian,
-//				tgl_penelitian,
-//				url,
-//				id_dosen
-//			);
-		
-	            
-         Penelitian newPenelitian = penelitianRepository.save(penelitianRequest);
-
-         // Mengambil ID Penelitian yang baru saja ditambahkan
-         String newPenelitianId = newPenelitian.getId_penelitian();
-
-         // Membuat objek RiwayatPenelitian
-         RiwayatPenelitian riwayatPenelitian = new RiwayatPenelitian();
-         riwayatPenelitian.setId_penelitian(newPenelitianId);
-         riwayatPenelitian.setId_dosen(id_dosen);
-
-         // Melakukan operasi penyisipan data ke dalam tabel 'riwayat_penelitian'
-         riwayatPenelitianRepository.save(riwayatPenelitian);
-
-         // Mengembalikan ID penelitian yang baru ditambahkan
-         return newPenelitianId;
+	public List<Penelitian> getPenelitianByDosenId(String idDosen) {
+	    return penelitianRepository.getPenelitianByDosenId(idDosen);
 	}
+	
+	public String addPenelitian(Penelitian penelitianRequest, String id_dosen) {
+	    String judulPenelitian = penelitianRequest.getJudul_penelitian();
+	    
+	    // Cari ID Penelitian berdasarkan judul
+	    List<String> existingIds = penelitianRepository.findIdByJudulPenelitian(judulPenelitian);
+	    
+	    if (existingIds.isEmpty()) {
+	        // Penelitian dengan judul yang sama belum ada, tambahkan penelitian baru
+	        Penelitian newPenelitian = penelitianRepository.save(penelitianRequest);
+	        String newPenelitianId = newPenelitian.getId_penelitian();
+	        
+	        // Tambahkan riwayat penelitian
+	        RiwayatPenelitian riwayatPenelitian = new RiwayatPenelitian();
+	        riwayatPenelitian.setId_penelitian(newPenelitianId);
+	        riwayatPenelitian.setId_dosen(id_dosen);
+	        riwayatPenelitianRepository.save(riwayatPenelitian);
+	        
+	        return newPenelitianId;
+	    } else {
+	        // Gunakan ID penelitian yang sudah ada
+	        String existingId = existingIds.get(0);
+	        
+	        // Tambahkan riwayat penelitian
+	        RiwayatPenelitian riwayatPenelitian = new RiwayatPenelitian();
+	        riwayatPenelitian.setId_penelitian(existingId);
+	        riwayatPenelitian.setId_dosen(id_dosen);
+	        riwayatPenelitianRepository.save(riwayatPenelitian);
+	        
+	        return existingId;
+	    }
+	}
+ 
 	
 	public void deletePenelitian(String id_penelitian) {
 		penelitianRepository.deleteById(id_penelitian);
@@ -69,6 +75,10 @@ public class PenelitianService {
 		penelitianRepository.save(penelitianRequest);
 	}
 	
+	public List<Penelitian> searchPenelitianByJudul(String judul) {
+	    return penelitianRepository.searchByJudulPenelitian(judul);
+	}
+
 		
 	
 }

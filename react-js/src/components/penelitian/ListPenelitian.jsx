@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 
 export default function ListPenelitian() {
-
+    
     const [data, setData] = useState([]);
 
     useEffect(()=>{
@@ -66,7 +66,7 @@ export default function ListPenelitian() {
                            
                                 <td>
                                     <Link className='btn btn-outline-primary mx-2'
-                                        to={`edit/${penelitian.id_penelitian}`}    
+                                       to={{ pathname: `/penelitian/edit/${penelitian.id_penelitian}` }}   
                                     >Edit</Link>
                                     <button className='btn btn-danger mx-2' onClick={() => handleDelete(penelitian.id_penelitian)}>Delete</button>
                                 </td>

@@ -1,10 +1,9 @@
-import ListPenelitian from "../../components/penelitian/ListPenelitian";
-import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import ListDosen from "../../components/dosen/ListDosen";
+import DaftarMataKuliahDosen from "../../components/matakuliah/DaftarMataKuliahDosen";
 
-function penelitian() {
+function MataKuliah(){
+
   return (
     <>
       <div id="wrapper">
@@ -15,14 +14,16 @@ function penelitian() {
             <Navbar />
 
             <div className="container-fluid">
-              <ListPenelitian />
+
+              <DaftarMataKuliahDosen/>
+              
             </div>
           </div>
         </div>
       </div>
     </>
   );
-
+    
 }
 
-export default penelitian;
+export default MataKuliah;

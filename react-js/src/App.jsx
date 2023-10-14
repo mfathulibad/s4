@@ -18,7 +18,11 @@ import EditPkm from "./pages/pkm/EditPkm";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
-import ListPkm from "./pages/pkm/ListPkm"
+import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
+import ListPkm from "./pages/pkm/ListPkm";
+import DaftarMataKuliahDosen from "./pages/matakuliah/MataKuliahDosen";
+
+
 function App() {
   return (
 
@@ -26,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dosen" element={<Dosen />} />
@@ -41,7 +45,9 @@ function App() {
         <Route path="/pkm/:id" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
+        <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
         <Route path="/pkm" element={<ListPkm />} />
+        <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
 
 
 

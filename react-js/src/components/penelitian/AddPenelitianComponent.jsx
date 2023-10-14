@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -59,6 +59,38 @@ export default function AddPenelitianComponent() {
      navigate("/");
   };
 
+  const [searchResult, setSearchResult] = useState([]); // Menyimpan hasil pencarian
+  const [searchKeyword, setSearchKeyword] = useState(""); // Menyimpan kata kunci pencarian
+
+  useEffect(() => {
+    // Jika searchKeyword berubah, kirim permintaan pencarian ke server
+    if (searchKeyword) {
+      axios
+        .get(`http://localhost:8082/penelitian/search?judul=${searchKeyword}`)
+        .then((response) => {
+          setSearchResult(response.data);
+        })
+        .catch((error) => {
+          console.error("Error searching: ", error);
+        });
+    } else {
+      // Jika searchKeyword kosong, kosongkan hasil pencarian
+      setSearchResult([]);
+    }
+  }, [searchKeyword]);
+
+  const selectSearchResult = (result) => {
+    setPenelitian({
+      ...penelitian,
+      id_penelitian: result.id_penelitian,
+      judul_penelitian: result.judul_penelitian,
+      bidang_penelitian: result.bidang_penelitian,
+      tgl_penelitian: result.tgl_penelitian,
+      url : result.url
+    });
+    setSearchResult([]); // Kosongkan hasil pencarian
+  };
+  
   return (
     <div className="container">
       <div className="row">
@@ -77,8 +109,23 @@ export default function AddPenelitianComponent() {
                 name="judul_penelitian"
                 value={penelitian.judul_penelitian}
                 onChange={onInputChange}
+                onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
               />
+              {searchResult.length > 0 && (
+                <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto"}}>
+                  {searchResult.map((result) => (
+                    <button
+                      key={result.id_penelitian}
+                      className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0" 
+                      onClick={() => selectSearchResult(result)}
+                    >
+                      {result.judul_penelitian}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+            
             <div className="mb-3">
               <label htmlFor="bidangPenelitian" className="form-label">
                 Bidang Penelitian
