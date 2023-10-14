@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -22,7 +24,7 @@ import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
 import ListPkm from "./pages/pkm/ListPkm";
 import DaftarMataKuliahDosen from "./pages/matakuliah/MataKuliahDosen";
 
-import NavbarMain from "./components/main/NavbarMain";
+import ProfilDosen from "./pages/main/ProfilDosen";
 
 
 function App() {
@@ -51,7 +53,7 @@ function App() {
         <Route path="/pkm" element={<ListPkm />} />
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
 
-        <Route path="/navbar" element={<NavbarMain />} />
+        <Route path="/profile" element={<ProfilDosen />} />
 
       </Routes>
     </Router>
