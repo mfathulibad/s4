@@ -140,7 +140,7 @@ function Sidebar() {
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/penelitian" className="collapse-item">
+              <Link to={{ pathname: `/penelitian/${userAuth}` }} className="collapse-item">
                   Daftar Penelitian
               </Link>
               <Link to="/penelitian/insert" className="collapse-item">

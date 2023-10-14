@@ -50,17 +50,7 @@ public class PenelitianController {
 	public @ResponseBody Penelitian getPenelitianById(@PathVariable("id_penelitian") String id_penelitian){
 		return penelitianService.getPenelitianById(id_penelitian);
 	}
-	
-//	@GetMapping("/penelitian/dosen/{id_dosen}")
-//	public ResponseEntity<Penelitian> getPenelitianByDosenId(@PathVariable("id_dosen") String id_dosen) {
-//	    Penelitian penelitian = penelitianService.getPenelitianByDosenId(id_dosen);
-//	    if (penelitian != null) {
-//	        return ResponseEntity.ok(penelitian);
-//	    } else {
-//	        return ResponseEntity.notFound().build();
-//	    }
-//	}
-	
+		
 	@GetMapping("/penelitian/dosen/{id_dosen}")
 	public ResponseEntity<List<Penelitian>> getPenelitianByDosenId(@PathVariable("id_dosen") String id_dosen) {
 	    List<Penelitian> penelitian = penelitianService.getPenelitianByDosenId(id_dosen);
@@ -69,11 +59,7 @@ public class PenelitianController {
 	    } else {
 	        return ResponseEntity.notFound().build();
 	    }
-	}
-	
-	
-
-	
+	}	
 	
 	@PostMapping("/penelitian/insert/{id_dosen}")
 	public String addPenelitian(@PathVariable("id_dosen") String id_dosen, @RequestBody Penelitian penelitianRequest){
@@ -169,5 +155,13 @@ public class PenelitianController {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    }
 	}
+	
+	
+	@GetMapping("/penelitian/search")
+	public List<Penelitian> searchPenelitianByJudul(@RequestParam String judul) {
+	    return penelitianService.searchPenelitianByJudul(judul);
+	}
+
+
 	
 }
