@@ -43,7 +43,7 @@ const AddPkmComponent = () => {
     // Jika searchKeyword berubah, kirim permintaan pencarian ke server
     if (searchKeyword) {
       axios
-        .get(`http://localhost:8082/penelitian/search?judul=${searchKeyword}`)
+        .get(`http://localhost:8082/pkm/search?judul=${searchKeyword}`)
         .then((response) => {
           setSearchResult(response.data);
         })

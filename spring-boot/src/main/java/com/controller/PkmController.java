@@ -40,7 +40,7 @@ public class PkmController {
 	    return daftarJudulPengabdian;
 	}
 	
-	@GetMapping("/penelitian/search")
+	@GetMapping("/pkm/search")
 	public List<Pkm> searchPkmByJudul(@RequestParam String judul) {
 	    return pkmService.searchPkmByJudul(judul);
 	}
