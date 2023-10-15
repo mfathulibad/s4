@@ -3,6 +3,9 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Cookies from "js-cookie";
 
+import { FaEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+
 export default function DaftarMataKuliahDosen() {
 
     const [data, setData] = useState([]);
@@ -32,45 +35,55 @@ export default function DaftarMataKuliahDosen() {
           console.error('Error deleting data:', error);
         }
       }
-
-  return (
-    <div className='container'>
-        <div className='py-4'>
-            <h2>matakuliah</h2>
-
-            <table className="table border shadow">
-                <thead>
-                    <tr>
-                    <th scope="col">Id matakuliah</th>
-                    <th scope="col">Nama matakuliah</th>
-                    <th scope="col">Semester </th>
-                    <th scope="col">Kode Kelas </th>
-                    <th scope="col">Perguruan Tinggi</th>
-                    <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    {
-                        data.map((matakuliah)=>(
-                            <tr key={matakuliah.id_mata_kuliah}>
-                                <td>{matakuliah.nama_mata_kuliah}</td>
-                                <td>{matakuliah.semester}</td>
-                                <td>{matakuliah.kode_kelas}</td>
-                                <td>{matakuliah.perguruan_tinggi}</td>
-                                <td>
-                                    <Link className='btn btn-outline-primary mx-2'
-                                        to={`edit/${matakuliah.id_mata_kuliah}`}    
-                                    >Edit</Link>
-                                    <button className='btn btn-danger mx-2' onClick={() => handleDelete(matakuliah.id_mata_kuliah)}>Delete</button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-
-                </tbody>
-            </table>
+      return (
+        <div className="container">
+          <h1 className="text-center p-3 m-3">Daftar Mata Kuliah</h1>
+            <div className="card shadow mb-4">
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">List Mata Kuliah</h6>
+              </div>
+              <div className="card-body">
+                <div className="table-responsive">
+                  <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
+                    <thead>
+                      <tr>
+                        <th >Id matakuliah</th>
+                        <th >Nama matakuliah</th>
+                        <th >Semester</th>
+                        <th >Kode Kelas</th>
+                        <th >Perguruan Tinggi</th>
+                        <th >Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map((matakuliah) => (
+                        <tr key={matakuliah.id_mata_kuliah}>
+                          <td>{matakuliah.id_mata_kuliah}</td>
+                          <td>{matakuliah.nama_mata_kuliah}</td>
+                          <td>{matakuliah.semester}</td>
+                          <td>{matakuliah.kode_kelas}</td>
+                          <td>{matakuliah.perguruan_tinggi}</td>
+                          <td>
+                            <div className="d-flex justify-content-center">
+                              <Link to={{ pathname: `/matakuliah/edit/${matakuliah.id_mata_kuliah}` }}>
+                                <button className="btn btn-success">
+                                  <FaEdit />
+                                </button>
+                              </Link>
+                              <button
+                                className="btn btn-danger ml-2"
+                                onClick={() => handleDelete(matakuliah.id_mata_kuliah)}>
+                                <FaTrash />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
         </div>
-    </div>
-  )
-}
+      );     
+};
