@@ -27,9 +27,9 @@ function ListDosen() {
       <NavbarMain />
       <div className="container">
         <div className="row">
-          {data.map((dosen) => (
-            <div className="col-3 mb-3 mt-3">
-                <DosenCards dosen = {dosen} />
+          {data.map((dosen, index) => (
+            <div className="col-3 mb-3 mt-3" key={index}>
+                <DosenCards dosen={dosen} />
             </div>
           ))}
         </div>

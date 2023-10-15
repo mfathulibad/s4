@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import NavbarMain from "../../components/main/NavbarMain";
 import { Nav, Tab } from "react-bootstrap";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from "react-router-dom";
 
 function ProfilDosen() {
+  const [dosen, setDosen] = useState({});
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(`http://localhost:8082/dosen/${id}`);
+        setDosen(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, [id]);
+
   return (
     <>
       <NavbarMain />
@@ -19,10 +35,10 @@ function ProfilDosen() {
               >
                 <ol className="breadcrumb mb-0">
                   <li className="breadcrumb-item">
-                    <a href="#">Home</a>
+                    <Link to={{ pathname: `/home` }}>Home</Link>
                   </li>
                   <li className="breadcrumb-item active" aria-current="page">
-                    Johnatan Smith
+                    {dosen.nama_lengkap}
                   </li>
                 </ol>
               </nav>
@@ -48,7 +64,7 @@ function ProfilDosen() {
                           <p className="mb-0">Nama Lengkap</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-dark mb-0">Johnatan Smith</p>
+                          <p className="text-dark mb-0">{dosen.nama_lengkap}</p>
                         </div>
                       </div>
                       <hr />
@@ -57,7 +73,7 @@ function ProfilDosen() {
                           <p className="mb-0">NIDN</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-dark mb-0">0392847281</p>
+                          <p className="text-dark mb-0">{dosen.nidn}</p>
                         </div>
                       </div>
                       <hr />
@@ -66,9 +82,7 @@ function ProfilDosen() {
                           <p className="mb-0">Jurusan</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-dark mb-0">
-                            Teknik Komputer dan Informatika
-                          </p>
+                          <p className="text-dark mb-0">{dosen.jurusan}</p>
                         </div>
                       </div>
                       <hr />
@@ -77,7 +91,9 @@ function ProfilDosen() {
                           <p className="mb-0">Jabatan Fungsional</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-dark mb-0">Dosen Tetap</p>
+                          <p className="text-dark mb-0">
+                            {dosen.jabatan_fungsional}
+                          </p>
                         </div>
                       </div>
                       <hr />
@@ -86,9 +102,7 @@ function ProfilDosen() {
                           <p className="mb-0">Email</p>
                         </div>
                         <div className="col-sm-9">
-                          <p className="text-dark mb-0">
-                            johnatannihh@jtk.ac.id
-                          </p>
+                          <p className="text-dark mb-0">{dosen.email}</p>
                         </div>
                       </div>
                     </div>

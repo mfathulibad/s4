@@ -37,8 +37,8 @@ function App() {
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<ListDosen />} />
+        <Route path="/home" element={<ListDosen />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dosen" element={<Dosen />} />
         <Route path="/dosen/insert" element={<AddDosen />} />
@@ -55,10 +55,9 @@ function App() {
         <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
         <Route path="/pkm" element={<ListPkm />} />
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
-
         <Route path="/profile/:id" element={<ProfilDosen />} />
-        <Route path="/navbar" element={<NavbarMain />} />
-        <Route path="/list" element={<ListDosen />} />
+
+
 
       </Routes>
     </Router>

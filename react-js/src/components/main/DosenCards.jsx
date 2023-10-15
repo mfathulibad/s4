@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function DosenCards({ dosen }) {
   return (
@@ -15,9 +16,11 @@ function DosenCards({ dosen }) {
         <p className="text-muted mb-1">{dosen.jabatan_fungsional}</p>
         <p className="mb-1">{dosen.email}</p>
         <div className="mt-auto">
-          <button type="button" className="btn btn-primary">
-            Lihat Profil
-          </button>
+          <Link to={{ pathname: `/profile/${dosen.id_dosen}` }}>
+            <button type="button" className="btn btn-primary">
+              Lihat Profil
+            </button>
+          </Link>
         </div>
       </div>
     </div>
