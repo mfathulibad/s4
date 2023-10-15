@@ -3,9 +3,11 @@ import axios from "axios";
 import NavbarMain from "../../components/main/NavbarMain";
 import { Nav, Tab } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
+import { MDBDataTable } from "mdbreact";
 
 function ProfilDosen() {
   const [dosen, setDosen] = useState({});
+  const [pkm, setPkm] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -19,8 +21,46 @@ function ProfilDosen() {
       }
     }
 
+    async function fetchDataPkm() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/pkm/dosen/${id}`
+        );
+        setPkm(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchDataPkm();
     fetchData();
-  }, [id]);
+  }, []);
+
+  const columnsPkm = [
+    {
+      label: "Judul Pengabdian",
+      field: "judul_pengabdian",
+      sort: "asc",
+    },
+    {
+      label: "Bidang Pengabdian",
+      field: "bidang_pengabdian",
+      sort: "asc",
+    },
+    {
+      label: "URL",
+      field: "url",
+      sort: "asc",
+    },
+  ];
+
+  const rowsPkm = pkm.map((data) => {
+    return {
+      judul_pengabdian: data.judul_pengabdian,
+      bidang_pengabdian: data.bidang_pengabdian,
+      url: <Link to={data.url} target="_blank" rel="noopener noreferrer">{data.url}</Link>,
+    };
+  });
 
   return (
     <>
@@ -150,21 +190,36 @@ function ProfilDosen() {
                   <Tab.Container id="left-tabs-example" defaultActiveKey="tab1">
                     <Nav variant="tabs" onSelect={(k) => setKey(k)}>
                       <Nav.Item>
-                        <Nav.Link eventKey="tab1">Tab 1</Nav.Link>
+                        <Nav.Link eventKey="tab1">Riwayat Pengajaran</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="tab2">Tab 2</Nav.Link>
+                        <Nav.Link eventKey="tab2">Riwayat PKM</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="tab3">Tab 3</Nav.Link>
+                        <Nav.Link eventKey="tab3">Riwayat Penelitian</Nav.Link>
                       </Nav.Item>
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="tab1">
-                        <div>Tab 1 content</div>
+                        <div>AJGG</div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="tab2">
-                        <div>Tab 2 content</div>
+                        <div
+                          style={{ borderRadius: "10px", overflow: "hidden" }}
+                        >
+                          <MDBDataTable
+                            data={{
+                              columns: columnsPkm, // Kosongkan array columns agar label kolom tidak ditampilkan
+                              rows: rowsPkm, // Masukkan data mentah ke dalam array rows
+                            }}
+                            searching
+                            entries={10}
+                            entriesOptions={[10, 20, 50]}
+                            noBottomColumns
+                            // hover
+                            displayEntries={false}
+                          />
+                        </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="tab3">
                         <div>Tab 3 content</div>
@@ -178,6 +233,8 @@ function ProfilDosen() {
           </div>
         </div>
       </div>
+
+      <script src="/js/table.js"></script>
     </>
   );
 }
