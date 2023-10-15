@@ -56,7 +56,7 @@ function App() {
         <Route path="/pkm" element={<ListPkm />} />
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
 
-        <Route path="/profile" element={<ProfilDosen />} />
+        <Route path="/profile/:id" element={<ProfilDosen />} />
         <Route path="/navbar" element={<NavbarMain />} />
         <Route path="/list" element={<ListDosen />} />
 

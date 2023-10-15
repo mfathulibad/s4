@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import NavbarMain from "../../components/main/NavbarMain";
 import { Nav, Tab } from "react-bootstrap";
+import { useParams } from 'react-router-dom';
 
 function ProfilDosen() {
-  const [key, setKey] = useState("tab1");
-
+  const { id } = useParams();
   return (
     <>
       <NavbarMain />
