@@ -5,6 +5,7 @@ import { useParams, Link } from "react-router-dom";
 
 function DetailPenelitian() {
   const [penelitian, setPenelitian] = useState([]);
+  const [author, setAuthor] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -23,7 +24,7 @@ function DetailPenelitian() {
     async function fetchAuthor() {
       try {
         const response = await axios.get(
-          `http://localhost:8082/penelitian/${id}`
+          `http://localhost:8082/riwayat_penelitian/authors/${id}`
         );
         setPenelitian(response.data);
       } catch (error) {
