@@ -9,7 +9,6 @@ import com.repository.RiwayatPengajaranRepository;
 import java.util.List;
 
 import com.model.MataKuliah;
-import com.model.Penelitian;
 import com.model.RiwayatPengajaran;
 
 @Service
@@ -27,9 +26,9 @@ public class MataKuliahService {
 		return mataKuliahRepository.getById(id_mata_kuliah);
 	}
 
-	// public List<MataKuliah> getMataKuliahbyDosenId(String idDosen) {
-    // return mataKuliahRepository.getMataKuliahbyDosenId(idDosen);
-	// }
+	public List<MataKuliah> getMataKuliahbyDosenId(String idDosen) {
+    return mataKuliahRepository.getMataKuliahbyDosenId(idDosen);
+	}
 
 	public String addMataKuliah(MataKuliah mataKuliahRequest, String id_dosen) {
 		MataKuliah newMataKuliah = mataKuliahRepository.save(mataKuliahRequest);
