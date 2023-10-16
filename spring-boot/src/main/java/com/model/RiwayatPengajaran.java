@@ -18,7 +18,7 @@ public class RiwayatPengajaran {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String id_riwayatpengajaran;
+    private String id_riwayat_pengajaran;
 	
 	@Column
     private String id_mata_kuliah;
@@ -27,11 +27,11 @@ public class RiwayatPengajaran {
     private String id_dosen;
 
 	public String getId_riwayatpengajaran() {
-		return id_riwayatpengajaran;
+		return id_riwayat_pengajaran;
 	}
 
 	public void setId_riwayatpengajaran(String id_riwayatpengajaran) {
-		this.id_riwayatpengajaran = id_riwayatpengajaran;
+		this.id_riwayat_pengajaran = id_riwayatpengajaran;
 	}
 
 	public String getId_mata_kuliah() {

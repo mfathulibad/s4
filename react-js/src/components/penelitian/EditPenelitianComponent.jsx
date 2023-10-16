@@ -52,18 +52,8 @@ function EditPenelitianComponent({id}) {
   return (
     <div className="container">
       <div>
-        <h1 className="text-center p-3 m-3">Edit Dosen</h1>
+        <h1 className="text-center p-3 m-3">Edit Penelitian</h1>
         <form onSubmit={onSubmit}>
-          <div className="form-group">
-            <label>ID Penelitian</label>
-            <input
-              type="text"
-              className="form-control"
-              name='id_penelitian' 
-              value={formData.id_penelitian}
-              onChange={onInputChange}
-            />
-          </div>
           <div className="form-group">
             <label>Judul Penelitian</label>
             <input
@@ -105,8 +95,8 @@ function EditPenelitianComponent({id}) {
               onChange={onInputChange}
             />
           </div>
-          <button type='submit' className='btn btn-outline-primary'>Simpah Perubahan</button>
-          <Link className='btn btn-outline-danger mx-2' to="/">Cancel</Link>
+          <button type='submit' className='btn btn-primary'>Simpah Perubahan</button>
+          <Link className='btn btn-danger mx-2' to="/penelitian/:id">Cancel</Link>
         </form>
       </div>
     </div>

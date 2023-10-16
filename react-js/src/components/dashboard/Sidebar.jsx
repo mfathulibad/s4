@@ -111,7 +111,7 @@ function Sidebar() {
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/matakuliah" className="collapse-item">
+            <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="collapse-item">
                   Daftar Mata Kuliah
               </Link>
               <Link to="/matakuliah/insert" className="collapse-item">
@@ -170,10 +170,10 @@ function Sidebar() {
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/penelitian" className="collapse-item">
+              <Link to="/pendidikan" className="collapse-item">
                   Daftar Pendidikan
               </Link>
-              <Link to="/penelitian/insert" className="collapse-item">
+              <Link to="/pendidikan/insert" className="collapse-item">
                   Tambah Pendidikan
               </Link>
             </div>

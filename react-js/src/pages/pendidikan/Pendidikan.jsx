@@ -1,10 +1,9 @@
-import ListPenelitian from "../../components/penelitian/ListPenelitian";
 import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import ListDosen from "../../components/dosen/ListDosen";
 
-function penelitian() {
+
+function Pendidikan() {
   return (
     <>
       <div id="wrapper">
@@ -16,7 +15,7 @@ function penelitian() {
 
             <div className="container-fluid">
 
-              <ListPenelitian/>
+              ListPendidikan
               
             </div>
           </div>
@@ -24,7 +23,6 @@ function penelitian() {
       </div>
     </>
   );
-
 }
 
-export default penelitian;
+export default Pendidikan

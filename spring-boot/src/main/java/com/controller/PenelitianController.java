@@ -161,7 +161,5 @@ public class PenelitianController {
 	public List<Penelitian> searchPenelitianByJudul(@RequestParam String judul) {
 	    return penelitianService.searchPenelitianByJudul(judul);
 	}
-
-
 	
 }
