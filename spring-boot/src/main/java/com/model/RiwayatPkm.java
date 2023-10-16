@@ -26,12 +26,12 @@ public class RiwayatPkm {
     @Column
     private String id_dosen;
 
-	public String getId_riwayatpkm() {
+	public String getId_riwayat_pkm() {
 		return id_riwayat_pkm;
 	}
 
-	public void setId_riwayatpkm(String id_riwayatpkm) {
-		this.id_riwayat_pkm = id_riwayatpkm;
+	public void setId_riwayat_pkm(String id_riwayat_pkm) {
+		this.id_riwayat_pkm = id_riwayat_pkm;
 	}
 
 	public String getId_pengabdian() {
