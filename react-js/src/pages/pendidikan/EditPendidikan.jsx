@@ -1,3 +1,4 @@
+import EditRiwayatPendidikanComponent from "../../components/pendidikan/EditPendidikanComponent"; // Import the correct component
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 import { useParams } from 'react-router-dom';
@@ -15,7 +16,7 @@ function EditPendidikan(){
             <Navbar />
 
             <div className="container-fluid">
-            Editriwayat
+            <EditRiwayatPendidikanComponent id={id}/>
               
             </div>
           </div>
