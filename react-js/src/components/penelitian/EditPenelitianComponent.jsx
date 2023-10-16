@@ -50,81 +50,58 @@ function EditPenelitianComponent({id}) {
     }
 
   return (
-    <div className='container'>
-        <div className='row'>
-            <div className='col offset border rounded p-4 mt-2 shadow'>
-                <h2 className='text-center m-4'>Edit Data Penelitian</h2>
-
-                <form onSubmit={onSubmit}>
-                  <div className='mb-3'>
-                        <label htmlFor='judulPenelitian' className='form-label'>
-                            ID Penelitian
-                        </label>
-                        <input 
-                            type={'text'} 
-                            className='form-control'  
-                            name='id_penelitian' 
-                            value={formData.id_penelitian}
-                            onChange={onInputChange}
-                            disabled/>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='judulPenelitian' className='form-label'>
-                            Judul Penelitian
-                        </label>
-                        <input 
-                            type={'text'} 
-                            className='form-control' 
-                            placeholder='Masukkan Judul Penelitian' 
-                            name='judul_penelitian' 
-                            value={formData.judul_penelitian}
-                            onChange={onInputChange}/>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='bidangPenelitian' className='form-label'>
-                            Bidang Penelitian
-                        </label>
-                        <input 
-                            type={'text'} 
-                            className='form-control' 
-                            placeholder='Masukkan Bidang Penelitian' 
-                            name='bidang_penelitian' 
-                            value={formData.bidang_penelitian}
-                            onChange={onInputChange}/>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='tglPenelitian' className='form-label'>
-                            Tanggal Penelitian
-                        </label>
-                        <input 
-                            type='date' 
-                            className='form-control' 
-                            placeholder="YYYY-MM-DD" 
-                            name='tgl_penelitian' 
-                            value={formData.tgl_penelitian}
-                            onChange={onInputChange}/>
-                    </div>
-
-                    <div className='mb-3'>
-                        <label htmlFor='URL' className='form-label'>
-                            URL Penelitian
-                        </label>
-                        <input 
-                            type='url'
-                            className='form-control' 
-                            placeholder='Masukkan URL Penelitian' 
-                            name='url' 
-                            value={formData.url}
-                            onChange={onInputChange}/>
-                    </div>
-
-                    <button type='submit' className='btn btn-outline-primary'>Simpah Perubahan</button>
-                    <Link className='btn btn-outline-danger mx-2' to="/">Cancel</Link>
-                </form>
-            </div>
-        </div>
+    <div className="container">
+      <div>
+        <h1 className="text-center p-3 m-3">Edit Penelitian</h1>
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <label>Judul Penelitian</label>
+            <input
+              type="text"
+              className="form-control"
+              name='judul_penelitian' 
+              value={formData.judul_penelitian}
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Bidang Penelitian</label>
+            <input
+              type="text"
+              className="form-control"
+              name='bidang_penelitian' 
+              value={formData.bidang_penelitian}
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Tanggal Penelitian</label>
+            <input
+              type='date' 
+              className='form-control' 
+              placeholder="YYYY-MM-DD" 
+              name='tgl_penelitian' 
+              value={formData.tgl_penelitian}
+              onChange={onInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>URL Penelitian</label>
+            <input
+              type="text"
+              className="form-control"
+              name='url' 
+              value={formData.url}
+              onChange={onInputChange}
+            />
+          </div>
+          <button type='submit' className='btn btn-primary'>Simpah Perubahan</button>
+          <Link className='btn btn-danger mx-2' to="/penelitian/:id">Cancel</Link>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
+
 
 export default EditPenelitianComponent;

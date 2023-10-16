@@ -5,12 +5,15 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +33,6 @@ import org.springframework.http.MediaType;
 
 
 import com.service.PenelitianService;
-import com.model.Dosen;
 import com.model.Penelitian;
 
 @RestController
@@ -48,6 +50,16 @@ public class PenelitianController {
 	public @ResponseBody Penelitian getPenelitianById(@PathVariable("id_penelitian") String id_penelitian){
 		return penelitianService.getPenelitianById(id_penelitian);
 	}
+		
+	@GetMapping("/penelitian/dosen/{id_dosen}")
+	public ResponseEntity<List<Penelitian>> getPenelitianByDosenId(@PathVariable("id_dosen") String id_dosen) {
+	    List<Penelitian> penelitian = penelitianService.getPenelitianByDosenId(id_dosen);
+	    if (penelitian != null) {
+	        return ResponseEntity.ok(penelitian);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}	
 	
 	@PostMapping("/penelitian/insert/{id_dosen}")
 	public String addPenelitian(@PathVariable("id_dosen") String id_dosen, @RequestBody Penelitian penelitianRequest){
@@ -142,6 +154,12 @@ public class PenelitianController {
 	    } catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 	    }
+	}
+	
+	
+	@GetMapping("/penelitian/search")
+	public List<Penelitian> searchPenelitianByJudul(@RequestParam String judul) {
+	    return penelitianService.searchPenelitianByJudul(judul);
 	}
 	
 }

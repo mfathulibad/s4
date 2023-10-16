@@ -149,7 +149,7 @@ function Navbar() {
                 <div className="dropdown-list-image mr-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_1.svg"
+                    src="/img/undraw_profile_1.svg"
                     alt="..."
                   />
                   <div className="status-indicator bg-success"></div>
@@ -166,7 +166,7 @@ function Navbar() {
                 <div className="dropdown-list-image mr-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_2.svg"
+                    src="/img/undraw_profile_2.svg"
                     alt="..."
                   />
                   <div className="status-indicator"></div>
@@ -183,7 +183,7 @@ function Navbar() {
                 <div className="dropdown-list-image mr-3">
                   <img
                     className="rounded-circle"
-                    src="img/undraw_profile_3.svg"
+                    src="/img/undraw_profile_3.svg"
                     alt="..."
                   />
                   <div className="status-indicator bg-warning"></div>
@@ -237,7 +237,7 @@ function Navbar() {
               </span>
               <img
                 className="img-profile rounded-circle"
-                src="img/undraw_profile.svg"
+                src="/img/undraw_profile.svg"
               />
             </a>
             <div

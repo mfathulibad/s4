@@ -50,7 +50,7 @@ function EditPkmComponent({ id }) {
   return (
     <div className="container">
         <div>
-          <h2>Edit Pkm</h2>
+        <h1 className="text-center p-3 m-3">Edit PKM</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>ID Pengabdian:</label>

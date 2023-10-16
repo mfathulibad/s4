@@ -1,12 +1,9 @@
-import EditMataKuliahComponent from "../../components/matakuliah/EditMataKuliahComponent"; // Import the correct component
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
+import ListPenelitianDosen from "../../components/penelitian/ListPenelitianDosen";
 
-import { useParams } from 'react-router-dom';
-
-function EditMataKuliah() {
-  const { id } = useParams();
-  return(
+function penelitian(){
+  return (
     <>
       <div id="wrapper">
         <Sidebar />
@@ -16,18 +13,15 @@ function EditMataKuliah() {
             <Navbar />
 
             <div className="container-fluid">
-            <EditMataKuliahComponent id={id}/>
+
+              <ListPenelitianDosen/>
               
             </div>
           </div>
         </div>
       </div>
-    </> 
-  )
-
-  
-  
+    </>
+  );
 }
 
-
-export default EditMataKuliah;
+export default penelitian;

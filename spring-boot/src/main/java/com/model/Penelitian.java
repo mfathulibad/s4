@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -67,6 +68,11 @@ public class Penelitian{
 	}
 	public void setTgl_penelitian(LocalDate tgl_penelitian) {
 		this.tgl_penelitian = tgl_penelitian;
+	}
+	
+	public List<String> getIdDosenList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

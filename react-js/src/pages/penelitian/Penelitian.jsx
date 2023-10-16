@@ -2,6 +2,7 @@ import ListPenelitian from "../../components/penelitian/ListPenelitian";
 import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
+import ListDosen from "../../components/dosen/ListDosen";
 
 function penelitian() {
   return (
@@ -14,13 +15,16 @@ function penelitian() {
             <Navbar />
 
             <div className="container-fluid">
-              <ListPenelitian />
+
+              <ListPenelitian/>
+              
             </div>
           </div>
         </div>
       </div>
     </>
   );
+
 }
 
 export default penelitian;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -22,6 +24,16 @@ import EditPendidikan from "./pages/pendidikan/EditPendidikan";
 
 import ProtectedRoute from "../ProtectedRoute";
 import AdminProtectedRoute from "../AdminProtectedRoute";
+import ListPenelitianDosen from "./pages/penelitian/ListPenelitianDosen";
+import ListPkm from "./pages/pkm/ListPkm";
+import DaftarMataKuliahDosen from "./pages/matakuliah/MataKuliahDosen";
+
+
+import ProfilDosen from "./pages/main/ProfilDosen";
+import NavbarMain from "./components/main/NavbarMain";
+import ListDosen from "./pages/main/ListDosen";
+import DetailPenelitian from "./pages/main/DetailPenelitian";
+
 
 function App() {
   return (
@@ -30,8 +42,8 @@ function App() {
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
 
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<ListDosen />} />
+        <Route path="/home" element={<ListDosen />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dosen" element={<Dosen />} />
         <Route path="/dosen/insert" element={<AddDosen />} />
@@ -42,12 +54,17 @@ function App() {
         <Route path="/penelitian" element={<Penelitian />} />
         <Route path="/penelitian/insert" element={<AddPenelitian />} />
         <Route path="/penelitian/edit/:id" element={<EditPenelitian />} />
-        <Route path="/pkm" element={<Pkm />} />
+        <Route path="/pkm/:id" element={<Pkm />} />
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
         <Route path="/pendidikan/" element={<Pendidikan />} />
         <Route path="/pendidikan/insert" element={<AddPendidikan />} />
         <Route path="/pkm/edit/" element={<EditPkm />} />
+        <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
+        <Route path="/pkm" element={<ListPkm />} />
+        <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
+        <Route path="/profile/:id" element={<ProfilDosen />} />
+        <Route path="/detail_penelitian/:id" element={<DetailPenelitian />} />
 
 
 

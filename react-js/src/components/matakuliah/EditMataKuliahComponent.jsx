@@ -57,7 +57,7 @@ function EditMataKuliahComponent({ id }) {
   return (
     <div className="container">
       <div>
-        <h2>Edit Mata Kuliah</h2>
+        <h1 className="text-center p-3 m-3">Edit Mata Kuliah</h1>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
               <label>ID Mata Kuliah:</label>
@@ -110,8 +110,10 @@ function EditMataKuliahComponent({ id }) {
                 onChange={handleInputChange}
               />
             </div>
-          <button type="submit" className="btn btn-outline-primary" >Simpan Perubahan</button>
-          <Link className='btn btn-danger' to="/matakuliah">Batal</Link>
+          <button type="submit" className="btn btn-primary">
+            Simpan Perubahan
+          </button>
+          {/* <Link className='btn btn-danger' to="/matakuliah">Batal</Link> */}
         </form>
       </div>
     </div>
