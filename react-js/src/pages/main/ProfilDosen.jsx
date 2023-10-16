@@ -91,7 +91,7 @@ function ProfilDosen() {
     return {
       judul_penelitian: (
         <Link
-          to={data.judul_penelitian}
+          to={"/detail_penelitian/"+ data.id_penelitian}
           target="_blank"
           rel="noopener noreferrer"
         >
