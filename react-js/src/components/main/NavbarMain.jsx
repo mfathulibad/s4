@@ -17,7 +17,7 @@ function NavbarMain() {
               style={{ width: 70, marginRight: '10px' }}
             />
             <a href="index.html" className="text-black">
-              <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{}}>Politeknik Negeri Bandung</span>
+              <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{fontSize: 15}}>Politeknik Negeri Bandung</span>
             </a>
 
           </div>
