@@ -33,7 +33,7 @@ const AddMataKuliahComponent = () => {
   
     // Kirim data ke server
     axios
-      .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
+      .post(`http://localhost:8082/matakuliah/admin/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
       })
@@ -112,7 +112,7 @@ const AddMataKuliahComponent = () => {
           <div className="mb-3">
             <label htmlFor="semester" className="form-label">Semester</label>
             <input
-              type="text"
+              type="number"
               id="semester"
               name="semester"
               placeholder=' ' 

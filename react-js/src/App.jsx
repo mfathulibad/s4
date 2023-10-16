@@ -64,6 +64,7 @@ function App() {
         <Route path="/pendidikan/" element={<Pendidikan />} />
         <Route path="/pendidikan/:id" element={<PendidikanDosen />} />
         <Route path="/pendidikan/insert" element={<AddPendidikan />} />
+        <Route path="/pendidikan/edit/:id" element={<EditPendidikan />} />
         <Route path="/pkm/edit/" element={<EditPkm />} />
         <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
         <Route path="/pkm" element={<ListPkm />} />

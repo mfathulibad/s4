@@ -64,4 +64,10 @@ public class MataKuliahService {
 	    return mataKuliahRepository.searchByMatkul(matkul);
 	}
 
+	public String addMataKuliahByAdmin (MataKuliah mataKuliahRequest) {
+		MataKuliah saved = mataKuliahRepository.save(mataKuliahRequest);
+		String newMataKuliahId = saved.getId_mata_kuliah();
+		return newMataKuliahId;
+	}
+
 }

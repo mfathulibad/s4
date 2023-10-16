@@ -38,7 +38,7 @@ const ListPendidikan = () => {
     try {
       // Kirim permintaan DELETE ke server dengan parameter id_dosen
       await axios.delete(
-        `http://localhost:8082/dosen/delete?id_dosen=${id_pendidikan}`
+        `http://localhost:8082/riwayatpendidikan/delete?id_dosen=${id_pendidikan}`
       );
       // Perbarui tampilan dengan menghapus entitas dari state lokal
       setData((prevData) =>
@@ -76,6 +76,7 @@ const ListPendidikan = () => {
                     <th>Institusi</th>
                     <th>Tahun Lulus</th>
                     <th>Negara</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -95,7 +96,7 @@ const ListPendidikan = () => {
                               </button>
                             </Link> */}
                           <Link
-                            to={{ pathname: `/dosen/edit/${pendidikan.id_dosen}` }}
+                            to={{ pathname: `/pendidikan/edit/${pendidikan.id_dosen}` }}
                           >
                             <button type="button" className="btn btn-success">
                               <FaEdit />
@@ -103,7 +104,7 @@ const ListPendidikan = () => {
                           </Link>
                           <button
                             className="btn btn-danger ml-2"
-                            onClick={() => handleDelete(dosen.id_dosen)}
+                            onClick={() => handleDelete(pendidikan.id_dosen)}
                           >
                             <FaTrash />
                           </button>

@@ -16,26 +16,24 @@ export default function ListPendidikanDosen() {
     },[]);
 
     const loadRiwayatPendidikan = async()=>{
-        // const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/${userAuth}`);
-        const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/DSN001`);
+        const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/${userAuth}`);
         setData(result.data);
-        console.log(result.data)
     };
 
     async function handleDelete(id_riwayat_pendidikan) {
         const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
-        // if (!confirmDelete) {
-        //   return;
-        // }
-        // try {
-        //   // Kirim permintaan DELETE ke server dengan parameter id_mata_kuliah
-        //   await axios.delete(`http://localhost:8082/matakuliah/delete?id_riwayat_pendidikan=${id_riwayat_pendidikan}`);
-        //   // Perbarui tampilan dengan menghapus entitas dari state lokal
-        //   setData((prevData) => prevData.filter((riwayatpendidikan) => riwayatpendidikan.id_riwayat_pendidikan !== id_riwayat_pendidikan));
-        //   alert('Data matakuliah berhasil dihapus');
-        // } catch (error) {
-        //   console.error('Error deleting data:', error);
-        // }
+        if (!confirmDelete) {
+          return;
+        }
+        try {
+          // Kirim permintaan DELETE ke server dengan parameter id_mata_kuliah
+          await axios.delete(`http://localhost:8082/riwayatpendidikan/delete?id_riwayat_pendidikan=${id_riwayat_pendidikan}`);
+          // Perbarui tampilan dengan menghapus entitas dari state lokal
+          setData((prevData) => prevData.filter((riwayatpendidikan) => riwayatpendidikan.id_riwayat_pendidikan !== id_riwayat_pendidikan));
+          alert('Data Riwayat Pendidikan Berhasil Dihapus !');
+        } catch (error) {
+          console.error('Error deleting data:', error);
+        }
       }
       return (
         <div className="container">
@@ -67,14 +65,14 @@ export default function ListPendidikanDosen() {
                           <td>{pendidikan.negara}</td>
                           <td>
                             <div className="d-flex justify-content-center">
-                              <Link to={{ pathname: `/matakuliah/edit/${matakuliah.id_mata_kuliah}` }}>
+                              <Link to={{ pathname: `/pendidikan/edit/${pendidikan.id_riwayat_pendidikan}` }}>
                                 <button className="btn btn-success">
                                   <FaEdit />
                                 </button>
                               </Link>
                               <button
                                 className="btn btn-danger ml-2"
-                                onClick={() => handleDelete(matakuliah.id_mata_kuliah)}>
+                                onClick={() => handleDelete(pendidikan.id_riwayat_pendidikan)}>
                                 <FaTrash />
                               </button>
                             </div>

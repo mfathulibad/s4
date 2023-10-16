@@ -10,6 +10,7 @@ function ProfilDosen() {
   const [pkm, setPkm] = useState([]);
   const [penelitian, setPenelitian] = useState([]);
   const [pengajaran, setPengajaran] = useState([]);
+  const [pendidikan, setPendidikan] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -50,12 +51,52 @@ function ProfilDosen() {
         const response = await axios.get(
           `http://localhost:8082/matakuliah/dosen/${id}`
         );
-        setPengajaran(response.data);
+
+        const sortedData = response.data.sort((a, b) => {
+          const semesterA = splitSemester(a.semester);
+          const semesterB = splitSemester(b.semester);
+
+          if (semesterA.Tahun !== semesterB.Tahun) {
+            return semesterA.Tahun - semesterB.Tahun;
+          }
+
+          // Jika tahunnya sama, maka urutkan berdasarkan semester
+          if (
+            semesterA.Semester === "Ganjil" &&
+            semesterB.Semester === "Genap"
+          ) {
+            return -1;
+          }
+          if (
+            semesterA.Semester === "Genap" &&
+            semesterB.Semester === "Ganjil"
+          ) {
+            return 1;
+          }
+          return 0;
+        });
+        setPengajaran(sortedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
 
+    async function fetchDataPendidikan() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/riwayatpendidikan/dosen/${id}`
+        );
+        const sortedData = response.data.sort(
+          (a, b) => a.tahun_lulus - b.tahun_lulus
+        );
+        setPendidikan(sortedData);
+        console.log(sortedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchDataPendidikan();
     fetchDataPengajaran();
     fetchDataPenelitian();
     fetchDataPkm();
@@ -141,6 +182,15 @@ function ProfilDosen() {
       sort: "asc",
     },
   ];
+
+  // Fungsi pemisah untuk memisahkan tahun dan semester
+  const splitSemester = (semester) => {
+    const parts = semester.split(" ");
+    return {
+      Tahun: parseInt(parts[0]),
+      Semester: parts[1],
+    };
+  };
 
   const rowsPengajaran = pengajaran.map((data) => {
     return {
@@ -248,27 +298,16 @@ function ProfilDosen() {
               <div className="card mb-4">
                 <div className="card-body px-5">
                   <h5 className="text-dark mt-3 mb-4">Riwayat Pendidikan</h5>
-                  <h5 className="text-dark">D4</h5>
-                  <p className="text-dark">
-                    Politeknik Negeri Bandung, Bandung - Indonesia
-                    <br />
-                    1985
-                  </p>
-
-                  <h5 className="text-dark">S2</h5>
-                  <p className="text-dark">
-                    ITB, Bandung - Indonesia
-                    <br />
-                    1991
-                  </p>
-
-                  <h5 className="text-dark">S3</h5>
-                  <p className="text-dark">
-                    Institute National Polytechnique de Grenoble, Grenoble -
-                    Perancis
-                    <br />
-                    2004
-                  </p>
+                  {pendidikan.map((item, index) => (
+                    <div key={index}>
+                      <h5 className="text-dark">{item.jenjang_pendidikan}</h5>
+                      <p className="text-dark">
+                        {item.institusi} - {item.negara}
+                        <br />
+                        {item.tahun_lulus}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
