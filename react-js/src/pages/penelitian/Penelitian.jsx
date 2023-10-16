@@ -15,7 +15,9 @@ function penelitian() {
             <Navbar />
 
             <div className="container-fluid">
-              <ListPenelitian />
+
+              <ListPenelitian/>
+              
             </div>
           </div>
         </div>

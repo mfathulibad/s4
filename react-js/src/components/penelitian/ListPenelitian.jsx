@@ -39,24 +39,26 @@ export default function ListPenelitian() {
             <table className="table border shadow">
                 <thead>
                     <tr>
-                    <th scope="col">Id Penelitian</th>
-                    <th scope="col">Judul Penelitian</th>
-                    <th scope="col">Bidang Penelitian</th>
-                    <th scope="col">Tanggal Penelitian</th>
-                    <th scope="col">URL</th>
-                    <th scope="col">PDF</th>
-                    <th scope="col">Action</th>
+                        <th scope="col">No</th>
+                        {/* <th scope="col">Id Penelitian</th> */}
+                        <th scope="col">Judul Penelitian</th>
+                        {/* <th scope="col">Bidang Penelitian</th> */}
+                        {/* <th scope="col">Tanggal Penelitian</th> */}
+                        <th scope="col">URL</th>
+                        <th scope="col">PDF</th>
+                        {/* <th scope="col">Action</th> */}
                     </tr>
                 </thead>
                 <tbody>
 
                     {
-                        data.map((penelitian)=>(
+                        data.map((penelitian, index)=>(
                             <tr key={penelitian.id_penelitian}>
-                                <td>{penelitian.id_penelitian}</td>
+                                <td>{index + 1}</td>
+                                {/* <td>{penelitian.id_penelitian}</td> */}
                                 <td>{penelitian.judul_penelitian}</td>
-                                <td>{penelitian.bidang_penelitian}</td>
-                                <td>{penelitian.tgl_penelitian}</td>
+                                {/* <td>{penelitian.bidang_penelitian}</td> */}
+                                {/* <td>{penelitian.tgl_penelitian}</td> */}
                                 <td style={{ maxWidth: '200px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
                                     <a href={penelitian.url} target="_blank" rel="noopener noreferrer">{penelitian.url}</a>
                                 </td>
@@ -64,12 +66,12 @@ export default function ListPenelitian() {
                                     <a href={`http://localhost:8082/penelitian/download-pdf/${penelitian.id_penelitian}`} target="_blank" rel="noopener noreferrer">{penelitian.path_pdf}</a>
                                 </td>
                            
-                                <td>
+                                {/* <td>
                                     <Link className='btn btn-outline-primary mx-2'
                                        to={{ pathname: `/penelitian/edit/${penelitian.id_penelitian}` }}   
                                     >Edit</Link>
                                     <button className='btn btn-danger mx-2' onClick={() => handleDelete(penelitian.id_penelitian)}>Delete</button>
-                                </td>
+                                </td> */}
                             </tr>
                         ))
                     }
