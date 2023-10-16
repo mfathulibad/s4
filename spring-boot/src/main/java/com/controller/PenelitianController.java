@@ -162,4 +162,13 @@ public class PenelitianController {
 	    return penelitianService.searchPenelitianByJudul(judul);
 	}
 	
+	//add penelitian untuk admin
+	@PostMapping("/penelitian/admin/insert")
+	public String addPenelitianByAdmin(@RequestBody Penelitian penelitianRequest){
+		// String judul_penelitian = penelitianRequest.getJudul_penelitian();
+		String newPenelitianId = penelitianService.addPenelitianByAdmin(penelitianRequest);
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newPenelitianId;
+	}
+	
 }
