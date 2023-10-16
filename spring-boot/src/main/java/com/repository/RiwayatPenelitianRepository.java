@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.model.RiwayatPenelitian;
+import com.model.Dosen;
 
 public interface RiwayatPenelitianRepository extends JpaRepository<RiwayatPenelitian, String> {
 
-    @Query("SELECT d.nama_lengkap FROM Dosen d " +
+    @Query("SELECT d FROM Dosen d " + 
            "INNER JOIN RiwayatPenelitian rp ON d.id_dosen = rp.id_dosen " +
            "WHERE rp.id_penelitian = :idPenelitian")
-    List<String> findDosenIdsByPenelitianId(@Param("idPenelitian") String idPenelitian);
+    List<Dosen> findDosenIdsByPenelitianId(@Param("idPenelitian") String idPenelitian);
 }

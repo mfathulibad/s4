@@ -1,4 +1,7 @@
 package com.service;
+
+import com.model.RiwayatPenelitian;
+import com.model.Dosen;
 import com.repository.RiwayatPenelitianRepository;
 
 import java.util.List;
@@ -12,7 +15,15 @@ public class RiwayatPenelitianService {
     @Autowired
     private RiwayatPenelitianRepository riwayatPenelitianRepository;
 
-    public List<String> findDosenIdsByPenelitianId(String idPenelitian) {
+    public List<Dosen> findDosenIdsByPenelitianId(String idPenelitian) {
         return riwayatPenelitianRepository.findDosenIdsByPenelitianId(idPenelitian);
     }
+    
+    public void deleteRiwayatPenelitian(String id_penelitian) {
+    	riwayatPenelitianRepository.deleteById(id_penelitian);
+	}
+    
+    public RiwayatPenelitian getPenelitianById(String id_penelitian) {
+		return riwayatPenelitianRepository.getById(id_penelitian);
+	}
 }
