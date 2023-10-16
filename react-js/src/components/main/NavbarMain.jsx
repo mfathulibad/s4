@@ -2,17 +2,30 @@ import React from "react";
 
 function NavbarMain() {
   return (
-    <header className="site-navbar js-sticky-header site-navbar-target" role="banner" style={{backgroundColor: "#005AAB"}}>
+    <header
+      className="site-navbar js-sticky-header site-navbar-target"
+      role="banner"
+      style={{ backgroundColor: "#005AAB" }}
+    >
       <div className="container">
         <div className="row align-items-center position-relative">
           <div className="site-logo">
-            <a href="index.html" className="text-black" style={{color: "#fff"}}>
-              <span className="text-primary" >Brand</span>
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              alt="avatar"
+              className="rounded-circle img-fluid"
+              style={{ width: 70, marginRight: '10px' }}
+            />
+            <a href="index.html" className="text-black">
+              <span style={{ color: "#FFFFFF" }}>Brand</span>
             </a>
           </div>
 
           <div className="col-12">
-            <nav className="site-navigation text-right ml-auto" role="navigation">
+            <nav
+              className="site-navigation text-right ml-auto"
+              role="navigation"
+            >
               <ul className="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                 <li>
                   <a href="#home-section" className="nav-link">
@@ -50,7 +63,10 @@ function NavbarMain() {
           </div>
 
           <div className="toggle-button d-inline-block d-lg-none">
-            <a href="#" className="site-menu-toggle py-5 js-menu-toggle text-black">
+            <a
+              href="#"
+              className="site-menu-toggle py-5 js-menu-toggle text-black"
+            >
               <span className="icon-menu h3"></span>
             </a>
           </div>

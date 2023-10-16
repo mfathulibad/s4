@@ -66,13 +66,6 @@ public class PkmService {
 	    }
 	}
 	
-	public List<String> getDaftarJudulPengabdian() {
-        List<Pkm> pkmList = pkmRepository.findAll(); // Assuming you have a repository for Pkm
-        List<String> daftarJudul = pkmList.stream()
-                .map(Pkm::getJudul_pengabdian) // Assuming getJudul_pengabdian returns the title
-                .collect(Collectors.toList());
-        return daftarJudul;
-    }
 	public List<Pkm> searchPkmByJudul(String judul) {
 	    return pkmRepository.searchByJudulPengabdian(judul);
 	}

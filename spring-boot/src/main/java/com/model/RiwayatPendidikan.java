@@ -25,6 +25,8 @@ public class RiwayatPendidikan{
     private String institusi;
     @Column
     private int tahun_lulus;
+    @Column
+    private String negara;
 
     public String getId_riwayat_pendidikan() {
         return id_riwayat_pendidikan;
@@ -55,6 +57,12 @@ public class RiwayatPendidikan{
     }
     public void setTahun_lulus(int tahun_lulus) {
         this.tahun_lulus = tahun_lulus;
+    }
+    public String getNegara() {
+        return negara;
+    }
+    public void setNegara(String negara) {
+        this.negara = negara;
     }
        
 }
