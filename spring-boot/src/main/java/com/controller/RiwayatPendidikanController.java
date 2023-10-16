@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.service.RiwayatPendidikanService;
 import com.model.RiwayatPendidikan;
@@ -45,5 +46,15 @@ public class RiwayatPendidikanController {
 		String nama_institute = riwayatPendidikanService.getRiwayatPendidikanById(riwayatPendidikanRequest.getId_riwayat_pendidikan()).getInstitusi();
 		riwayatPendidikanService.updateRiwayatPendidikan(riwayatPendidikanRequest);
 		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil diupdate");
+	}
+
+	@GetMapping("/riwayatpendidikan/dosen/{id_dosen}")
+	public ResponseEntity<List<RiwayatPendidikan>> getRiwayatPendidikanByDosenId(@PathVariable("id_dosen") String id_dosen) {
+	    List<RiwayatPendidikan> riwayatPendidikan = riwayatPendidikanService.getRiwayatPendidikanByDosenId(id_dosen);
+	    if (riwayatPendidikan != null) {
+	        return ResponseEntity.ok(riwayatPendidikan);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 }

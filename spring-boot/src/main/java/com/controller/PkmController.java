@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.service.PkmService;
 import com.model.Dosen;
+import com.model.Penelitian;
 import com.model.Pkm;
 
 @RestController
@@ -57,6 +58,13 @@ public class PkmController {
 		String newPkmId = pkmService.addPkm(pkmRequest, id_dosen);
 		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
 		return newPkmId;
+	}
+
+	@PostMapping("/pkm/admin/insert")
+	public ResponseEntity<String> addPkm(@RequestBody Pkm pkmRequest){
+		String judul_pengabdian = pkmRequest.getJudul_pengabdian();
+		pkmService.addPkmbyAdmin(pkmRequest);
+		return ResponseEntity.ok("PKM dengan judul " + judul_pengabdian + " berhasil ditambahkan");
 	}
 	
 	@DeleteMapping("/pkm/delete")

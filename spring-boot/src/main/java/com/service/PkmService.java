@@ -65,6 +65,10 @@ public class PkmService {
 	        return existingId;
 	    }
 	}
+
+	public void addPkmbyAdmin(Pkm pkmRequest) {
+		pkmRepository.save(pkmRequest);
+	}
 	
 	public List<Pkm> searchPkmByJudul(String judul) {
 	    return pkmRepository.searchByJudulPengabdian(judul);
