@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.service.MataKuliahService;
 import com.model.MataKuliah;
 import com.model.Penelitian;
-import com.model.Pkm;
 
 @RestController
 @CrossOrigin
@@ -67,5 +66,19 @@ public class MataKuliahController {
 		String nama_mata_kuliah = mataKuliahService.getMataKuliahbyId(mataKuliahRequest.getId_mata_kuliah()).getNama_mata_kuliah();
 		mataKuliahService.updateMataKuliah(mataKuliahRequest);
 		return ResponseEntity.ok("Mata Kuliah dengan nama " + nama_mata_kuliah + " berhasil diupdate");
+	}
+
+	@GetMapping("/matakuliah/search")
+	public List<MataKuliah> searchMatakuliahByMatkul(@RequestParam String matkul) {
+	    return mataKuliahService.searchMataKuliahByMatkul(matkul);
+	}
+
+	//add penelitian untuk admin
+	@PostMapping("/matakuliah/admin/insert")
+	public String addMataKuliahByAdmin(@RequestBody MataKuliah mataKuliahRequest){
+		// String judul_penelitian = mataKuliahRequest.getJudul_penelitian();
+		String newMataKuliahId = mataKuliahService.addMataKuliahByAdmin(mataKuliahRequest);
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newMataKuliahId;
 	}
 }

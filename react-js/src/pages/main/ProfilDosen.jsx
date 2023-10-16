@@ -9,6 +9,8 @@ function ProfilDosen() {
   const [dosen, setDosen] = useState({});
   const [pkm, setPkm] = useState([]);
   const [penelitian, setPenelitian] = useState([]);
+  const [pengajaran, setPengajaran] = useState([]);
+  const [pendidikan, setPendidikan] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -44,6 +46,58 @@ function ProfilDosen() {
       }
     }
 
+    async function fetchDataPengajaran() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/matakuliah/dosen/${id}`
+        );
+
+        const sortedData = response.data.sort((a, b) => {
+          const semesterA = splitSemester(a.semester);
+          const semesterB = splitSemester(b.semester);
+
+          if (semesterA.Tahun !== semesterB.Tahun) {
+            return semesterA.Tahun - semesterB.Tahun;
+          }
+
+          // Jika tahunnya sama, maka urutkan berdasarkan semester
+          if (
+            semesterA.Semester === "Ganjil" &&
+            semesterB.Semester === "Genap"
+          ) {
+            return -1;
+          }
+          if (
+            semesterA.Semester === "Genap" &&
+            semesterB.Semester === "Ganjil"
+          ) {
+            return 1;
+          }
+          return 0;
+        });
+        setPengajaran(sortedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    async function fetchDataPendidikan() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/riwayatpendidikan/dosen/${id}`
+        );
+        const sortedData = response.data.sort(
+          (a, b) => a.tahun_lulus - b.tahun_lulus
+        );
+        setPendidikan(sortedData);
+        console.log(sortedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchDataPendidikan();
+    fetchDataPengajaran();
     fetchDataPenelitian();
     fetchDataPkm();
     fetchData();
@@ -91,13 +145,61 @@ function ProfilDosen() {
     return {
       judul_penelitian: (
         <Link
-          to={"/detail_penelitian/"+ data.id_penelitian}
+          to={"/detail_penelitian/" + data.id_penelitian}
           target="_blank"
           rel="noopener noreferrer"
         >
           {data.judul_penelitian}
         </Link>
       ),
+    };
+  });
+
+  const columnsPengajaran = [
+    {
+      label: "Semester",
+      field: "semester",
+      sort: "asc",
+    },
+    {
+      label: "Kode Mata Kuliah",
+      field: "id_mata_kuliah",
+      sort: "asc",
+    },
+    {
+      label: "Nama Mata Kuliah",
+      field: "nama_mata_kuliah",
+      sort: "asc",
+    },
+    {
+      label: "Kode Kelas",
+      field: "kode_kelas",
+      sort: "asc",
+    },
+    {
+      label: "Perguruan Tinggi",
+      field: "perguruan_tinggi",
+      sort: "asc",
+    },
+  ];
+
+  // Fungsi pemisah untuk memisahkan tahun dan semester
+  const splitSemester = (semester) => {
+    const parts = semester.split(" ");
+    return {
+      Tahun: parseInt(parts[0]),
+      Semester: parts[1],
+    };
+  };
+
+  const rowsPengajaran = pengajaran.map((data) => {
+    return {
+      semester: data.semester,
+      id_mata_kuliah: data.id_mata_kuliah,
+      bidang_pengabdian: data.bidang_pengabdian,
+      nama_mata_kuliah: data.nama_mata_kuliah,
+      kode_kelas: data.kode_kelas,
+      perguruan_tinggi: data.perguruan_tinggi,
     };
   });
 
@@ -196,27 +298,16 @@ function ProfilDosen() {
               <div className="card mb-4">
                 <div className="card-body px-5">
                   <h5 className="text-dark mt-3 mb-4">Riwayat Pendidikan</h5>
-                  <h5 className="text-dark">D4</h5>
-                  <p className="text-dark">
-                    Politeknik Negeri Bandung, Bandung - Indonesia
-                    <br />
-                    1985
-                  </p>
-
-                  <h5 className="text-dark">S2</h5>
-                  <p className="text-dark">
-                    ITB, Bandung - Indonesia
-                    <br />
-                    1991
-                  </p>
-
-                  <h5 className="text-dark">S3</h5>
-                  <p className="text-dark">
-                    Institute National Polytechnique de Grenoble, Grenoble -
-                    Perancis
-                    <br />
-                    2004
-                  </p>
+                  {pendidikan.map((item, index) => (
+                    <div key={index}>
+                      <h5 className="text-dark">{item.jenjang_pendidikan}</h5>
+                      <p className="text-dark">
+                        {item.institusi} - {item.negara}
+                        <br />
+                        {item.tahun_lulus}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -240,7 +331,20 @@ function ProfilDosen() {
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="tab1">
-                        <div>AJGG</div>
+                        <div>
+                          <MDBDataTable
+                            data={{
+                              columns: columnsPengajaran, // Kosongkan array columns agar label kolom tidak ditampilkan
+                              rows: rowsPengajaran, // Masukkan data mentah ke dalam array rows
+                            }}
+                            searching={false}
+                            entries={10}
+                            entriesOptions={[10, 20, 50]}
+                            noBottomColumns
+                            // hover
+                            displayEntries={false}
+                          />
+                        </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="tab2">
                         <div

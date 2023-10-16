@@ -1,3 +1,4 @@
+import AddRiwayatPendidikanComponent from "../../components/pendidikan/AddPendidikanComponent"; // Import the correct component
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
 
@@ -12,7 +13,7 @@ function AddPendidikan(){
                 <Navbar />
     
                 <div className="container-fluid">
-                    AddPendidikanComponent
+                    <AddRiwayatPendidikanComponent/>
                 </div>
               </div>
             </div>

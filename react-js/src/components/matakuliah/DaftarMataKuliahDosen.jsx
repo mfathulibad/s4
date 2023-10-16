@@ -22,12 +22,16 @@ export default function DaftarMataKuliahDosen() {
     };
 
     async function handleDelete(id_mata_kuliah) {
-        const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
+      // const response = await axios.get(`http://localhost:8082/riwayat_pengajaran/${userAuth}/${id_mata_kuliah}`);
+      // const idRiwayatPengajaran = response.data;
+      // console.log(idRiwayatPengajaran);
+      const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
         if (!confirmDelete) {
           return;
         }
         try {
           // Kirim permintaan DELETE ke server dengan parameter id_mata_kuliah
+          
           await axios.delete(`http://localhost:8082/matakuliah/delete?id_mata_kuliah=${id_mata_kuliah}`);
           // Perbarui tampilan dengan menghapus entitas dari state lokal
           setData((prevData) => prevData.filter((matakuliah) => matakuliah.id_mata_kuliah !== id_mata_kuliah));

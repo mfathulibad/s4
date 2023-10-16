@@ -22,7 +22,7 @@ public class MataKuliah {
     @Column
     private String nama_mata_kuliah;
     @Column
-    private Integer semester;
+    private String semester;
     @Column
     private String kode_kelas;
     @Column
@@ -54,11 +54,17 @@ public class MataKuliah {
 		this.perguruan_tinggi = perguruan_tinggi;
 	}
 	
-	public Integer getSemester() {
+	public String getSemester() {
 		return semester;
 	}
-	public void setSemester(Integer semester) {
+	public void setSemester(String semester) {
 		this.semester = semester;
 	}
+
+	
+    // Buat metode untuk menghasilkan ID berdasarkan kombinasi "namaMataKuliah" dan "semester"
+    // public void generateId() {
+    //     this.id_mata_kuliah = this.nama_mata_kuliah + "_" + this.semester;
+    // }
     
 }

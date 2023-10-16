@@ -14,4 +14,11 @@ public interface RiwayatPengajaranRepository extends JpaRepository <RiwayatPenga
            "INNER JOIN RiwayatPengajaran rp ON d.id_dosen = rp.id_dosen " +
            "WHERE rp.id_mata_kuliah = :idMatakuliah")
     List<Dosen> findDosenIdsByPengajaranId(@Param("idMatakuliah") String idMatakuliah);
+
+    @Query("SELECT rp.id_riwayat_pengajaran FROM RiwayatPengajaran rp " + 
+            "WHERE rp.id_dosen = :idDosen AND rp.id_mata_kuliah = :idMatakuliah")
+    String findIdRiwayatPengajaranByDosenAndMatakuliah(
+             @Param("idDosen") String idDosen,
+             @Param("idMatakuliah") String idMatakuliah);
+
 }

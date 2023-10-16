@@ -1,6 +1,7 @@
 import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
+import ListPendidikan from "../../components/pendidikan/ListPendidikan";
 
 
 function Pendidikan() {
@@ -15,7 +16,7 @@ function Pendidikan() {
 
             <div className="container-fluid">
 
-              ListPendidikan
+              <ListPendidikan/>
               
             </div>
           </div>

@@ -1,12 +1,10 @@
-import EditRiwayatPendidikanComponent from "../../components/pendidikan/EditPendidikanComponent"; // Import the correct component
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import { useParams } from 'react-router-dom';
+import ListPendidikanDosen from "../../components/pendidikan/ListPendidikanDosen";
 
-function EditPendidikan(){
-    const { id } = useParams();
-    return(
+function PendidikanDosen(){
 
+  return (
     <>
       <div id="wrapper">
         <Sidebar />
@@ -16,15 +14,16 @@ function EditPendidikan(){
             <Navbar />
 
             <div className="container-fluid">
-            <EditRiwayatPendidikanComponent id={id}/>
+
+              <ListPendidikanDosen/>
               
             </div>
           </div>
         </div>
       </div>
-    </> 
-    )
+    </>
+  );
     
 }
 
-export default EditPendidikan;
+export default PendidikanDosen;

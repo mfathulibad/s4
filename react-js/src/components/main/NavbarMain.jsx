@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavbarMain() {
   return (
@@ -18,6 +19,7 @@ function NavbarMain() {
             <a href="index.html" className="text-black">
               <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{}}>Politeknik Negeri Bandung</span>
             </a>
+
           </div>
 
           <div className="col-12">
@@ -27,36 +29,37 @@ function NavbarMain() {
             >
               <ul className="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                 <li>
-                  <a href="#home-section" className="nav-link">
+                  <Link to={"/"} className="nav-link">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#services-section" className="nav-link">
-                    Services
-                  </a>
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
                 </li>
-                <li>
+
+                {/* <li>
                   <a href="#why-us-section" className="nav-link">
                     Why Us
                   </a>
-                </li>
+                </li> */}
 
-                <li>
+                {/* <li>
                   <a href="#testimonials-section" className="nav-link">
                     Testimonials
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="#blog-section" className="nav-link">
                     Blog
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="#contact-section" className="nav-link">
                     Contact
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

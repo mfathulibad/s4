@@ -79,6 +79,11 @@ public class PenelitianService {
 	    return penelitianRepository.searchByJudulPenelitian(judul);
 	}
 
+	public String addPenelitianByAdmin (Penelitian penelitianRequest) {
+		Penelitian saved = penelitianRepository.save(penelitianRequest);
+		String newPenelitianId = saved.getId_penelitian();
+		return newPenelitianId;
+	}
 		
 	
 }

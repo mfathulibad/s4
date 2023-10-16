@@ -26,6 +26,7 @@ function ListDosen() {
     <>
       <NavbarMain />
       <div className="container">
+        <h1 className="text-center p-3 m-3" style={{ textTransform: "uppercase", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>Daftar Dosen</h1>
         <div className="row">
           {data.map((dosen, index) => (
             <div className="col-3 mb-3 mt-3" key={index}>

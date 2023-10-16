@@ -12,68 +12,67 @@ export default function ListPendidikanDosen() {
     const userAuth = Cookies.get("userAuth");
 
     useEffect(()=>{
-        loadMataKuliah();
+        loadRiwayatPendidikan();
     },[]);
 
-    const loadMataKuliah=async()=>{
-        const result = await axios.get(`http://localhost:8082/matakuliah/dosen/${userAuth}`);
+    const loadRiwayatPendidikan = async()=>{
+        const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/${userAuth}`);
         setData(result.data);
-        
     };
 
-    async function handleDelete(id_mata_kuliah) {
+    async function handleDelete(id_riwayat_pendidikan) {
         const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
         if (!confirmDelete) {
           return;
         }
         try {
           // Kirim permintaan DELETE ke server dengan parameter id_mata_kuliah
-          await axios.delete(`http://localhost:8082/matakuliah/delete?id_mata_kuliah=${id_mata_kuliah}`);
+          await axios.delete(`http://localhost:8082/riwayatpendidikan/delete?id_riwayat_pendidikan=${id_riwayat_pendidikan}`);
           // Perbarui tampilan dengan menghapus entitas dari state lokal
-          setData((prevData) => prevData.filter((matakuliah) => matakuliah.id_mata_kuliah !== id_mata_kuliah));
-          alert('Data matakuliah berhasil dihapus');
+          setData((prevData) => prevData.filter((riwayatpendidikan) => riwayatpendidikan.id_riwayat_pendidikan !== id_riwayat_pendidikan));
+          alert('Data Riwayat Pendidikan Berhasil Dihapus !');
         } catch (error) {
           console.error('Error deleting data:', error);
         }
       }
       return (
         <div className="container">
-          <h1 className="text-center p-3 m-3">Daftar Mata Kuliah</h1>
+          <h1 className="text-center p-3 m-3">Daftar Riwayat Pendidikan</h1>
             <div className="card shadow mb-4">
               <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">List Mata Kuliah</h6>
+                <h6 className="m-0 font-weight-bold text-primary">List Riwayat Pendidikan</h6>
               </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">
                     <thead>
                       <tr>
-                        <th >Id matakuliah</th>
-                        <th >Nama matakuliah</th>
-                        <th >Semester</th>
-                        <th >Kode Kelas</th>
-                        <th >Perguruan Tinggi</th>
-                        <th >Action</th>
+                        <th >ID Dosen</th>
+                        <th >ID Riwayat Pendidikan</th>
+                        <th >Jenjang</th>
+                        <th >Institusi</th>
+                        <th >Tahun Lulus</th>
+                        <th >Negara</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {data.map((matakuliah) => (
-                        <tr key={matakuliah.id_mata_kuliah}>
-                          <td>{matakuliah.id_mata_kuliah}</td>
-                          <td>{matakuliah.nama_mata_kuliah}</td>
-                          <td>{matakuliah.semester}</td>
-                          <td>{matakuliah.kode_kelas}</td>
-                          <td>{matakuliah.perguruan_tinggi}</td>
+                      {data.map((pendidikan) => (
+                        <tr key={pendidikan.id_riwayat_pendidikan}>
+                          <td>{pendidikan.id_riwayat_pendidikan}</td>
+                          <td>{pendidikan.jenjang_pendidikan}</td>
+                          <td>{pendidikan.institusi}</td>
+                          <td>{pendidikan.tahun_lulus}</td>
+                          <td>{pendidikan.negara}</td>
                           <td>
                             <div className="d-flex justify-content-center">
-                              <Link to={{ pathname: `/matakuliah/edit/${matakuliah.id_mata_kuliah}` }}>
+                              <Link to={{ pathname: `/pendidikan/edit/${pendidikan.id_riwayat_pendidikan}` }}>
                                 <button className="btn btn-success">
                                   <FaEdit />
                                 </button>
                               </Link>
                               <button
                                 className="btn btn-danger ml-2"
-                                onClick={() => handleDelete(matakuliah.id_mata_kuliah)}>
+                                onClick={() => handleDelete(pendidikan.id_riwayat_pendidikan)}>
                                 <FaTrash />
                               </button>
                             </div>

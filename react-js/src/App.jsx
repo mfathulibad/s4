@@ -33,6 +33,8 @@ import ProfilDosen from "./pages/main/ProfilDosen";
 import NavbarMain from "./components/main/NavbarMain";
 import ListDosen from "./pages/main/ListDosen";
 import DetailPenelitian from "./pages/main/DetailPenelitian";
+import AddPenelitianComponentByAdmin from "./components/penelitian/AddPenelitianComponentByAdmin";
+import PendidikanDosen from "./pages/pendidikan/PendidikanDosen";
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* <Route path="/penelitian/admin/insert" element={<AddPenelitianComponentByAdmin/>} /> */}
 
         <Route path="/" element={<ListDosen />} />
         <Route path="/home" element={<ListDosen />} />
@@ -58,13 +62,17 @@ function App() {
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
         <Route path="/pendidikan/" element={<Pendidikan />} />
+        <Route path="/pendidikan/:id" element={<PendidikanDosen />} />
         <Route path="/pendidikan/insert" element={<AddPendidikan />} />
+        <Route path="/pendidikan/edit/:id" element={<EditPendidikan />} />
         <Route path="/pkm/edit/" element={<EditPkm />} />
         <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
         <Route path="/pkm" element={<ListPkm />} />
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
         <Route path="/profile/:id" element={<ProfilDosen />} />
         <Route path="/detail_penelitian/:id" element={<DetailPenelitian />} />
+       
+        
 
 
 

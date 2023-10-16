@@ -26,4 +26,8 @@ public class RiwayatPengajaranService {
     public RiwayatPengajaran getPengajaranById(String id_mata_kuliah) {
 		return riwayatPengajaranRepository.getById(id_mata_kuliah);
 	}
+
+    public String getIdRiwayatPengajaranByDosenAndMatakuliah(String idDosen, String idMatakuliah) {
+        return riwayatPengajaranRepository.findIdRiwayatPengajaranByDosenAndMatakuliah(idDosen, idMatakuliah);
+    }
 }
