@@ -170,10 +170,10 @@ function Sidebar() {
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/penelitian" className="collapse-item">
+              <Link to="/pendidikan" className="collapse-item">
                   Daftar Pendidikan
               </Link>
-              <Link to="/penelitian/insert" className="collapse-item">
+              <Link to="/pendidikan/insert" className="collapse-item">
                   Tambah Pendidikan
               </Link>
             </div>

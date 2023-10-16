@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Cookies from "js-cookie";
+import { FaEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
-export default function ListPenelitianDosen() {
+const ListPenelitianDosen = () => {
 
     const [data, setData] = useState([]);
     const userAuth = Cookies.get("userAuth");
@@ -32,32 +34,33 @@ export default function ListPenelitianDosen() {
           console.error('Error deleting data:', error);
         }
       }
-
-  return (
-    <div className='container'>
-        <h1 className='text-center p-3 m-3'>Daftar Penelitian</h1>
-        <div className="card shadow mb-4">
-            <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">List Dosen</h6>
-            </div>
-            <div className="card-body">
-                <div className="table-responsive">
-                    <table className="table table-bordered"id="dataTable" width="100%" cellSpacing="0">
-                        <thead>
-                            <tr>
-                            <th scope="col">Id Penelitian</th>
-                            <th scope="col">Judul Penelitian</th>
-                            <th scope="col">Bidang Penelitian</th>
-                            <th scope="col">Tanggal Penelitian</th>
-                            <th scope="col">URL</th>
-                            <th scope="col">PDF</th>
-                            <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            {
-                                data.map((penelitian)=>(
+    return (
+        <div className="container">
+            <h1 className="text-center p-3 m-3">Daftar Penelitian</h1>
+            <div className="card shadow mb-4">
+                <div className="card-header py-3">
+                    <Link  to="/penelitian" className="m-0 font-weight-bold text-primary">List Penelitian</Link>
+                </div>
+                <div className="card-body">
+                    <div className="table-responsive">
+                        <table
+                            className="table table-bordered"
+                            id="dataTable"
+                            width="100%"
+                            cellSpacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id Penelitian</th>
+                                    <th scope="col">Judul Penelitian</th>
+                                    <th scope="col">Bidang Penelitian</th>
+                                    <th scope="col">Tanggal Penelitian</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">PDF</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                {data.map((penelitian)=>(
                                     <tr key={penelitian.id_penelitian}>
                                         <td>{penelitian.id_penelitian}</td>
                                         <td>{penelitian.judul_penelitian}</td>
@@ -71,19 +74,28 @@ export default function ListPenelitianDosen() {
                                         </td>
                                 
                                         <td>
-                                            <Link className='btn btn-outline-primary mx-2'
-                                            to={{ pathname: `/penelitian/edit/${penelitian.id_penelitian}` }}   
-                                            >Edit</Link>
-                                            <button className='btn btn-danger mx-2' onClick={() => handleDelete(penelitian.id_penelitian)}>Delete</button>
+                                            <div className="d-flex justify-content-center">
+                                                <Link to={{ pathname: `/penelitian/edit/${penelitian.id_penelitian}` }}>
+                                                    <button type="button" className="btn btn-success">
+                                                    <FaEdit />
+                                                    </button>
+                                                </Link>
+                                                <button
+                                                    className="btn btn-danger ml-2"
+                                                    onClick={() => handleDelete(penelitian.id_penelitian)}>
+                                                    <FaTrash />
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  )
-}
+    );
+};
+
+export default ListPenelitianDosen;

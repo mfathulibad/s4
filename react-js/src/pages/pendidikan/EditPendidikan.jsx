@@ -1,11 +1,11 @@
-import ListPenelitian from "../../components/penelitian/ListPenelitian";
-import Footer from "../../components/dashboard/Footer";
 import Navbar from "../../components/dashboard/Navbar";
 import Sidebar from "../../components/dashboard/Sidebar";
-import ListDosen from "../../components/dosen/ListDosen";
+import { useParams } from 'react-router-dom';
 
-function penelitian() {
-  return (
+function EditPendidikan(){
+    const { id } = useParams();
+    return(
+
     <>
       <div id="wrapper">
         <Sidebar />
@@ -15,16 +15,15 @@ function penelitian() {
             <Navbar />
 
             <div className="container-fluid">
-
-              <ListPenelitian/>
+            Editriwayat
               
             </div>
           </div>
         </div>
       </div>
-    </>
-  );
-
+    </> 
+    )
+    
 }
 
-export default penelitian;
+export default EditPendidikan;

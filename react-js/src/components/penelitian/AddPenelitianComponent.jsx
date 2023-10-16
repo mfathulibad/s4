@@ -180,8 +180,8 @@ export default function AddPenelitianComponent() {
               />
             </div>
 
-            <button type="submit" className="btn btn-outline-primary">Add</button>
-            <Link className="btn btn-outline-danger mx-2" to="/">Cancel</Link>
+            <button type="submit" className="btn btn-primary">Submit</button>
+            <Link className="btn btn-danger mx-2" to="/">Cancel</Link>
           </form>
         </div>
       </div>
