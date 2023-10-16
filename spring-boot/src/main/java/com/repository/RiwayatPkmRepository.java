@@ -15,4 +15,10 @@ public interface RiwayatPkmRepository extends JpaRepository<RiwayatPkm, String> 
            "INNER JOIN RiwayatPkm rp ON d.id_dosen = rp.id_dosen " +
            "WHERE rp.id_pengabdian = :idPengabdian")
     List<Dosen> findDosenIdsByPkmId(@Param("idPengabdian") String idPengabdian);
+    
+    @Query("SELECT rp.id_riwayat_pkm FROM RiwayatPkm rp " + 
+            "WHERE rp.id_dosen = :idDosen AND rp.id_pengabdian = :idPengabdian")
+    String findIdRiwayatPkmByDosenAndPkm(
+             @Param("idDosen") String idDosen,
+             @Param("idPengabdian") String idPengabdian);
 }
