@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.model.MataKuliah;
 
 public interface MataKuliahRepository extends JpaRepository<MataKuliah, String> {
-    @Query(value = "SELECT mata_kuliah FROM mata_kuliah mata_kuliah JOIN RiwayatPengajaran riwayat ON mata_kuliah.id_mata_kuliah = riwayat.id_mata_kuliah WHERE riwayat.id_dosen = :idDosen")
+    @Query(value = "SELECT mata_kuliah FROM MataKuliah mata_kuliah JOIN RiwayatPengajaran riwayat ON mata_kuliah.id_mata_kuliah = riwayat.id_mata_kuliah WHERE riwayat.id_dosen = :idDosen")
 	List<MataKuliah> getMataKuliahbyDosenId(@Param("idDosen") String idDosen);
 
 	
