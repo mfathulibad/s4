@@ -26,7 +26,23 @@ public class RiwayatPendidikanController {
 	public List<RiwayatPendidikan> getAllRiwayatPendidikan(){
 		return riwayatPendidikanService.getAllRiwayatPendidikan();
 	}
-	
+
+	@GetMapping("/riwayatpendidikan/{id_dosen}")
+	public @ResponseBody RiwayatPendidikan getRiwayatPendidikanById(@PathVariable("id_dosen") String id_dosen){
+		return riwayatPendidikanService.getRiwayatPendidikanById(id_dosen);
+
+	}
+
+	@GetMapping("/riwayatpendidikan/dosen/{id_dosen}")
+	public ResponseEntity<List<RiwayatPendidikan>> getRiwayatPendidikanByDosenId(@PathVariable("id_dosen") String id_dosen) {
+	    List<RiwayatPendidikan> riwayatPendidikan = riwayatPendidikanService.getRiwayatPendidikanByDosenId(id_dosen);
+	    if (riwayatPendidikan != null) {
+	        return ResponseEntity.ok(riwayatPendidikan);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
 	@PostMapping("/riwayatpendidikan/insert")
 	public ResponseEntity<String> addRiwayatPendidikan(@RequestBody RiwayatPendidikan riwayatPendidikanRequest){
 		String nama_institute = riwayatPendidikanRequest.getInstitusi();
@@ -46,15 +62,5 @@ public class RiwayatPendidikanController {
 		String nama_institute = riwayatPendidikanService.getRiwayatPendidikanById(riwayatPendidikanRequest.getId_riwayat_pendidikan()).getInstitusi();
 		riwayatPendidikanService.updateRiwayatPendidikan(riwayatPendidikanRequest);
 		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil diupdate");
-	}
-
-	@GetMapping("/riwayatpendidikan/dosen/{id_dosen}")
-	public ResponseEntity<List<RiwayatPendidikan>> getRiwayatPendidikanByDosenId(@PathVariable("id_dosen") String id_dosen) {
-	    List<RiwayatPendidikan> riwayatPendidikan = riwayatPendidikanService.getRiwayatPendidikanByDosenId(id_dosen);
-	    if (riwayatPendidikan != null) {
-	        return ResponseEntity.ok(riwayatPendidikan);
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
 	}
 }
