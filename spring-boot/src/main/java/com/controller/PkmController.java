@@ -34,11 +34,6 @@ public class PkmController {
 		return pkmService.getPkmById(id_pengabdian);
 	}
 	
-	@GetMapping("/pkm/judulPengabdian")
-	public List<String> getDaftarJudulPengabdian() {
-	    List<String> daftarJudulPengabdian = pkmService.getDaftarJudulPengabdian();
-	    return daftarJudulPengabdian;
-	}
 	
 	@GetMapping("/pkm/search")
 	public List<Pkm> searchPkmByJudul(@RequestParam String judul) {
