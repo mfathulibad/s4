@@ -33,6 +33,7 @@ import ProfilDosen from "./pages/main/ProfilDosen";
 import NavbarMain from "./components/main/NavbarMain";
 import ListDosen from "./pages/main/ListDosen";
 import DetailPenelitian from "./pages/main/DetailPenelitian";
+import PendidikanDosen from "./pages/pendidikan/PendidikanDosen";
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <Route path="/pkm/insert" element={<AddPkm />} />
         <Route path="/pkm/edit/:id" element={<EditPkm />} />
         <Route path="/pendidikan/" element={<Pendidikan />} />
+        <Route path="/pendidikan/:id" element={<PendidikanDosen />} />
         <Route path="/pendidikan/insert" element={<AddPendidikan />} />
         <Route path="/pkm/edit/" element={<EditPkm />} />
         <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
