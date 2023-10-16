@@ -33,6 +33,7 @@ import ProfilDosen from "./pages/main/ProfilDosen";
 import NavbarMain from "./components/main/NavbarMain";
 import ListDosen from "./pages/main/ListDosen";
 import DetailPenelitian from "./pages/main/DetailPenelitian";
+import AddPenelitianComponentByAdmin from "./components/penelitian/AddPenelitianComponentByAdmin";
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* <Route path="/penelitian/admin/insert" element={<AddPenelitianComponentByAdmin/>} /> */}
 
         <Route path="/" element={<ListDosen />} />
         <Route path="/home" element={<ListDosen />} />
@@ -65,6 +68,8 @@ function App() {
         <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
         <Route path="/profile/:id" element={<ProfilDosen />} />
         <Route path="/detail_penelitian/:id" element={<DetailPenelitian />} />
+       
+        
 
 
 
