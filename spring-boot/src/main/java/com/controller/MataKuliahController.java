@@ -37,15 +37,15 @@ public class MataKuliahController {
 
 	}
 
-	// @GetMapping("/matakuliah/dosen/{id_dosen}")
-	// public ResponseEntity<List<MataKuliah>> getMataKuliahbyDosenId(@PathVariable("id_dosen") String id_dosen) {
-	//     List<MataKuliah> matakuliah = mataKuliahService.getMataKuliahbyDosenId(id_dosen);
-	//     if (matakuliah != null) {
-	//         return ResponseEntity.ok(matakuliah);
-	//     } else {
-	//         return ResponseEntity.notFound().build();
-	//     }
-	// }
+	@GetMapping("/matakuliah/dosen/{id_dosen}")
+	public ResponseEntity<List<MataKuliah>> getMataKuliahbyDosenId(@PathVariable("id_dosen") String id_dosen) {
+	    List<MataKuliah> matakuliah = mataKuliahService.getMataKuliahbyDosenId(id_dosen);
+	    if (matakuliah != null) {
+	        return ResponseEntity.ok(matakuliah);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
 
 	@PostMapping("/matakuliah/insert/{id_dosen}")
 	public String addMataKuliah(@PathVariable("id_dosen") String id_dosen, @RequestBody MataKuliah mataKuliahRequest) {
