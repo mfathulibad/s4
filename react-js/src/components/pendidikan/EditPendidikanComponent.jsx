@@ -9,7 +9,7 @@ function EditRiwayatPendidikanComponent({ id }) {
 
   const [formData, setFormData] = useState({
     id_riwayat_pendidikan:``,
-    jenjang:``,
+    jenjang_pendidikan:``,
     institusi:``,
     tahun_lulus:``,
     negara:``
@@ -76,7 +76,7 @@ function EditRiwayatPendidikanComponent({ id }) {
                 type="text"
                 className="form-control"
                 name="jenjang"
-                value={formData.jenjang}
+                value={formData.jenjang_pendidikan}
                 onChange={handleInputChange}
               />
             </div>
@@ -95,7 +95,7 @@ function EditRiwayatPendidikanComponent({ id }) {
               <input
                 type="number"
                 className="form-control"
-                name="kode_kelas"
+                name="tahun_lulus"
                 value={formData.tahun_lulus}
                 onChange={handleInputChange}
               />
