@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavbarMain() {
   return (
@@ -10,15 +11,15 @@ function NavbarMain() {
       <div className="container">
         <div className="row align-items-center position-relative">
           <div className="site-logo">
-            <img
+            {/* <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
               alt="avatar"
               className="rounded-circle img-fluid"
               style={{ width: 70, marginRight: '10px' }}
-            />
-            <a href="index.html" className="text-black">
+            /> */}
+            <Link to="/"  className="text-black">
               <span style={{ color: "#FFFFFF" }}>Brand</span>
-            </a>
+            </Link>
           </div>
 
           <div className="col-12">
@@ -28,36 +29,37 @@ function NavbarMain() {
             >
               <ul className="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                 <li>
-                  <a href="#home-section" className="nav-link">
+                  <Link to={"/"} className="nav-link">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#services-section" className="nav-link">
-                    Services
-                  </a>
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
                 </li>
-                <li>
+
+                {/* <li>
                   <a href="#why-us-section" className="nav-link">
                     Why Us
                   </a>
-                </li>
+                </li> */}
 
-                <li>
+                {/* <li>
                   <a href="#testimonials-section" className="nav-link">
                     Testimonials
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="#blog-section" className="nav-link">
                     Blog
                   </a>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <a href="#contact-section" className="nav-link">
                     Contact
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

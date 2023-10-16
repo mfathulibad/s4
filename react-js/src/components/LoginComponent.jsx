@@ -109,6 +109,7 @@ function LoginComponent() {
                         >
                           Sign in
                         </button>
+                        <Link className="btn btn-danger btn-block" to="/">Cancel</Link>
                       </div>
                     </form>
                   </div>
