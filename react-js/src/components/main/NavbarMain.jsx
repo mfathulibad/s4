@@ -17,7 +17,10 @@ function NavbarMain() {
               style={{ width: 70, marginRight: '10px' }}
             />
             <a href="index.html" className="text-black">
-              <span style={{ color: "#FFFFFF" }}>Brand</span>
+              <span style={{ color: "#FFFFFF" }}>Politeknik Negeri Bandung
+              <h5>Jurusan Teknik Komputer dan Informatika</h5>
+              </span>
+              
             </a>
           </div>
 
@@ -34,10 +37,10 @@ function NavbarMain() {
                 </li>
                 <li>
                   <a href="#services-section" className="nav-link">
-                    Services
+                    Profile
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#why-us-section" className="nav-link">
                     Why Us
                   </a>
@@ -47,7 +50,7 @@ function NavbarMain() {
                   <a href="#testimonials-section" className="nav-link">
                     Testimonials
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a href="#blog-section" className="nav-link">
                     Blog

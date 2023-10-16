@@ -72,4 +72,13 @@ public class MataKuliahController {
 	public List<MataKuliah> searchMatakuliahByMatkul(@RequestParam String matkul) {
 	    return mataKuliahService.searchMataKuliahByMatkul(matkul);
 	}
+
+	//add penelitian untuk admin
+	@PostMapping("/matakuliah/admin/insert")
+	public String addMataKuliahByAdmin(@RequestBody MataKuliah mataKuliahRequest){
+		// String judul_penelitian = mataKuliahRequest.getJudul_penelitian();
+		String newMataKuliahId = mataKuliahService.addMataKuliahByAdmin(mataKuliahRequest);
+		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
+		return newMataKuliahId;
+	}
 }
