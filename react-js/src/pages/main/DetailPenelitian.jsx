@@ -26,13 +26,14 @@ function DetailPenelitian() {
         const response = await axios.get(
           `http://localhost:8082/riwayat_penelitian/authors/${id}`
         );
-        setPenelitian(response.data);
+        setAuthor(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
 
-    //fetchAuthor();
+    fetchAuthor();
     fetchData();
   }, []);
 
@@ -109,7 +110,12 @@ function DetailPenelitian() {
                           </div>
                           <div className="col-sm-8">
                             <p className="text-dark mb-0">
-                              {penelitian.judul_penelitian}
+                              {author.map((dosen, index) => (
+                                <span key={index}>
+                                  <Link to={"/profile/" + dosen.id_dosen} target="_blank">{dosen.nama_lengkap}</Link>
+                                  {index !== author.length - 1 && ", "}
+                                </span>
+                              ))}
                             </p>
                           </div>
                         </div>
