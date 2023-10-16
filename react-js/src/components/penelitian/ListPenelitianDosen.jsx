@@ -19,21 +19,28 @@ const ListPenelitianDosen = () => {
         setData(result.data);
     };
 
-    async function handleDelete(id_riwayat_penelitian) {
+    async function handleDelete(idPenelitian) {
+        const response = await axios.get(`http://localhost:8082/riwayat_penelitian/${userAuth}/${idPenelitian}`);
+        const idRiwayatPenelitian = response.data;
+        console.log(idRiwayatPenelitian);
         const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
         if (!confirmDelete) {
-          return;
+            return;
         }
+    
         try {
-          // Kirim permintaan DELETE ke server dengan parameter id_penelitian
-          await axios.delete(`http://localhost:8082/penelitian/riwayat/delete?id_riwayat_penelitian=${id_riwayat_penelitian}`);
-          // Perbarui tampilan dengan menghapus entitas dari state lokal
-          setData((prevData) => prevData.filter((riwayat_penelitian) => riwayat_penelitian.id_riwayat_penelitian !== id_riwayat_penelitian));
-          alert('Data penelitian berhasil dihapus');
+            // Kirim permintaan DELETE ke server dengan parameter id_riwayat_penelitian
+            await axios.delete(`http://localhost:8082/penelitian/riwayat/delete?id_riwayat_penelitian=${idRiwayatPenelitian}`);
+            // Perbarui tampilan dengan menghapus entitas dari state lokal
+            setData((prevData) => prevData.filter((penelitian) => penelitian.id_penelitian!== idPenelitian));
+            alert('Data penelitian berhasil dihapus');
         } catch (error) {
-          console.error('Error deleting data:', error);
+            console.error('Error deleting data:', error);
         }
-      }
+    }
+    
+
+
     return (
         <div className="container">
             <h1 className="text-center p-3 m-3">Daftar Penelitian</h1>
@@ -60,7 +67,7 @@ const ListPenelitianDosen = () => {
                                 </tr>
                             </thead>
                             <tbody> 
-                                {data.map((penelitian,riwayat_penelitian)=>(
+                                {data.map((penelitian)=>(
                                     <tr key={penelitian.id_penelitian}>
                                         <td>{penelitian.id_penelitian}</td>
                                         <td>{penelitian.judul_penelitian}</td>
@@ -82,7 +89,7 @@ const ListPenelitianDosen = () => {
                                                 </Link>
                                                 <button
                                                     className="btn btn-danger ml-2"
-                                                    onClick={() => handleDelete(riwayat_penelitian.id_riwayat_penelitian)}>
+                                                    onClick={() => handleDelete(penelitian.id_penelitian)}>
                                                     <FaTrash />
                                                 </button>
                                             </div>

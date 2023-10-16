@@ -33,4 +33,8 @@ public class RiwayatPendidikanService {
 		riwayatPendidikanRepository.save(riwayatPendidikanRequest);
 	}
 
+	public List<RiwayatPendidikan> getRiwayatPendidikanByDosenId(String idDosen) {
+		return riwayatPendidikanRepository.getRiwayatPendidikanByDosenId(idDosen);
+		}
+
 }

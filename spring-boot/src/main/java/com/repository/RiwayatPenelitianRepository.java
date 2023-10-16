@@ -15,4 +15,10 @@ public interface RiwayatPenelitianRepository extends JpaRepository<RiwayatPeneli
            "INNER JOIN RiwayatPenelitian rp ON d.id_dosen = rp.id_dosen " +
            "WHERE rp.id_penelitian = :idPenelitian")
     List<Dosen> findDosenIdsByPenelitianId(@Param("idPenelitian") String idPenelitian);
+    
+    @Query("SELECT rp.id_riwayat_penelitian FROM RiwayatPenelitian rp " + 
+            "WHERE rp.id_dosen = :idDosen AND rp.id_penelitian = :idPenelitian")
+    String findIdRiwayatPenelitianByDosenAndPenelitian(
+             @Param("idDosen") String idDosen,
+             @Param("idPenelitian") String idPenelitian);
 }
