@@ -19,16 +19,16 @@ const ListPenelitianDosen = () => {
         setData(result.data);
     };
 
-    async function handleDelete(id_penelitian) {
+    async function handleDelete(id_riwayat_penelitian) {
         const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
         if (!confirmDelete) {
           return;
         }
         try {
           // Kirim permintaan DELETE ke server dengan parameter id_penelitian
-          await axios.delete(`http://localhost:8082/penelitian/delete?id_penelitian=${id_penelitian}`);
+          await axios.delete(`http://localhost:8082/penelitian/riwayat/delete?id_riwayat_penelitian=${id_riwayat_penelitian}`);
           // Perbarui tampilan dengan menghapus entitas dari state lokal
-          setData((prevData) => prevData.filter((penelitian) => penelitian.id_penelitian !== id_penelitian));
+          setData((prevData) => prevData.filter((riwayat_penelitian) => riwayat_penelitian.id_riwayat_penelitian !== id_riwayat_penelitian));
           alert('Data penelitian berhasil dihapus');
         } catch (error) {
           console.error('Error deleting data:', error);
@@ -60,7 +60,7 @@ const ListPenelitianDosen = () => {
                                 </tr>
                             </thead>
                             <tbody> 
-                                {data.map((penelitian)=>(
+                                {data.map((penelitian,riwayat_penelitian)=>(
                                     <tr key={penelitian.id_penelitian}>
                                         <td>{penelitian.id_penelitian}</td>
                                         <td>{penelitian.judul_penelitian}</td>
@@ -82,7 +82,7 @@ const ListPenelitianDosen = () => {
                                                 </Link>
                                                 <button
                                                     className="btn btn-danger ml-2"
-                                                    onClick={() => handleDelete(penelitian.id_penelitian)}>
+                                                    onClick={() => handleDelete(riwayat_penelitian.id_riwayat_penelitian)}>
                                                     <FaTrash />
                                                 </button>
                                             </div>
