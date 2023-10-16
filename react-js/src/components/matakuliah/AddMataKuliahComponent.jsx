@@ -42,6 +42,38 @@ const AddMataKuliahComponent = () => {
         // Handle error
       });
   };
+
+  const [searchResult, setSearchResult] = useState([]); // Menyimpan hasil pencarian
+  const [searchKeyword, setSearchKeyword] = useState(""); // Menyimpan kata kunci pencarian
+
+  useEffect(() => {
+    // Jika searchKeyword berubah, kirim permintaan pencarian ke server
+    if (searchKeyword) {
+      axios
+        .get(`http://localhost:8082/matakuliah/search?matkul=${searchKeyword}`)
+        .then((response) => {
+          setSearchResult(response.data);
+        })
+        .catch((error) => {
+          console.error("Error searching: ", error);
+        });
+    } else {
+      // Jika searchKeyword kosong, kosongkan hasil pencarian
+      setSearchResult([]);
+    }
+  }, [searchKeyword]);
+
+  const selectSearchResult = (result) => {
+    setFormData({
+      ...formData,
+      id_mata_kuliah: result.id_mata_kuliah,
+      nama_mata_kuliah: result.nama_mata_kuliah,
+      semester: result.semester,
+      kode_kelas: result.kode_kelas,
+      perguruan_tinggi: result.perguruan_tinggi,
+    });
+    setSearchResult([]); // Kosongkan hasil pencarian
+  };
   
   
 
@@ -59,9 +91,23 @@ const AddMataKuliahComponent = () => {
               placeholder='' 
               value={formData.nama_mata_kuliah}
               onChange={handleChange}
+              onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
               className="form-control" // Added col-md-8
-              required
+           
             />
+            {searchResult.length > 0 && (
+                <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto"}}>
+                  {searchResult.map((result) => (
+                    <button
+                      key={result.id_mata_kuliah}
+                      className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0" 
+                      onClick={() => selectSearchResult(result)}
+                    >
+                      {result.nama_mata_kuliah}
+                    </button>
+                  ))}
+                </div>
+              )}
           </div>
           <div className="mb-3">
             <label htmlFor="semester" className="form-label">Semester</label>
@@ -75,6 +121,7 @@ const AddMataKuliahComponent = () => {
               className="form-control " // Added col-md-8
               required
             />
+            
           </div>
           <div className="mb-3">
             <label htmlFor="kode_kelas" className="form-label">Kode Kelas</label>

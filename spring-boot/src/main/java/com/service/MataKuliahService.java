@@ -9,6 +9,7 @@ import com.repository.RiwayatPengajaranRepository;
 import java.util.List;
 
 import com.model.MataKuliah;
+import com.model.Penelitian;
 import com.model.RiwayatPengajaran;
 
 @Service
@@ -58,4 +59,9 @@ public class MataKuliahService {
 	public void updateMataKuliah(MataKuliah mataKuliahRequest) {
 		mataKuliahRepository.save(mataKuliahRequest);
 	}
+
+	public List<MataKuliah> searchMataKuliahByMatkul(String matkul) {
+	    return mataKuliahRepository.searchByMatkul(matkul);
+	}
+
 }
