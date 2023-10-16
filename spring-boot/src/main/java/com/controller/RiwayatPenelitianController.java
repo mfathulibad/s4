@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.model.Dosen;
-
+import com.model.Penelitian;
 import com.service.RiwayatPenelitianService;
 
 import java.util.List;
@@ -33,4 +33,15 @@ public class RiwayatPenelitianController {
 		return ResponseEntity.ok("Penelitian dengan judul " + id_riwayatpenelitian + " berhasil dihapus");
 	}
     
+    @GetMapping("/riwayat_penelitian/{idDosen}/{idPenelitian}")
+    public ResponseEntity<String> getIdRiwayatPenelitianByDosenAndPenelitian(
+            @PathVariable("idDosen") String idDosen,
+            @PathVariable("idPenelitian") String idPenelitian) {
+        String idRiwayatPenelitian = riwayatPenelitianService.getIdRiwayatPenelitianByDosenAndPenelitian(idDosen, idPenelitian);
+        if (idRiwayatPenelitian != null) {
+            return ResponseEntity.ok(idRiwayatPenelitian);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

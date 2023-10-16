@@ -2,6 +2,7 @@ package com.service;
 
 import com.model.RiwayatPenelitian;
 import com.model.Dosen;
+import com.model.Penelitian;
 import com.repository.RiwayatPenelitianRepository;
 
 import java.util.List;
@@ -26,4 +27,9 @@ public class RiwayatPenelitianService {
     public RiwayatPenelitian getPenelitianById(String id_penelitian) {
 		return riwayatPenelitianRepository.getById(id_penelitian);
 	}
+    
+    public String getIdRiwayatPenelitianByDosenAndPenelitian(String idDosen, String idPenelitian) {
+        return riwayatPenelitianRepository.findIdRiwayatPenelitianByDosenAndPenelitian(idDosen, idPenelitian);
+    }
+    
 }
