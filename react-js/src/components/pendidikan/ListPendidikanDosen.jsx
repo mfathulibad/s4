@@ -16,8 +16,7 @@ export default function ListPendidikanDosen() {
     },[]);
 
     const loadRiwayatPendidikan = async()=>{
-        // const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/${userAuth}`);
-        const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/DSN001`);
+        const result = await axios.get(`http://localhost:8082/riwayatpendidikan/dosen/${userAuth}`);
         setData(result.data);
         console.log(result.data)
     };
@@ -67,7 +66,7 @@ export default function ListPendidikanDosen() {
                           <td>{pendidikan.negara}</td>
                           <td>
                             <div className="d-flex justify-content-center">
-                              <Link to={{ pathname: `/matakuliah/edit/${matakuliah.id_mata_kuliah}` }}>
+                              {/* <Link to={{ pathname: `/matakuliah/edit/${matakuliah.id_mata_kuliah}` }}>
                                 <button className="btn btn-success">
                                   <FaEdit />
                                 </button>
@@ -76,7 +75,7 @@ export default function ListPendidikanDosen() {
                                 className="btn btn-danger ml-2"
                                 onClick={() => handleDelete(matakuliah.id_mata_kuliah)}>
                                 <FaTrash />
-                              </button>
+                              </button> */}
                             </div>
                           </td>
                         </tr>

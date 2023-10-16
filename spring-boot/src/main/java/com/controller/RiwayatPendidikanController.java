@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.service.RiwayatPendidikanService;
+import com.model.MataKuliah;
 import com.model.RiwayatPendidikan;
 
 @RestController
@@ -49,6 +51,7 @@ public class RiwayatPendidikanController {
 		riwayatPendidikanService.addRiwayatPendidikan(riwayatPendidikanRequest);
 		return ResponseEntity.ok("Institute dengan nama " + nama_institute + " berhasil ditambahkan");
 	}
+
 	
 	@DeleteMapping("/riwayatpendidikan/delete")
 	public ResponseEntity<String> deleteRiwayatPendidikan(@RequestParam String id_riwayat_pendidikan){
