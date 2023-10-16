@@ -3,11 +3,12 @@ import axios from "axios";
 import NavbarMain from "../../components/main/NavbarMain";
 import { Nav, Tab } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
-import { MDBDataTable } from "mdbreact";
+import { MDBDataTable, MDBDataTableV5 } from "mdbreact";
 
 function ProfilDosen() {
   const [dosen, setDosen] = useState({});
   const [pkm, setPkm] = useState([]);
+  const [penelitian, setPenelitian] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -32,6 +33,18 @@ function ProfilDosen() {
       }
     }
 
+    async function fetchDataPenelitian() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/penelitian/dosen/${id}`
+        );
+        setPenelitian(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchDataPenelitian();
     fetchDataPkm();
     fetchData();
   }, []);
@@ -58,7 +71,33 @@ function ProfilDosen() {
     return {
       judul_pengabdian: data.judul_pengabdian,
       bidang_pengabdian: data.bidang_pengabdian,
-      url: <Link to={data.url} target="_blank" rel="noopener noreferrer">{data.url}</Link>,
+      url: (
+        <Link to={data.url} target="_blank" rel="noopener noreferrer">
+          {data.url}
+        </Link>
+      ),
+    };
+  });
+
+  const columnsPenelitian = [
+    {
+      label: "Judul Penelitian",
+      field: "judul_penelitian",
+      sort: "asc",
+    },
+  ];
+
+  const rowsPenelitian = penelitian.map((data) => {
+    return {
+      judul_penelitian: (
+        <Link
+          to={data.judul_penelitian}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {data.judul_penelitian}
+        </Link>
+      ),
     };
   });
 
@@ -212,7 +251,7 @@ function ProfilDosen() {
                               columns: columnsPkm, // Kosongkan array columns agar label kolom tidak ditampilkan
                               rows: rowsPkm, // Masukkan data mentah ke dalam array rows
                             }}
-                            searching
+                            searching={false}
                             entries={10}
                             entriesOptions={[10, 20, 50]}
                             noBottomColumns
@@ -222,7 +261,22 @@ function ProfilDosen() {
                         </div>
                       </Tab.Pane>
                       <Tab.Pane eventKey="tab3">
-                        <div>Tab 3 content</div>
+                        <div
+                          style={{ borderRadius: "10px", overflow: "hidden" }}
+                        >
+                          <MDBDataTable
+                            data={{
+                              columns: columnsPenelitian, // Kosongkan array columns agar label kolom tidak ditampilkan
+                              rows: rowsPenelitian, // Masukkan data mentah ke dalam array rows
+                            }}
+                            searching={false}
+                            entries={10}
+                            entriesOptions={[10, 20, 50]}
+                            noBottomColumns
+                            hover
+                            displayEntries={false}
+                          />
+                        </div>
                       </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>
