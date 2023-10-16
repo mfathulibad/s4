@@ -49,10 +49,9 @@ public class MataKuliahController {
 
 	@PostMapping("/matakuliah/insert/{id_dosen}")
 	public String addMataKuliah(@PathVariable("id_dosen") String id_dosen, @RequestBody MataKuliah mataKuliahRequest) {
-    	// String judul_penelitian = penelitianRequest.getJudul_penelitian();
+    	
 		String newMatakuliahId = mataKuliahService.addMataKuliah(mataKuliahRequest, id_dosen);
 
-		// return ResponseEntity.ok("Penelitian dengan judul " + judul_penelitian + " berhasil ditambahkan");
 		return newMatakuliahId;
 	}
 	

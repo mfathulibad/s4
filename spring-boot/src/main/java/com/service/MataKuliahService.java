@@ -9,7 +9,6 @@ import com.repository.RiwayatPengajaranRepository;
 import java.util.List;
 
 import com.model.MataKuliah;
-import com.model.Penelitian;
 import com.model.RiwayatPengajaran;
 
 @Service
