@@ -50,7 +50,31 @@ function ProfilDosen() {
         const response = await axios.get(
           `http://localhost:8082/matakuliah/dosen/${id}`
         );
-        setPengajaran(response.data);
+
+        const sortedData = response.data.sort((a, b) => {
+          const semesterA = splitSemester(a.semester);
+          const semesterB = splitSemester(b.semester);
+
+          if (semesterA.Tahun !== semesterB.Tahun) {
+            return semesterA.Tahun - semesterB.Tahun;
+          }
+
+          // Jika tahunnya sama, maka urutkan berdasarkan semester
+          if (
+            semesterA.Semester === "Ganjil" &&
+            semesterB.Semester === "Genap"
+          ) {
+            return -1;
+          }
+          if (
+            semesterA.Semester === "Genap" &&
+            semesterB.Semester === "Ganjil"
+          ) {
+            return 1;
+          }
+          return 0;
+        });
+        setPengajaran(sortedData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -141,6 +165,15 @@ function ProfilDosen() {
       sort: "asc",
     },
   ];
+
+  // Fungsi pemisah untuk memisahkan tahun dan semester
+  const splitSemester = (semester) => {
+    const parts = semester.split(" ");
+    return {
+      Tahun: parseInt(parts[0]),
+      Semester: parts[1],
+    };
+  };
 
   const rowsPengajaran = pengajaran.map((data) => {
     return {
