@@ -11,13 +11,12 @@ function NavbarMain() {
         <div className="row align-items-center position-relative">
           <div className="site-logo">
             <img
-              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+              src="/img/polban.png"
               alt="avatar"
-              className="rounded-circle img-fluid"
               style={{ width: 70, marginRight: '10px' }}
             />
             <a href="index.html" className="text-black">
-              <span style={{ color: "#FFFFFF" }}>Brand</span>
+              <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{}}>Politeknik Negeri Bandung</span>
             </a>
           </div>
 

@@ -27,27 +27,25 @@ export default function ListPkm() {
     }
   };
 
-  async function handleDelete(id_pengabdian) {
-    const confirmDelete = window.confirm(
-      "Apakah Anda yakin ingin menghapus data ini?"
-    );
+  async function handleDelete(idPengabdian) {
+    const response = await axios.get(`http://localhost:8082/riwayat_pkm/${userAuth}/${idPengabdian}`);
+    const idRiwayatPkm = response.data;
+    console.log(idRiwayatPkm);
+    const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
     if (!confirmDelete) {
-      return;
+        return;
     }
+
     try {
-      // Kirim permintaan DELETE ke server dengan parameter id_dosen
-      await axios.delete(
-        `http://localhost:8082/pkm/delete?id_pengabdian=${id_pengabdian}`
-      );
-      // Perbarui tampilan dengan menghapus entitas dari state lokal
-      setPkm((prevData) =>
-        prevData.filter((pkm) => pkm.id_pengabdian !== id_pengabdian)
-      );
-      alert("Data PKM berhasil dihapus");
+        // Kirim permintaan DELETE ke server dengan parameter id_riwayat_penelitian
+        await axios.delete(`http://localhost:8082/pkm/riwayat/delete?id_riwayat_pkm=${idRiwayatPkm}`);
+        // Perbarui tampilan dengan menghapus entitas dari state lokal
+        setData((prevData) => prevData.filter((pkm) => pkm.id_pengabdian!== idPengabdian));
+        alert('Data penelitian berhasil dihapus');
     } catch (error) {
-      console.error("Error deleting PKM data:", error);
+        console.error('Error deleting data:', error);
     }
-  }
+}
 
   return (
     <div className='container'>
