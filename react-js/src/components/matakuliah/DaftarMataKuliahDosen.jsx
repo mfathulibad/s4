@@ -18,6 +18,7 @@ export default function DaftarMataKuliahDosen() {
     const loadMataKuliah=async()=>{
         const result = await axios.get(`http://localhost:8082/matakuliah/dosen/${userAuth}`);
         setData(result.data);
+        
     };
 
     async function handleDelete(id_mata_kuliah) {
