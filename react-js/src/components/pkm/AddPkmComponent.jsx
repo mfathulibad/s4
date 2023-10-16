@@ -111,7 +111,7 @@ const AddPkmComponent = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="date">Tanggal Pengabdian</label>
+          <label htmlFor="date" className="form-label">Tanggal Pengabdian</label>
           <input
             type="date"
             name="tgl_pengabdian"
@@ -123,11 +123,11 @@ const AddPkmComponent = () => {
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Link PKM</label>
+          <label className="form-label">URL PKM</label>
           <input
             type="url"
             name="url"
-            placeholder="masukan link"
+            placeholder="Masukkan URL PKM"
             value={pkm.url}
             onChange={handleChange}
             className="form-control"
