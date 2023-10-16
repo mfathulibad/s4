@@ -20,6 +20,18 @@ function DetailPenelitian() {
       }
     }
 
+    async function fetchAuthor() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/penelitian/${id}`
+        );
+        setPenelitian(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    //fetchAuthor();
     fetchData();
   }, []);
 
@@ -82,6 +94,17 @@ function DetailPenelitian() {
                         <div className="row">
                           <div className="col-sm-4">
                             <p className="mb-0">Judul Penelitian</p>
+                          </div>
+                          <div className="col-sm-8">
+                            <p className="text-dark mb-0">
+                              {penelitian.judul_penelitian}
+                            </p>
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+                          <div className="col-sm-4">
+                            <p className="mb-0">Author</p>
                           </div>
                           <div className="col-sm-8">
                             <p className="text-dark mb-0">
