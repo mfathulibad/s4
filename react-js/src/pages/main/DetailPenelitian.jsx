@@ -120,7 +120,6 @@ function DetailPenelitian() {
                             <Link to={penelitian.url}>{penelitian.url}</Link>
                           </div>
                         </div>
-                        <hr />
                       </div>
                     </div>
                   </div>
