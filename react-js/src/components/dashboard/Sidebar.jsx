@@ -93,15 +93,14 @@ function Sidebar() {
               aria-labelledby="headingPkm"
               data-parent="#accordionSidebar"
             >
-              {/* BELUM */}
-              {/* <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pkm/${userAuth}` }} className="collapse-item">
+              <div className="bg-white py-2 collapse-inner rounded">
+                <Link to="/pkm" className="collapse-item">
                     Daftar PKM
                 </Link>
-                <Link to="/pkm/insert" className="collapse-item">
+                <Link to="/pkm/admin/insert" className="collapse-item">
                     Tambah PKM
                 </Link>
-              </div> */}
+              </div>
             </div>
           </li>
         ) : (
@@ -154,14 +153,14 @@ function Sidebar() {
               aria-labelledby="headingPengajaran"
               data-parent="#accordionSidebar"
             >
-              {/* <div className="bg-white py-2 collapse-inner rounded">
-              <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="collapse-item">
+              <div className="bg-white py-2 collapse-inner rounded">
+              <Link to="/matakuliah" className="collapse-item">
                     Daftar Mata Kuliah
                 </Link>
-                <Link to="/matakuliah/insert" className="collapse-item">
+                <Link to="/matakuliah/admin/insert" className="collapse-item">
                     Tambah Mata Kuliah
                 </Link>
-              </div> */}
+              </div>
             </div>
           </li>
         ) : (
