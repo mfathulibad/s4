@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from "js-cookie";
 
@@ -14,8 +13,8 @@ const AddMataKuliahComponent = () => {
     perguruan_tinggi: '',
   });
 
-  // State untuk menyimpan daftar mata kuliah
-  const [daftarMataKuliah, setDaftarMataKuliah] = useState([]);
+  // // State untuk menyimpan daftar mata kuliah
+  // const [daftarMataKuliah, setDaftarMataKuliah] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,14 +25,14 @@ const AddMataKuliahComponent = () => {
   };
 
   const userAuth = Cookies.get("userAuth");
+
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    console.log(formData.id_mata_kuliah);
+    // console.log(formData.id_mata_kuliah);
   
     // Kirim data ke server
-    axios
-      .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
+    axios.post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
       })
@@ -81,19 +80,17 @@ const AddMataKuliahComponent = () => {
     <div className="container">
         <h2 className="mt-4">Add Mata Kuliah</h2>
         <form onSubmit={handleSubmit}>
-          
           <div className="mb-3">
-            <label htmlFor="nama_mata_kuliah" className="form-label">Nama Mata Kuliah</label>
+            <label htmlFor="namaMatkul" className="form-label">Nama Mata Kuliah</label>
             <input
               type="text"
+              className="form-control" 
               id="nama_mata_kuliah"
               name="nama_mata_kuliah"
               placeholder='' 
               value={formData.nama_mata_kuliah}
               onChange={handleChange}
               onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
-              className="form-control" // Added col-md-8
-              required
 
             />
             {searchResult.length > 0 && (

@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.model.MataKuliah;
 import com.model.Penelitian;
+import com.model.Pkm;
+import com.model.RiwayatPengajaran;
 import com.model.RiwayatPengajaran;
 
 @Service
@@ -32,24 +34,35 @@ public class MataKuliahService {
 	}
 
 	public String addMataKuliah(MataKuliah mataKuliahRequest, String id_dosen) {
-		MataKuliah newMataKuliah = mataKuliahRepository.save(mataKuliahRequest);
-
-         // Mengambil ID Penelitian yang baru saja ditambahkan
-         String newMataKuliahId = newMataKuliah.getId_mata_kuliah();
-
-         // Membuat objek RiwayatPenelitian
-         RiwayatPengajaran riwayatPengajaran = new RiwayatPengajaran();
-         riwayatPengajaran.setId_mata_kuliah(newMataKuliahId);
-         riwayatPengajaran.setId_dosen(id_dosen);
-
-         // Melakukan operasi penyisipan data ke dalam tabel 'riwayat_penelitian'
-         riwayatPengajaranRepository.save(riwayatPengajaran);
-
-         // Mengembalikan ID penelitian yang baru ditambahkan
-         return newMataKuliahId;
-
-		//System.out.println(mataKuliahRequest.getId_mata_kuliah());
-		//mataKuliahRepository.save(mataKuliahRequest);
+		String nama_mata_kuliah = mataKuliahRequest.getNama_mata_kuliah();
+	    
+	    // Cari ID Penelitian berdasarkan judul
+	    List<String> existingIds = mataKuliahRepository.findIdByMatkul(nama_mata_kuliah);
+	    
+	    if (existingIds.isEmpty()) {
+	        // Penelitian dengan judul yang sama belum ada, tambahkan penelitian baru
+	        MataKuliah newMatkul = mataKuliahRepository.save(mataKuliahRequest);
+	        String newMatkulId = newMatkul.getId_mata_kuliah();
+	        
+	        // Tambahkan riwayat penelitian
+	        RiwayatPengajaran RiwayatPengajaran = new RiwayatPengajaran();
+	        RiwayatPengajaran.setId_mata_kuliah(newMatkulId);
+	        RiwayatPengajaran.setId_dosen(id_dosen);
+	        riwayatPengajaranRepository.save(RiwayatPengajaran);
+	        
+	        return newMatkulId;
+	    } else {
+	        // Gunakan ID penelitian yang sudah ada
+	        String existingId = existingIds.get(0);
+	        
+	        // Tambahkan riwayat penelitian
+	        RiwayatPengajaran RiwayatPengajaran = new RiwayatPengajaran();
+	        RiwayatPengajaran.setId_mata_kuliah(existingId);
+	        RiwayatPengajaran.setId_dosen(id_dosen);
+	        riwayatPengajaranRepository.save(RiwayatPengajaran);
+	        
+	        return existingId;
+		}
 	}
 
 	// public String addMataKuliah(MataKuliah mataKuliahRequest, String id_dosen) {

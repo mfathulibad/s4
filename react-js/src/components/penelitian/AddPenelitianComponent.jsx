@@ -56,7 +56,7 @@ export default function AddPenelitianComponent() {
         console.error("Error uploading file: ", error);
       });
 
-     navigate("/");
+     navigate("/dosen");
   };
 
   const [searchResult, setSearchResult] = useState([]); // Menyimpan hasil pencarian
@@ -181,7 +181,7 @@ export default function AddPenelitianComponent() {
             </div>
 
             <button type="submit" className="btn btn-primary">Submit</button>
-            <Link className="btn btn-danger mx-2" to="/">Cancel</Link>
+            <Link className="btn btn-danger mx-2" to={{ pathname: `/penelitian/${userAuth}` }}>Cancel</Link>
           </form>
         </div>
       </div>
