@@ -1,5 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+
+const userAuth = Cookies.get("userAuth");
+
+// Fungsi logout
+const handleLogout = () => {
+  // Hapus cookie userAuth dan userRole
+  Cookies.remove("userAuth");
+  Cookies.remove("userRole");
+
+  // Tambahkan logika tambahan jika diperlukan
+
+  // Contoh perutean ke halaman login setelah logout
+  history.push("/login");
+};
 
 function NavbarMain() {
   return (
@@ -10,16 +25,20 @@ function NavbarMain() {
     >
       <div className="container">
         <div className="row align-items-center position-relative">
-          <div className="site-logo" >
+          <div className="site-logo">
             <img
               src="/img/polban.png"
               alt="avatar"
-              style={{ width: 70, marginRight: '10px' }}
+              style={{ width: 70, marginRight: "10px" }}
             />
             <a href="index.html" className="text-black">
-              <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{fontSize: 15}}>Politeknik Negeri Bandung</span>
+              <span
+                className="text-white font-size-10 text-uppercase font-weight-bold"
+                style={{ fontSize: 15 }}
+              >
+                Politeknik Negeri Bandung
+              </span>
             </a>
-
           </div>
 
           <div className="col-12">
@@ -33,7 +52,6 @@ function NavbarMain() {
                     Home
                   </Link>
                 </li>
-                
                 <li>
                   <Link to={"/login"} className="nav-link">
                     Login
