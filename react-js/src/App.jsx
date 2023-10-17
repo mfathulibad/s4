@@ -45,63 +45,40 @@ function App() {
 
     <Router>
       <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-
+        
         <Route path="/" element={<ListDosen />} />
         <Route path="/home" element={<ListDosen />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dosen" element={<Dosen />} />
-        <Route path="/dosen/insert" element={<AddDosen />} />
-        <Route path="/dosen/edit/:id" element={<EditDosen />} />
-        <Route path='/matakuliah' element ={<MataKuliah/>}/>
-        <Route path="/matakuliah/insert" element = {<AddMataKuliah/>} />
-        <Route path="/matakuliah/edit/:id" element={<EditMataKuliah />} />
-        <Route path="/penelitian" element={<Penelitian />} />
-        <Route path="/penelitian/insert" element={<AddPenelitian />} />
-        <Route path="/penelitian/edit/:id" element={<EditPenelitian />} />
-        <Route path="/pkm/:id" element={<Pkm />} />
-        <Route path="/pkm/insert" element={<AddPkm />} />
-        <Route path="/pkm/edit/:id" element={<EditPkm />} />
-        <Route path="/pendidikan/" element={<Pendidikan />} />
-        <Route path="/pendidikan/:id" element={<PendidikanDosen />} />
-        <Route path="/pendidikan/insert" element={<AddPendidikan />} />
-        <Route path="/pendidikan/edit/:id" element={<EditPendidikan />} />
-        <Route path="/pkm/edit/" element={<EditPkm />} />
-        <Route path="/penelitian/:id" element={<ListPenelitianDosen />} />
-        <Route path="/pkm" element={<ListPkm />} />
-        <Route path="/matakuliah/:id" element={<DaftarMataKuliahDosen />} />
         <Route path="/profile/:id" element={<ProfilDosen />} />
         <Route path="/detail_penelitian/:id" element={<DetailPenelitian />} />
-        <Route path="/penelitian/admin/insert" element={<AddPenelitianByAdmin/>} />
-        <Route path="/pkm/admin/insert" element={<AddPkmbyAdmin/>} />
-        <Route path="/matakuliah/admin/insert" element={<AddMataKuliahByAdmin/>} />
-       
-        
 
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/dosen" element={<ProtectedRoute><Dosen /></ProtectedRoute>} />
+        <Route path="/dosen/insert" element={<ProtectedRoute><AddDosen /></ProtectedRoute>} />
+        <Route path="/dosen/edit/:id" element={<ProtectedRoute><EditDosen /></ProtectedRoute>} />
+        <Route path='/matakuliah' element={<ProtectedRoute><MataKuliah /></ProtectedRoute>} />
+        <Route path="/matakuliah/:id" element={<ProtectedRoute><DaftarMataKuliahDosen /></ProtectedRoute>} />
+        <Route path="/matakuliah/insert" element={<ProtectedRoute><AddMataKuliah /></ProtectedRoute>} />
+        <Route path="/matakuliah/edit/:id" element={<ProtectedRoute><EditMataKuliah /></ProtectedRoute>} />
+        <Route path="/matakuliah/admin/insert" element={<ProtectedRoute><AddMataKuliahByAdmin /></ProtectedRoute>} />
+        <Route path="/penelitian" element={<ProtectedRoute><Penelitian /></ProtectedRoute>} />
+        <Route path="/penelitian/:id" element={<ProtectedRoute><ListPenelitianDosen /></ProtectedRoute>} />
+        <Route path="/penelitian/insert" element={<ProtectedRoute><AddPenelitian /></ProtectedRoute>} />
+        <Route path="/penelitian/edit/:id" element={<ProtectedRoute><EditPenelitian /></ProtectedRoute>} />
+        <Route path="/penelitian/admin/insert" element={<ProtectedRoute><AddPenelitianByAdmin /></ProtectedRoute>} />
+        <Route path="/pkm" element={<ProtectedRoute><ListPkm /></ProtectedRoute>} />
+        <Route path="/pkm/:id" element={<ProtectedRoute><Pkm /></ProtectedRoute>} />
+        <Route path="/pkm/insert" element={<ProtectedRoute><AddPkm /></ProtectedRoute>} />
+        <Route path="/pkm/edit/:id" element={<ProtectedRoute><EditPkm /></ProtectedRoute>} />
+        <Route path="/pkm/admin/insert" element={<ProtectedRoute><AddPkmbyAdmin /></ProtectedRoute>} />
+        <Route path="/pendidikan/" element={<ProtectedRoute><Pendidikan /></ProtectedRoute>} />
+        <Route path="/pendidikan/:id" element={<ProtectedRoute><PendidikanDosen /></ProtectedRoute>} />
+        <Route path="/pendidikan/insert" element={<ProtectedRoute><AddPendidikan /></ProtectedRoute>} />
+        <Route path="/pendidikan/edit/:id" element={<ProtectedRoute><EditPendidikan /></ProtectedRoute>} />
 
-
+           
       </Routes>
     </Router>
-
-    //--Protected--
-    // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/home" element={<Home />} />
-    //     <Route path="/login" element={<Login />} />
-
-    //     <Route
-    //       path="/dosen"
-    //       element={
-    //         <ProtectedRoute>
-    //           <AdminProtectedRoute>
-    //             <Dosen />
-    //           </AdminProtectedRoute>
-    //         </ProtectedRoute>
-    //       }
-    //     />
-    //   </Routes>
-    // </Router>
   );
 }
 
