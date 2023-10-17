@@ -16,7 +16,7 @@ function Dashboard() {
 
             <div className="container-fluid">
 
-              <ListDosen/>
+              <h1>Welcome To Dashboard</h1>
               
             </div>
           </div>
