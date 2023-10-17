@@ -93,15 +93,14 @@ function Sidebar() {
               aria-labelledby="headingPkm"
               data-parent="#accordionSidebar"
             >
-              {/* BELUM */}
-              {/* <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pkm/${userAuth}` }} className="collapse-item">
+              <div className="bg-white py-2 collapse-inner rounded">
+                <Link to="/pkm" className="collapse-item">
                     Daftar PKM
                 </Link>
-                <Link to="/pkm/insert" className="collapse-item">
+                <Link to="/pkm/admin/insert" className="collapse-item">
                     Tambah PKM
                 </Link>
-              </div> */}
+              </div>
             </div>
           </li>
         ) : (
