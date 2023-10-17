@@ -150,6 +150,19 @@ function DetailPenelitian() {
                             <Link to={penelitian.url}>{penelitian.url}</Link>
                           </div>
                         </div>
+                        <hr />
+                        <div className="row">
+                          <div className="col-sm-4">
+                            <p className="mb-0">File PDF</p>
+                          </div>
+                          <div className="col-sm-8">
+                            <p className="text-dark mb-0">
+                              <td style={{ maxWidth: '200px', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                <a href={`http://localhost:8082/penelitian/download-pdf/${penelitian.id_penelitian}`} target="_blank" rel="noopener noreferrer">{penelitian.path_pdf}</a>
+                              </td>
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
