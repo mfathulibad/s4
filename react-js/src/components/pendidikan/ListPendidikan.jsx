@@ -28,7 +28,7 @@ const ListPendidikan = () => {
     fetchData();
   }, []);
 
-  async function handleDelete(id_pendidikan) {
+  async function handleDelete(id_riwayat_pendidikan) {
     const confirmDelete = window.confirm(
       "Apakah Anda yakin ingin menghapus data ini?"
     );
@@ -37,12 +37,10 @@ const ListPendidikan = () => {
     }
     try {
       // Kirim permintaan DELETE ke server dengan parameter id_dosen
-      await axios.delete(
-        `http://localhost:8082/riwayatpendidikan/delete?id_dosen=${id_pendidikan}`
-      );
+      await axios.delete(`http://localhost:8082/riwayatpendidikan/delete?id_riwayat_pendidikan=${id_riwayat_pendidikan}`);
       // Perbarui tampilan dengan menghapus entitas dari state lokal
       setData((prevData) =>
-        prevData.filter((pendidikan) => pendidikan.id_dosen !== id_dosen)
+        prevData.filter((pendidikan) => pendidikan.id_riwayat_pendidikan !== id_riwayat_pendidikan)
       );
       alert("Data dosen berhasil dihapus");
     } catch (error) {
@@ -104,7 +102,7 @@ const ListPendidikan = () => {
                           </Link>
                           <button
                             className="btn btn-danger ml-2"
-                            onClick={() => handleDelete(pendidikan.id_dosen)}
+                            onClick={() => handleDelete(pendidikan.id_riwayat_pendidikan)}
                           >
                             <FaTrash />
                           </button>

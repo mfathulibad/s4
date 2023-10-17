@@ -7,7 +7,7 @@ function ProtectedRoute({ children }) {
 
   if (!userAuth) {
     // Pengguna belum login, arahkan ke halaman login
-    alert("Please Login First !")
+    alert("Silahkan Login Terlebih Dahulu !")
     return <Navigate to="/login" />;
   }
 
