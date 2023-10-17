@@ -47,7 +47,7 @@ function LoginComponent() {
 
           alert("Login Berhasil (Dosen)!");
 
-          navigate("/home");
+          navigate("/home/login");
         } else {
           alert("Login Berhasil (Admin)!");
           Cookies.set("userAuth", idUser, {
@@ -105,11 +105,11 @@ function LoginComponent() {
                       <div className="d-grid gap-2 mt-3">
                         <button
                           type="submit"
-                          className="btn btn-primary btn-block mb-4"
+                          className="btn btn-primary btn-block mb-4" 
                         >
                           Sign in
                         </button>
-                        <Link className="btn btn-danger btn-block" to="/">Cancel</Link>
+                        <Link className="btn btn-danger btn-block" to="/" >Cancel</Link>
                       </div>
                     </form>
                   </div>

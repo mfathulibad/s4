@@ -1,22 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
-
-const userAuth = Cookies.get("userAuth");
-
-// Fungsi logout
-const handleLogout = () => {
-  // Hapus cookie userAuth dan userRole
-  Cookies.remove("userAuth");
-  Cookies.remove("userRole");
-
-  // Tambahkan logika tambahan jika diperlukan
-
-  // Contoh perutean ke halaman login setelah logout
-  history.push("/login");
-};
 
 function NavbarMain() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Change this state based on user login status
+
   return (
     <header
       className="site-navbar js-sticky-header site-navbar-target"
@@ -29,15 +16,10 @@ function NavbarMain() {
             <img
               src="/img/polban.png"
               alt="avatar"
-              style={{ width: 70, marginRight: "10px" }}
+              style={{ width: 70, marginRight: '10px' }}
             />
             <a href="index.html" className="text-black">
-              <span
-                className="text-white font-size-10 text-uppercase font-weight-bold"
-                style={{ fontSize: 15 }}
-              >
-                Politeknik Negeri Bandung
-              </span>
+              <span className="text-white font-size-10 text-uppercase font-weight-bold" style={{ fontSize: 15 }}>Politeknik Negeri Bandung</span>
             </a>
           </div>
 
@@ -54,30 +36,20 @@ function NavbarMain() {
                 </li>
                 <li>
                   <Link to={"/login"} className="nav-link">
-                    Login
+                    Logout
                   </Link>
                 </li>
-
                 {/* <li>
-                  <a href="#why-us-section" className="nav-link">
-                    Why Us
-                  </a>
-                </li> */}
-
-                {/* <li>
-                  <a href="#testimonials-section" className="nav-link">
-                    Testimonials
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a href="#blog-section" className="nav-link">
-                    Blog
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a href="#contact-section" className="nav-link">
-                    Contact
-                  </a>
+                  {isLoggedIn ? (
+                    <Link to={"/logout"} className="nav-link">
+                      Logout
+                    </Link>
+                  ) : 
+                  (
+                    <Link to={"/login"} className="nav-link">
+                      Login
+                    </Link>
+                  )}
                 </li> */}
               </ul>
             </nav>
