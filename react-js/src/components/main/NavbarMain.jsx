@@ -10,7 +10,7 @@ function NavbarMain() {
     >
       <div className="container">
         <div className="row align-items-center position-relative">
-          <div className="site-logo">
+          <div className="site-logo" >
             <img
               src="/img/polban.png"
               alt="avatar"
