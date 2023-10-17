@@ -93,7 +93,8 @@ const AddMataKuliahComponent = () => {
               onChange={handleChange}
               onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
               className="form-control" // Added col-md-8
-           
+              required
+
             />
             {searchResult.length > 0 && (
                 <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto"}}>
