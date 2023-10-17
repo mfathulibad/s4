@@ -22,9 +22,9 @@ export default function DaftarMataKuliahDosen() {
     };
 
     async function handleDelete(id_mata_kuliah) {
-      const response = await axios.get(`http://localhost:8082/riwayat_pengajaran/${userAuth}/${id_mata_kuliah}`);
-      const idRiwayatPengajaran = response.data;
-      console.log(idRiwayatPengajaran);
+      // const response = await axios.get(`http://localhost:8082/riwayat_pengajaran/${userAuth}/${id_mata_kuliah}`);
+      // const idRiwayatPengajaran = response.data;
+      // console.log(idRiwayatPengajaran);
       const confirmDelete = window.confirm('Apakah Anda yakin ingin menghapus data ini?');
         if (!confirmDelete) {
           return;

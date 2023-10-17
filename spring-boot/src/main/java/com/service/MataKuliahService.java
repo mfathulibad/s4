@@ -52,6 +52,34 @@ public class MataKuliahService {
 		//mataKuliahRepository.save(mataKuliahRequest);
 	}
 
+	// public String addMataKuliah(MataKuliah mataKuliahRequest, String id_dosen) {
+	// 	// Buat ID mata kuliah yang unik berdasarkan kombinasi "namaMataKuliah" dan "semester"
+	// 	mataKuliahRequest.generateId();
+	
+	// 	// Periksa apakah mata kuliah dengan ID yang sama sudah ada dalam database
+	// 	if (mataKuliahRepository.findById(mataKuliahRequest.getId_mata_kuliah()).isPresent()) {
+	// 		// ID sudah ada, mungkin hendak menggantinya atau menolak simpanan
+	// 	}
+	
+	// 	// Simpan data mata kuliah yang telah dibuat dan ID yang telah dihasilkan
+	// 	MataKuliah newMataKuliah = mataKuliahRepository.save(mataKuliahRequest);
+	
+	// 	// Mengambil ID Mata Kuliah yang baru saja ditambahkan
+	// 	String newMataKuliahId = newMataKuliah.getId_mata_kuliah();
+	
+	// 	// Membuat objek RiwayatPenelitian
+	// 	RiwayatPengajaran riwayatPengajaran = new RiwayatPengajaran();
+	// 	riwayatPengajaran.setId_mata_kuliah(newMataKuliahId);
+	// 	riwayatPengajaran.setId_dosen(id_dosen);
+	
+	// 	// Melakukan operasi penyisipan data ke dalam tabel 'riwayat_penelitian'
+	// 	riwayatPengajaranRepository.save(riwayatPengajaran);
+	
+	// 	// Mengembalikan ID mata kuliah yang baru ditambahkan
+	// 	return newMataKuliahId;
+	// }
+	
+
 	public void deleteMataKuliah(String id_mata_kuliah) {
 		mataKuliahRepository.deleteById(id_mata_kuliah);
 	}

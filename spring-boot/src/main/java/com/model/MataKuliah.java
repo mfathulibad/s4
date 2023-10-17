@@ -60,5 +60,11 @@ public class MataKuliah {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
+
+	
+    // Buat metode untuk menghasilkan ID berdasarkan kombinasi "namaMataKuliah" dan "semester"
+    // public void generateId() {
+    //     this.id_mata_kuliah = this.nama_mata_kuliah + "_" + this.semester;
+    // }
     
 }
