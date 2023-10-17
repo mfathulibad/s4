@@ -35,7 +35,6 @@ import ListDosen from "./pages/main/ListDosen";
 import DetailPenelitian from "./pages/main/DetailPenelitian";
 import AddPenelitianComponentByAdmin from "./components/penelitian/AddPenelitianComponentByAdmin";
 import PendidikanDosen from "./pages/pendidikan/PendidikanDosen";
-import ListDosenLogin from "./pages/main/ListDosenLogin";
 
 
 function App() {
@@ -50,7 +49,6 @@ function App() {
         <Route path="/" element={<ListDosen />} />
         <Route path="/home" element={<ListDosen />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home/login" element={<ListDosenLogin />} />
         <Route path="/dosen" element={<Dosen />} />
         <Route path="/dosen/insert" element={<AddDosen />} />
         <Route path="/dosen/edit/:id" element={<EditDosen />} />
