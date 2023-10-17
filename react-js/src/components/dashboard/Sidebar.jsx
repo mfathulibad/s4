@@ -2,8 +2,10 @@ import React from "react";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
+
 function Sidebar() {
   const userAuth = Cookies.get("userAuth");
+  const userRole = Cookies.get("userRole");
 
   return (
     <>
@@ -18,9 +20,15 @@ function Sidebar() {
           <div className="sidebar-brand-icon">
             <i className="fas fa-lock"></i>
           </div>
-          <div className="sidebar-brand-text mx-3">
-            Dosen <sup>Nih</sup>
-          </div>
+          {userRole == 'admin' ? (
+            <div className="sidebar-brand-text mx-3">
+              Admin <sup>Nih</sup>
+            </div>
+          ) : (
+            <div className="sidebar-brand-text mx-3">
+              Dosen <sup>Nih</sup>
+            </div>
+          )}
         </a>
 
         <hr className="sidebar-divider my-0" />
@@ -111,10 +119,10 @@ function Sidebar() {
             data-parent="#accordionSidebar"
           >
             <div className="bg-white py-2 collapse-inner rounded">
-            <Link to="/matakuliah" className="collapse-item">
+            <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="collapse-item">
                   Daftar Mata Kuliah
               </Link>
-              <Link to="/matakuliah/admin/insert" className="collapse-item">
+              <Link to="/matakuliah/insert" className="collapse-item">
                   Tambah Mata Kuliah
               </Link>
             </div>
@@ -150,36 +158,38 @@ function Sidebar() {
           </div>
         </li>
 
-
-        <li className="nav-item">
-          <a
-            className="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapsePendidikan"
-            aria-expanded="true"
-            aria-controls="collapsePendidikan"
-          >
-            <i className="fas fa-fw fa-cog"></i>
-            <span>Riwayat Pendidikan</span>
-          </a>
-          <div
-            id="collapsePendidikan"
-            className="collapse"
-            aria-labelledby="headingPendidikan"
-            data-parent="#accordionSidebar"
-          >
-            <div className="bg-white py-2 collapse-inner rounded">
-              <Link to={{ pathname: `/pendidikan/${userAuth}` }} className="collapse-item">
-                  Daftar Pendidikan
-              </Link>
-              <Link to="/pendidikan/insert" className="collapse-item">
-                  Tambah Pendidikan
-              </Link>
+        {userRole == 'admin' ? (
+          null
+        ) : (
+          <li className="nav-item">
+            <a
+              className="nav-link collapsed"
+              href="#"
+              data-toggle="collapse"
+              data-target="#collapsePendidikan"
+              aria-expanded="true"
+              aria-controls="collapsePendidikan"
+            >
+              <i className="fas fa-fw fa-cog"></i>
+              <span>Riwayat Pendidikan</span>
+            </a>
+            <div
+              id="collapsePendidikan"
+              className="collapse"
+              aria-labelledby="headingPendidikan"
+              data-parent="#accordionSidebar"
+            >
+              <div className="bg-white py-2 collapse-inner rounded">
+                <Link to={{ pathname: `/pendidikan/${userAuth}` }} className="collapse-item">
+                    Daftar Pendidikan
+                </Link>
+                <Link to="/pendidikan/insert" className="collapse-item">
+                    Tambah Pendidikan
+                </Link>
+              </div>
             </div>
-          </div>
-        </li>
-
+          </li>
+        )}
     
         
         <hr className="sidebar-divider d-none d-md-block" />
