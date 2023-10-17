@@ -50,7 +50,6 @@ public class MataKuliahController {
 	public String addMataKuliah(@PathVariable("id_dosen") String id_dosen, @RequestBody MataKuliah mataKuliahRequest) {
     	
 		String newMatakuliahId = mataKuliahService.addMataKuliah(mataKuliahRequest, id_dosen);
-
 		return newMatakuliahId;
 	}
 	

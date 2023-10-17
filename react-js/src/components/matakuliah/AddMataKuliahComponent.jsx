@@ -29,11 +29,10 @@ const AddMataKuliahComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    console.log(formData.id_mata_kuliah);
+    // console.log(formData.id_mata_kuliah);
   
     // Kirim data ke server
-    axios
-      .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
+    axios.post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
       })
@@ -86,14 +85,13 @@ const AddMataKuliahComponent = () => {
             <label htmlFor="nama_mata_kuliah" className="form-label">Nama Mata Kuliah</label>
             <input
               type="text"
+              className="form-control" 
               id="nama_mata_kuliah"
               name="nama_mata_kuliah"
               placeholder='' 
               value={formData.nama_mata_kuliah}
               onChange={handleChange}
               onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
-              className="form-control" // Added col-md-8
-              required
 
             />
             {searchResult.length > 0 && (
