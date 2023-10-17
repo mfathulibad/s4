@@ -35,8 +35,6 @@ import ListDosen from "./pages/main/ListDosen";
 import DetailPenelitian from "./pages/main/DetailPenelitian";
 import PendidikanDosen from "./pages/pendidikan/PendidikanDosen";
 import AddPenelitianByAdmin from "./pages/penelitian/AddPenelitianByAdmin";
-import AddMataKuliahByAdmin from "./pages/matakuliah/AddMataKuliahByAdmin";
-import AddPkmbyAdmin from "./pages/pkm/AddPkmbyAdmin";
 
 
 
@@ -73,8 +71,6 @@ function App() {
         <Route path="/profile/:id" element={<ProfilDosen />} />
         <Route path="/detail_penelitian/:id" element={<DetailPenelitian />} />
         <Route path="/penelitian/admin/insert" element={<AddPenelitianByAdmin/>} />
-        <Route path="/matakuliah/admin/insert" element={<AddMataKuliahByAdmin/>} />
-        <Route path="/pkm/admin/insert" element={<AddPkmbyAdmin/>} />
        
         
 

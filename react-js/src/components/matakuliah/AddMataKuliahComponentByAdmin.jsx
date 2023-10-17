@@ -33,7 +33,7 @@ const AddMataKuliahComponent = () => {
   
     // Kirim data ke server
     axios
-      .post(`http://localhost:8082/matakuliah/admin/insert/${userAuth}`, formData)
+      .post(`http://localhost:8082/matakuliah/admin/insert`, formData)
       .then((response) => {
         console.log(response.data);
       })
