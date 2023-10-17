@@ -54,6 +54,16 @@ function NavbarMain() {
                 </li>
 
                 {userAuth == null ? (
+                  null
+                ) : (
+                  <li>
+                    <Link to="/dashboard" className="nav-link">
+                      Dashboard
+                    </Link>
+                  </li>
+                )}
+
+                {userAuth == null ? (
                   <li>
                     <Link to={"/login"} className="nav-link">
                       Login
@@ -66,7 +76,6 @@ function NavbarMain() {
                     </Link>
                   </li>
                 )}
-
 
               </ul>
             </nav>
