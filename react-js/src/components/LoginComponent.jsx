@@ -48,6 +48,7 @@ function LoginComponent() {
           alert("Login Berhasil (Dosen)!");
 
           navigate("/dosen");
+
         } else {
           alert("Login Berhasil (Admin)!");
           Cookies.set("userAuth", idUser, {
