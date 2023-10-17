@@ -52,33 +52,22 @@ function NavbarMain() {
                     Home
                   </Link>
                 </li>
-                <li>
-                  <Link to={"/login"} className="nav-link">
-                    Login
-                  </Link>
-                </li>
 
-                {/* <li>
-                  <a href="#why-us-section" className="nav-link">
-                    Why Us
-                  </a>
-                </li> */}
+                {userAuth == null ? (
+                  <li>
+                    <Link to={"/login"} className="nav-link">
+                      Login
+                    </Link>
+                  </li>
+                ) : (
+                  <li>
+                    <Link to={"/login"} className="nav-link" onClick={handleLogout}>
+                      Logout
+                    </Link>
+                  </li>
+                )}
 
-                {/* <li>
-                  <a href="#testimonials-section" className="nav-link">
-                    Testimonials
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a href="#blog-section" className="nav-link">
-                    Blog
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a href="#contact-section" className="nav-link">
-                    Contact
-                  </a>
-                </li> */}
+
               </ul>
             </nav>
           </div>

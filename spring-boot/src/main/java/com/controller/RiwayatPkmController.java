@@ -16,6 +16,16 @@ public class RiwayatPkmController {
     @Autowired
     private RiwayatPkmService riwayatPkmService;
     
+    @GetMapping("/riwayat_pkm/teams/{idPengabdian}")
+    public ResponseEntity<List<Dosen>> findDosenIdsByPkmId(@PathVariable("idPengabdian") String idPengabdian) {
+        List<Dosen> dosenIds = riwayatPkmService.findDosenIdsByPkmId(idPengabdian);
+        if (dosenIds != null && !dosenIds.isEmpty()) {
+            return ResponseEntity.ok(dosenIds);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
     @DeleteMapping("/pkm/riwayat/delete")
 	public ResponseEntity<String> deletePengabdian(@RequestParam String id_riwayat_pkm){
 		String id_riwayatpkm= riwayatPkmService.getPkmById(id_riwayat_pkm).getId_riwayat_pkm();
