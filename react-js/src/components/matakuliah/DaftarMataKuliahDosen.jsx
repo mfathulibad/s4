@@ -45,13 +45,8 @@ export default function DaftarMataKuliahDosen() {
           
           <h1 className="text-center p-3 m-3">Daftar Mata Kuliah</h1>
             <div className="card shadow mb-4">
-              <div className="card-header py-3">
-                  <h6 className="m-0 font-weight-bold text-primary">List Mata Kuliah</h6>
-                  {/* <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      <Link to="/matakuliah/admin/insert"className="collapse-item" style={{ order: 1 }}>
-                          <button className="btn btn-outline-primary" style={{ marginLeft: 'auto' }}>Tambah Mata Kuliah</button>
-                      </Link>
-                  </div> */}
+              <div className="card-header py-3 d-flex justify-content-end">
+                <Link to="/matakuliah/insert" className="btn btn-primary">Tambah Mata Kuliah</Link>
               </div>
 
               <div className="card-body">

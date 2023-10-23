@@ -45,8 +45,8 @@ const ListPenelitianDosen = () => {
         <div className="container">
             <h1 className="text-center p-3 m-3">Daftar Penelitian</h1>
             <div className="card shadow mb-4">
-                <div className="card-header py-3">
-                    <h6 className="m-0 font-weight-bold text-primary">List Penelitian</h6>
+                <div className="card-header py-3 d-flex justify-content-end">
+                    <Link to="/penelitian/insert" className="btn btn-primary">Tambah Penelitian</Link>
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">

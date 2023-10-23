@@ -41,7 +41,7 @@ export default function ListPkm() {
         await axios.delete(`http://localhost:8082/pkm/riwayat/delete?id_riwayat_pkm=${idRiwayatPkm}`);
         // Perbarui tampilan dengan menghapus entitas dari state lokal
         setPkm((prevData) => prevData.filter((pkm) => pkm.id_pengabdian!== idPengabdian));
-        alert('Data PKM Berhasil Dihapus');
+        alert('Data pkm berhasil dihapus');
     } catch (error) {
         console.error('Error deleting data:', error);
     }
@@ -51,8 +51,8 @@ export default function ListPkm() {
     <div className='container'>
         <h1 className='text-center p-3 m-3'>Daftar PKM</h1>
         <div className="card shadow mb-4">
-            <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">List PKM</h6>
+            <div className="card-header py-3 d-flex justify-content-end">
+                <Link to="/pkm/insert" className="btn btn-primary">Tambah PKM</Link>
             </div>
             <div className="card-body">
                 <div className="table-responsive">

@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 export default function AddPenelitianComponent() {
   let navigate = useNavigate();
+  const [showFormBelow, setShowFormBelow] = useState(false);
 
   const [penelitian, setPenelitian] = useState({
     id_penelitian: "",
@@ -32,10 +33,10 @@ export default function AddPenelitianComponent() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (!selectedFile) {
-      alert("Please upload the file !")
-      return;
-    }
+    // if (!selectedFile) {
+    //   alert("Please upload the file !")
+    //   return;
+    // }
     
     const response = await axios.post(`http://localhost:8082/penelitian/insert/${userAuth}`, penelitian);
     let idPenelitian = response.data;
@@ -172,22 +173,34 @@ export default function AddPenelitianComponent() {
                   onChange={onInputChange}
                 />
             </div>
-
+            
             <div className='mb-3'>
-              <label htmlFor="pdfPenelitian" className="form-label">
-                PDF Penelitian
-              </label>
-              <input 
-                type="file"
-                className="form-control"
-                accept=".pdf"
-                name="file_pdf"
-                onChange={handleFileChange} 
-              />
+              {showFormBelow && (
+                <div className="mb-3">
+                  <label htmlFor="pdfPenelitian" className="form-label">
+                    PDF Penelitian
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    accept=".pdf"
+                    name="file_pdf"
+                    onChange={handleFileChange}
+                  />
+                </div>
+              )}
+              <button
+                type="button"
+                className={`btn ${showFormBelow ? 'btn-danger' : 'btn-primary'}`}
+                onClick={() => setShowFormBelow(!showFormBelow)}
+              >
+                {showFormBelow ? "Urungkan" : "Tambah File PDF"}
+              </button>
             </div>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link className="btn btn-danger mx-2" to={{ pathname: `/penelitian/${userAuth}` }}>Cancel</Link>
+            <div className="d-flex justify-content-end"> 
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </div>
           </form>
         </div>
       </div>
