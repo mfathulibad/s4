@@ -144,6 +144,7 @@ const AddMataKuliahComponent = () => {
                 placeholder=""
                 value={formData.kode_kelas}
                 onChange={handleChange}
+<<<<<<< HEAD
                 className="form-control " // Added col-md-8
                 required
               />
@@ -152,6 +153,16 @@ const AddMataKuliahComponent = () => {
               <label htmlFor="perguruan_tinggi" className="form-label">
                 Perguruan Tinggi
               </label>
+=======
+                className="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div className="mb-3 row">
+            <label htmlFor="perguruan_tinggi" className="col-md-4 col-form-label">Perguruan Tinggi</label>
+            <div className="col-md-8">
+>>>>>>> 3061e5437d398db8ac3442f6f894ecf3164a600e
               <input
                 type="text"
                 id="perguruan_tinggi"
@@ -159,6 +170,7 @@ const AddMataKuliahComponent = () => {
                 placeholder=""
                 value={formData.perguruan_tinggi}
                 onChange={handleChange}
+<<<<<<< HEAD
                 className="form-control" // Added col-md-8
                 required
               />
@@ -171,9 +183,24 @@ const AddMataKuliahComponent = () => {
             </div>
           </form>
         </div>
+=======
+                className="form-control"
+                required
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-end">
+            <button type="submit" className="btn btn-outline-primary">Submit</button>
+          </div>
+        </form>
+>>>>>>> 3061e5437d398db8ac3442f6f894ecf3164a600e
       </div>
     </div>
   );
+
+  
+  
+  
 };
 
 export default AddMataKuliahComponent;
