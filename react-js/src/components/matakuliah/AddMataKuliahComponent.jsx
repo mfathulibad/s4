@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Cookies from "js-cookie";
+
+
 
 const AddMataKuliahComponent = () => {
   const [formData, setFormData] = useState({
-    id_mata_kuliah: "",
-    nama_mata_kuliah: "",
-    semester: "",
-    kode_kelas: "",
-    perguruan_tinggi: "",
+    id_mata_kuliah: '',
+    nama_mata_kuliah: '',
+    semester: '',
+    kode_kelas: '',
+    perguruan_tinggi: '',
   });
 
   // // State untuk menyimpan daftar mata kuliah
@@ -26,12 +28,11 @@ const AddMataKuliahComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     // console.log(formData.id_mata_kuliah);
-
+  
     // Kirim data ke server
-    axios
-      .post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
+    axios.post(`http://localhost:8082/matakuliah/insert/${userAuth}`, formData)
       .then((response) => {
         console.log(response.data);
       })
@@ -72,44 +73,32 @@ const AddMataKuliahComponent = () => {
     });
     setSearchResult([]); // Kosongkan hasil pencarian
   };
-
-  const formStyle = {
-    maxWidth: "650px",
-    margin: "0 auto",
-  };
+  
+  
 
   return (
     <div className="container">
-      <div className="row">
-        <div
-          className="col offset border rounded p-4 mt-2 shadow"
-          style={formStyle}
-        >
-          <h2 className="text-center m-4">Tambah Mata Kuliah</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="namaMatkul" className="form-label">
-                Nama Mata Kuliah
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="nama_mata_kuliah"
-                name="nama_mata_kuliah"
-                placeholder=""
-                value={formData.nama_mata_kuliah}
-                onChange={handleChange}
-                onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
-              />
-              {searchResult.length > 0 && (
-                <div
-                  className="search-results p-2"
-                  style={{ maxHeight: "150px", overflowY: "auto" }}
-                >
+        <h2 className="mt-4">Add Mata Kuliah</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="namaMatkul" className="form-label">Nama Mata Kuliah</label>
+            <input
+              type="text"
+              className="form-control" 
+              id="nama_mata_kuliah"
+              name="nama_mata_kuliah"
+              placeholder='' 
+              value={formData.nama_mata_kuliah}
+              onChange={handleChange}
+              onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
+
+            />
+            {searchResult.length > 0 && (
+                <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto"}}>
                   {searchResult.map((result) => (
                     <button
                       key={result.id_mata_kuliah}
-                      className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0"
+                      className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0" 
                       onClick={() => selectSearchResult(result)}
                     >
                       {result.nama_mata_kuliah}
@@ -117,90 +106,56 @@ const AddMataKuliahComponent = () => {
                   ))}
                 </div>
               )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="semester" className="form-label">
-                Semester
-              </label>
-              <input
-                type="text"
-                id="semester"
-                name="semester"
-                placeholder=" "
-                value={formData.semester}
-                onChange={handleChange}
-                className="form-control " // Added col-md-8
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="kode_kelas" className="form-label">
-                Kode Kelas
-              </label>
-              <input
-                type="text"
-                id="kode_kelas"
-                name="kode_kelas"
-                placeholder=""
-                value={formData.kode_kelas}
-                onChange={handleChange}
-<<<<<<< HEAD
-                className="form-control " // Added col-md-8
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="perguruan_tinggi" className="form-label">
-                Perguruan Tinggi
-              </label>
-=======
-                className="form-control"
-                required
-              />
-            </div>
           </div>
-          <div className="mb-3 row">
-            <label htmlFor="perguruan_tinggi" className="col-md-4 col-form-label">Perguruan Tinggi</label>
-            <div className="col-md-8">
->>>>>>> 3061e5437d398db8ac3442f6f894ecf3164a600e
-              <input
-                type="text"
-                id="perguruan_tinggi"
-                name="perguruan_tinggi"
-                placeholder=""
-                value={formData.perguruan_tinggi}
-                onChange={handleChange}
-<<<<<<< HEAD
-                className="form-control" // Added col-md-8
-                required
-              />
-            </div>
-            <div className="d-flex justify-content-between">
-              <button type="submit" className="btn btn-primary">
-                Submit
-              </button>
-              {/* <Link className='btn btn-danger' to="/matakuliah">Cancel</Link> */}
-            </div>
-          </form>
-        </div>
-=======
-                className="form-control"
-                required
-              />
-            </div>
+          <div className="mb-3">
+            <label htmlFor="semester" className="form-label">Semester</label>
+            <input
+              type="text"
+              id="semester"
+              name="semester"
+              placeholder=' ' 
+              value={formData.semester}
+              onChange={handleChange}
+              className="form-control " // Added col-md-8
+              required
+            />
+            
           </div>
-          <div className="d-flex justify-content-end">
-            <button type="submit" className="btn btn-outline-primary">Submit</button>
+          <div className="mb-3">
+            <label htmlFor="kode_kelas" className="form-label">Kode Kelas</label>
+            <input
+              type="text"
+              id="kode_kelas"
+              name="kode_kelas"
+              placeholder='' 
+              value={formData.kode_kelas}
+              onChange={handleChange}
+              className="form-control " // Added col-md-8
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="perguruan_tinggi" className="form-label">Perguruan Tinggi</label>
+            <input
+              type="text"
+              id="perguruan_tinggi"
+              name="perguruan_tinggi"
+              placeholder=''
+              value={formData.perguruan_tinggi}
+              onChange={handleChange}
+              className="form-control" // Added col-md-8
+              required
+            />
+          </div>
+          <div className="d-flex justify-content-between">
+            <button type="submit" className="btn btn-primary">Submit</button>
+            {/* <Link className='btn btn-danger' to="/matakuliah">Cancel</Link> */}
+
           </div>
         </form>
->>>>>>> 3061e5437d398db8ac3442f6f894ecf3164a600e
       </div>
-    </div>
   );
-
-  
-  
-  
 };
 
 export default AddMataKuliahComponent;
+
