@@ -109,6 +109,7 @@ export default function AddPenelitianComponent() {
                 placeholder="Masukkan Judul Penelitian"
                 name="judul_penelitian"
                 value={penelitian.judul_penelitian}
+                autocomplete={"off"}
                 onChange={onInputChange}
                 onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
               />
