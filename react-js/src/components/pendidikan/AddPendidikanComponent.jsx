@@ -50,80 +50,88 @@ const AddRiwayatPendidikanComponent = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col offset border rounded p-4 mt-2 shadow" style={formStyle}>
+        <div className="col-md-8 offset-md-2 border rounded p-4 mt-2 shadow mx-auto">
           <h2 className="text-center m-4">Tambah Pendidikan</h2>
-          <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="jenjang_pendidikan" className="form-label">
-            Jenjang
-          </label>
-          <input
-            type="text"
-            id="jenjang_pendidikan"
-            name="jenjang_pendidikan"
-            placeholder=" "
-            value={formData.jenjang_pendidikan}
-            onChange={handleChange}
-            className="form-control " // Added col-md-8
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="institusi" className="form-label">
-            Institusi
-          </label>
-          <input
-            type="text"
-            id="institusi"
-            name="institusi"
-            placeholder=""
-            value={formData.institusi}
-            onChange={handleChange}
-            className="form-control " // Added col-md-8
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="tahun_lulus" className="form-label">
-            Tahun Lulus
-          </label>
-          <input
-            type="number"
-            id="tahun_lulus"
-            name="tahun_lulus"
-            placeholder=""
-            value={formData.tahun_lulus}
-            onChange={handleChange}
-            className="form-control" // Added col-md-8
-            required
-          />
-          <div className="mb-3">
-            <label htmlFor="negara" className="form-label">
-              Negara
-            </label>
-            <input
-              type="text"
-              id="negara"
-              name="negara"
-              placeholder=""
-              value={formData.negara}
-              onChange={handleChange}
-              className="form-control" // Added col-md-8
-              required
-            />
-          </div>
-        </div>
-        <div className="d-flex justify-content-between">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-          {/* <Link className='btn btn-danger' to="/matakuliah">Cancel</Link> */}
-        </div>
-      </form>
+          <form onSubmit={handleSubmit} className="mt-4">
+            <div className="mb-3 row">
+              <label htmlFor="jenjang_pendidikan" className="col-md-4 col-form-label">
+                Jenjang
+              </label>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  id="jenjang_pendidikan"
+                  name="jenjang_pendidikan"
+                  placeholder="Masukkan Jenjang pendidikan"
+                  value={formData.jenjang_pendidikan}
+                  onChange={handleChange}
+                  className="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div className="mb-3 row">
+              <label htmlFor="institusi" className="col-md-4 col-form-label">
+                Institusi
+              </label>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  id="institusi"
+                  name="institusi"
+                  placeholder="Masukkan Institusi"
+                  value={formData.institusi}
+                  onChange={handleChange}
+                  className="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div className="mb-3 row">
+              <label htmlFor="tahun_lulus" className="col-md-4 col-form-label">
+                Tahun Lulus
+              </label>
+              <div className="col-md-8">
+                <input
+                  type="number"
+                  id="tahun_lulus"
+                  name="tahun_lulus"
+                  placeholder="Masukkan Tahun Lulus"
+                  value={formData.tahun_lulus}
+                  onChange={handleChange}
+                  className="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div className="mb-3 row">
+              <label htmlFor="negara" className="col-md-4 col-form-label">
+                Negara
+              </label>
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  id="negara"
+                  name="negara"
+                  placeholder="Masukkan Negara Institusi"
+                  value={formData.negara}
+                  onChange={handleChange}
+                  className="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <div className="d-flex justify-content-end">
+              <button type="submit" className="btn btn-outline-primary">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   );
+  
 };
 
 export default AddRiwayatPendidikanComponent;

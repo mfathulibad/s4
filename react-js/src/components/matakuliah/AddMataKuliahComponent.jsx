@@ -79,7 +79,7 @@ const AddMataKuliahComponent = () => {
   return (
     <div className="container">
       <div className="col-md-8 offset-md-2 border rounded p-4 mt-2 shadow mx-auto">
-        <h2 className="text-center m-4">Add Mata Kuliah</h2>
+        <h2 className="text-center m-4">Tambah Mata Kuliah</h2>
         <form onSubmit={handleSubmit} className="mt-4">
           <div className="mb-3 row">
             <label htmlFor="namaMatkul" className="col-md-4 col-form-label">Nama Mata Kuliah</label>
@@ -89,7 +89,8 @@ const AddMataKuliahComponent = () => {
                 className="form-control"
                 id="nama_mata_kuliah"
                 name="nama_mata_kuliah"
-                placeholder=""
+                placeholder="Masukkan Nama Mata Kuliah"
+
                 value={formData.nama_mata_kuliah}
                 onChange={handleChange}
                 onInput={(e) => setSearchKeyword(e.target.value)}
@@ -118,7 +119,7 @@ const AddMataKuliahComponent = () => {
                 type="text"
                 id="semester"
                 name="semester"
-                placeholder=""
+                placeholder="Masukkan Semester"
                 value={formData.semester}
                 onChange={handleChange}
                 className="form-control"
@@ -133,7 +134,7 @@ const AddMataKuliahComponent = () => {
                 type="text"
                 id="kode_kelas"
                 name="kode_kelas"
-                placeholder=""
+                placeholder="Masukkan Kode Kelas"
                 value={formData.kode_kelas}
                 onChange={handleChange}
                 className="form-control"
@@ -148,7 +149,7 @@ const AddMataKuliahComponent = () => {
                 type="text"
                 id="perguruan_tinggi"
                 name="perguruan_tinggi"
-                placeholder=""
+                placeholder="Masukkan Perguruan Tinggi"
                 value={formData.perguruan_tinggi}
                 onChange={handleChange}
                 className="form-control"
