@@ -11,6 +11,8 @@ function ProfilDosen() {
   const [penelitian, setPenelitian] = useState([]);
   const [pengajaran, setPengajaran] = useState([]);
   const [pendidikan, setPendidikan] = useState([]);
+  const [author, setAuthor] = useState([]);
+  const [authors, setAuthors] = useState([]);
   const [key, setKey] = useState("tab1");
   const { id } = useParams();
 
@@ -96,11 +98,24 @@ function ProfilDosen() {
       }
     }
 
+    async function fetchAuthor() {
+      try {
+        const response = await axios.get(
+          `http://localhost:8082/riwayat_penelitian/authors/${id}`
+        );
+        setAuthor(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
     fetchDataPendidikan();
     fetchDataPengajaran();
     fetchDataPenelitian();
     fetchDataPkm();
     fetchData();
+    fetchAuthor();
   }, []);
 
   const columnsPkm = [
@@ -139,17 +154,28 @@ function ProfilDosen() {
       field: "judul_penelitian",
       sort: "asc",
     },
+    {
+      label: "Authors",
+      field: "authors",
+      sort: "asc",
+    },
+    {
+      label: "Action",
+      field: "custom_action",
+      sort: "asc",
+    },
   ];
 
   const rowsPenelitian = penelitian.map((data) => {
     return {
-      judul_penelitian: (
+      judul_penelitian: data.judul_penelitian,
+      custom_action: (
         <Link
           to={"/detail_penelitian/" + data.id_penelitian}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {data.judul_penelitian}
+          Lihat Detail
         </Link>
       ),
     };
