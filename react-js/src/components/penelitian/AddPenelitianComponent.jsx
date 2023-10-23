@@ -90,11 +90,16 @@ export default function AddPenelitianComponent() {
     });
     setSearchResult([]); // Kosongkan hasil pencarian
   };
+
+  const formStyle = {
+    maxWidth: "650px", 
+    margin: "0 auto", 
+  };
   
   return (
     <div className="container">
       <div className="row">
-        <div className="col offset border rounded p-4 mt-2 shadow">
+        <div className="col offset border rounded p-4 mt-2 shadow" style={formStyle}>
           <h2 className="text-center m-4">Tambah Data Penelitian</h2>
 
           <form onSubmit={onSubmit}>
