@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AddPenelitianComponentByAdmin() {
   let navigate = useNavigate();
+  const [showFormBelow, setShowFormBelow] = useState(false);
 
   const [penelitian, setPenelitian] = useState({
     id_penelitian: "",
@@ -166,20 +167,32 @@ export default function AddPenelitianComponentByAdmin() {
             </div>
 
             <div className='mb-3'>
-              <label htmlFor="pdfPenelitian" className="form-label">
-                PDF Penelitian
-              </label>
-              <input 
-                type="file"
-                className="form-control"
-                accept=".pdf"
-                name="file_pdf"
-                onChange={handleFileChange} 
-              />
+              {showFormBelow && (
+                <div className="mb-3">
+                  <label htmlFor="pdfPenelitian" className="form-label">
+                    PDF Penelitian
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    accept=".pdf"
+                    name="file_pdf"
+                    onChange={handleFileChange}
+                  />
+                </div>
+              )}
+              <button
+                type="button"
+                className={`btn ${showFormBelow ? 'btn-danger' : 'btn-primary'}`}
+                onClick={() => setShowFormBelow(!showFormBelow)}
+              >
+                {showFormBelow ? "Urungkan" : "Tambah File PDF"}
+              </button>
             </div>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link className="btn btn-danger mx-2" to="/penelitian">Cancel</Link>
+            <div className="d-flex justify-content-end"> 
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </div>
           </form>
         </div>
       </div>

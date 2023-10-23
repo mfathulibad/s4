@@ -58,8 +58,8 @@ const ListDosen = () => {
         <p>Loading...</p>
       ) : (
         <div className="card shadow mb-4">
-          <div className="card-header py-3">
-            <h6 className="m-0 font-weight-bold text-primary">List Dosen</h6>
+          <div className="card-header py-3 d-flex justify-content-end">
+            <Link to="/dosen/insert" className="btn btn-primary">Tambah Dosen</Link>
           </div>
           <div className="card-body">
             <div className="table-responsive">

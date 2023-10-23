@@ -43,214 +43,64 @@ function Sidebar() {
         <hr className="sidebar-divider" />
         {userRole == 'admin' ? (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapseDosen"
-              aria-expanded="true"
-              aria-controls="collapseDosen"
-            >
+            <Link to="/dosen" className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
-              <span>Dosen</span>
-            </a>
-            <div
-              id="collapseDosen"
-              className="collapse"
-              aria-labelledby="headingDosen"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to="/dosen" className="collapse-item">
-                    Daftar Dosen
-                </Link>
-                <Link to="/dosen/insert" className="collapse-item">
-                    Tambah Dosen
-                </Link>
-              </div>
-            </div>
-          </li> 
+              <span>Daftar Dosen</span>
+            </Link>
+          </li>
+        
         ) : (
           null
         )}
 
         {userRole == 'admin' ? (
-            <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePkm"
-              aria-expanded="true"
-              aria-controls="collapsePkm"
-            >
+          <li className="nav-item">
+            <Link to="/pkm" className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
               <span>Daftar PKM</span>
-            </a>
-            <div
-              id="collapsePkm"
-              className="collapse"
-              aria-labelledby="headingPkm"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to="/pkm" className="collapse-item">
-                    Daftar PKM
-                </Link>
-                <Link to="/pkm/admin/insert" className="collapse-item">
-                    Tambah PKM
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
+            
         ) : (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePkm"
-              aria-expanded="true"
-              aria-controls="collapsePkm"
-            >
+            <Link to={{ pathname: `/pkm/${userAuth}` }} className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
               <span>Riwayat PKM</span>
-            </a>
-            <div
-              id="collapsePkm"
-              className="collapse"
-              aria-labelledby="headingPkm"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pkm/${userAuth}` }} className="collapse-item">
-                    Daftar PKM
-                </Link>
-                <Link to="/pkm/insert" className="collapse-item">
-                    Tambah PKM
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
         )}
 
         {userRole == 'admin' ? (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePengajaran"
-              aria-expanded="true"
-              aria-controls="collapsePengajaran"
-            >
+            <Link to="/matakuliah" className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
-              <span>Daftar Pengajaran</span>
-            </a>
-            <div
-              id="collapsePengajaran"
-              className="collapse"
-              aria-labelledby="headingPengajaran"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/matakuliah" className="collapse-item">
-                    Daftar Mata Kuliah
-                </Link>
-                <Link to="/matakuliah/admin/insert" className="collapse-item">
-                    Tambah Mata Kuliah
-                </Link>
-              </div>
-            </div>
+              <span>Daftar Mata Kuliah</span>
+            </Link>
           </li>
+          
         ) : (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePengajaran"
-              aria-expanded="true"
-              aria-controls="collapsePengajaran"
-            >
+            <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
-              <span>Riwayat Pengajaran</span>
-            </a>
-            <div
-              id="collapsePengajaran"
-              className="collapse"
-              aria-labelledby="headingPengajaran"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-              <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="collapse-item">
-                    Daftar Mata Kuliah
-                </Link>
-                <Link to="/matakuliah/insert" className="collapse-item">
-                    Tambah Mata Kuliah
-                </Link>
-              </div>
-            </div>
+              <span>Riwayat Mata Kuliah</span>
+            </Link>
           </li>
         )}
 
         {userRole == 'admin' ? (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePenelitian"
-              aria-expanded="true"
-              aria-controls="collapsePenelitian"
-            >
+            <Link to="/penelitian" className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
               <span>Daftar Penelitian</span>
-            </a>
-            <div
-              id="collapsePenelitian"
-              className="collapse"
-              aria-labelledby="headingPenelitian"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to="/penelitian" className="collapse-item">
-                    Daftar Penelitian
-                </Link>
-                <Link to="/penelitian/admin/insert" className="collapse-item">
-                    Tambah Penelitian
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
+         
         ) : (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePenelitian"
-              aria-expanded="true"
-              aria-controls="collapsePenelitian"
-            >
+            <Link to={{ pathname: `/penelitian/${userAuth}` }} className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
               <span>Riwayat Penelitian</span>
-            </a>
-            <div
-              id="collapsePenelitian"
-              className="collapse"
-              aria-labelledby="headingPenelitian"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/penelitian/${userAuth}` }} className="collapse-item">
-                    Daftar Penelitian
-                </Link>
-                <Link to="/penelitian/insert" className="collapse-item">
-                    Tambah Penelitian
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
         )}
 
@@ -258,36 +108,13 @@ function Sidebar() {
           null
         ) : (
           <li className="nav-item">
-            <a
-              className="nav-link collapsed"
-              href="#"
-              data-toggle="collapse"
-              data-target="#collapsePendidikan"
-              aria-expanded="true"
-              aria-controls="collapsePendidikan"
-            >
+            <Link to={{ pathname: `/pendidikan/${userAuth}` }} className="nav-link">
               <i className="fas fa-fw fa-cog"></i>
               <span>Riwayat Pendidikan</span>
-            </a>
-            <div
-              id="collapsePendidikan"
-              className="collapse"
-              aria-labelledby="headingPendidikan"
-              data-parent="#accordionSidebar"
-            >
-              <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pendidikan/${userAuth}` }} className="collapse-item">
-                    Daftar Pendidikan
-                </Link>
-                <Link to="/pendidikan/insert" className="collapse-item">
-                    Tambah Pendidikan
-                </Link>
-              </div>
-            </div>
+            </Link>
           </li>
         )}
     
-        
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
     </>

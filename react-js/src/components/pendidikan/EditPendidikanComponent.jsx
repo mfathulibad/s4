@@ -48,7 +48,7 @@ function EditRiwayatPendidikanComponent({ id }) {
       const response = await axios.post(`http://localhost:8082/riwayatpendidikan/update`, formData);
       console.log(response.data);
       alert('Data Riwayat Pendidikan berhasil diperbarui');
-      window.location.href = '/riwayatpendidikan';
+      window.location.href = '/dashboard';
     } catch (error) {
       console.error('Error updating data:', error);
     }
