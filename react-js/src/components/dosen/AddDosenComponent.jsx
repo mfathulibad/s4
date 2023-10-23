@@ -25,7 +25,7 @@ const AddDosenComponent = () => {
     axios.post('http://localhost:8082/dosen/insert', formData)
       .then((response) => {
         console.log(response.data);
-        // Handle success or redirection here
+        alert("Dosen Berhasil Ditambahkan !")
       })
       .catch((error) => {
         console.error(error);

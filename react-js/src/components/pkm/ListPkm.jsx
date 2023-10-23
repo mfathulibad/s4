@@ -40,8 +40,8 @@ export default function ListPkm() {
         // Kirim permintaan DELETE ke server dengan parameter id_riwayat_penelitian
         await axios.delete(`http://localhost:8082/pkm/riwayat/delete?id_riwayat_pkm=${idRiwayatPkm}`);
         // Perbarui tampilan dengan menghapus entitas dari state lokal
-        setData((prevData) => prevData.filter((pkm) => pkm.id_pengabdian!== idPengabdian));
-        alert('Data penelitian berhasil dihapus');
+        setPkm((prevData) => prevData.filter((pkm) => pkm.id_pengabdian!== idPengabdian));
+        alert('Data PKM Berhasil Dihapus');
     } catch (error) {
         console.error('Error deleting data:', error);
     }
