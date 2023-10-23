@@ -235,7 +235,7 @@ function ProfilDosen() {
       <div className="container">
         <div className="container py-5">
           <div className="row">
-            <div className="col">
+            <div className="col md-8">
               <nav
                 aria-label="breadcrumb"
                 className="bg-light rounded-3 p-3 mb-4"
@@ -253,18 +253,20 @@ function ProfilDosen() {
           </div>
 
           <div className="row mx-5">
-            <div className="col">
+            <div className="col-md-8"> {/* Kolom 1 lebih besar */}
               <div className="card mb-4">
                 <div className="card-body">
                   <div className="row">
                     <div className="col-3 d-flex justify-content-center">
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                        alt="avatar"
-                        className="rounded-circle img-fluid"
-                        // style={{ width: 150 }}
-                      />
+                      <div className="aspect-ratio aspect-ratio-1x1">
+                        <img
+                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                          alt="avatar"
+                          className="rounded-circle aspect-ratio-child img-fluid"
+                        />
+                      </div>
                     </div>
+
                     <div className="col">
                       <div className="row">
                         <div className="col-sm-3">
@@ -317,23 +319,22 @@ function ProfilDosen() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="row mx-5">
-            <div className="col">
-              <div className="card mb-4">
-                <div className="card-body px-5">
-                  <h5 className="text-dark mt-3 mb-4">Riwayat Pendidikan</h5>
+            <div className="col-md-4"> {/* Kolom 2 lebih kecil */}
+              <div className="card mb-6">
+                <div className="card-body px-4">
+                  <h5 className="text-dark mt-3 mb-2">Riwayat Pendidikan</h5>
                   {pendidikan.map((item, index) => (
                     <div key={index}>
-                      <h5 className="text-dark">{item.jenjang_pendidikan}</h5>
-                      <p className="text-dark">
+                      <h6 className="text-dark" style={{ fontSize: '14px' }}> { /* Mengurangi ukuran font */}
+                        {item.jenjang_pendidikan}
+                      </h6>
+                      <p className="text-dark" style={{ fontSize: '12px' }}> { /* Mengurangi ukuran font */}
                         {item.institusi} - {item.negara}
                         <br />
-                        {item.tahun_lulus}
+                        Tahun Lulus  {item.tahun_lulus}
                       </p>
                     </div>
-                  ))}
+                  ))} 
                 </div>
               </div>
             </div>

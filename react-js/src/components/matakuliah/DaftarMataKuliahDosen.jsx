@@ -42,11 +42,18 @@ export default function DaftarMataKuliahDosen() {
       }
       return (
         <div className="container">
+          
           <h1 className="text-center p-3 m-3">Daftar Mata Kuliah</h1>
             <div className="card shadow mb-4">
               <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">List Mata Kuliah</h6>
+                  <h6 className="m-0 font-weight-bold text-primary">List Mata Kuliah</h6>
+                  {/* <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Link to="/matakuliah/admin/insert"className="collapse-item" style={{ order: 1 }}>
+                          <button className="btn btn-outline-primary" style={{ marginLeft: 'auto' }}>Tambah Mata Kuliah</button>
+                      </Link>
+                  </div> */}
               </div>
+
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered" id="dataTable" width="100%" cellSpacing="0">

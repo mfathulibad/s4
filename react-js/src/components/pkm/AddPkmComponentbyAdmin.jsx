@@ -82,6 +82,7 @@ const AddPkmComponent = () => {
                 placeholder="Masukkan Judul Pengabdian"
                 name="judul_pengabdian"
                 value={pkm.judul_pengabdian}
+                autocomplete={"off"}
                 onChange={handleChange}
                 onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
               />
