@@ -2,7 +2,6 @@ import React from "react";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 
-
 function Sidebar() {
   const userAuth = Cookies.get("userAuth");
   const userRole = Cookies.get("userRole");
@@ -13,35 +12,37 @@ function Sidebar() {
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
         id="accordionSidebar"
       >
-        <a
-          className="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
-        >
-          <div className="sidebar-brand-icon">
-            <i className="fas fa-lock"></i>
-          </div>
-          {userRole == 'admin' ? (
-            <div className="sidebar-brand-text mx-3">
-              Admin <sup>Nih</sup>
+        <Link to="/home">
+          <a
+            className="sidebar-brand d-flex align-items-center justify-content-center"
+            href="index.html"
+          >
+            <div className="sidebar-brand-icon">
+              <i className="fas fa-lock"></i>
             </div>
-          ) : (
-            <div className="sidebar-brand-text mx-3">
-              Dosen <sup>Nih</sup>
-            </div>
-          )}
-        </a>
+            {userRole == "admin" ? (
+              <div className="sidebar-brand-text mx-3">
+                Admin <sup>Nih</sup>
+              </div>
+            ) : (
+              <div className="sidebar-brand-text mx-3">
+                Dosen <sup>Nih</sup>
+              </div>
+            )}
+          </a>
+        </Link>
 
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <Link className="nav-link" to = "/dashboard">
+          <a className="nav-link" href="index.html">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
-          </Link>
+          </a>
         </li>
 
         <hr className="sidebar-divider" />
-        {userRole == 'admin' ? (
+        {userRole == "admin" ? (
           <li className="nav-item">
             <a
               className="nav-link collapsed"
@@ -62,20 +63,18 @@ function Sidebar() {
             >
               <div className="bg-white py-2 collapse-inner rounded">
                 <Link to="/dosen" className="collapse-item">
-                    Daftar Dosen
+                  Daftar Dosen
                 </Link>
                 <Link to="/dosen/insert" className="collapse-item">
-                    Tambah Dosen
+                  Tambah Dosen
                 </Link>
               </div>
             </div>
-          </li> 
-        ) : (
-          null
-        )}
+          </li>
+        ) : null}
 
-        {userRole == 'admin' ? (
-            <li className="nav-item">
+        {userRole == "admin" ? (
+          <li className="nav-item">
             <a
               className="nav-link collapsed"
               href="#"
@@ -95,10 +94,10 @@ function Sidebar() {
             >
               <div className="bg-white py-2 collapse-inner rounded">
                 <Link to="/pkm" className="collapse-item">
-                    Daftar PKM
+                  Daftar PKM
                 </Link>
                 <Link to="/pkm/admin/insert" className="collapse-item">
-                    Tambah PKM
+                  Tambah PKM
                 </Link>
               </div>
             </div>
@@ -123,18 +122,21 @@ function Sidebar() {
               data-parent="#accordionSidebar"
             >
               <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pkm/${userAuth}` }} className="collapse-item">
-                    Daftar PKM
+                <Link
+                  to={{ pathname: `/pkm/${userAuth}` }}
+                  className="collapse-item"
+                >
+                  Daftar PKM
                 </Link>
                 <Link to="/pkm/insert" className="collapse-item">
-                    Tambah PKM
+                  Tambah PKM
                 </Link>
               </div>
             </div>
           </li>
         )}
 
-        {userRole == 'admin' ? (
+        {userRole == "admin" ? (
           <li className="nav-item">
             <a
               className="nav-link collapsed"
@@ -154,11 +156,11 @@ function Sidebar() {
               data-parent="#accordionSidebar"
             >
               <div className="bg-white py-2 collapse-inner rounded">
-              <Link to="/matakuliah" className="collapse-item">
-                    Daftar Mata Kuliah
+                <Link to="/matakuliah" className="collapse-item">
+                  Daftar Mata Kuliah
                 </Link>
                 <Link to="/matakuliah/admin/insert" className="collapse-item">
-                    Tambah Mata Kuliah
+                  Tambah Mata Kuliah
                 </Link>
               </div>
             </div>
@@ -183,18 +185,21 @@ function Sidebar() {
               data-parent="#accordionSidebar"
             >
               <div className="bg-white py-2 collapse-inner rounded">
-              <Link to={{ pathname: `/matakuliah/${userAuth}` }} className="collapse-item">
-                    Daftar Mata Kuliah
+                <Link
+                  to={{ pathname: `/matakuliah/${userAuth}` }}
+                  className="collapse-item"
+                >
+                  Daftar Mata Kuliah
                 </Link>
                 <Link to="/matakuliah/insert" className="collapse-item">
-                    Tambah Mata Kuliah
+                  Tambah Mata Kuliah
                 </Link>
               </div>
             </div>
           </li>
         )}
 
-        {userRole == 'admin' ? (
+        {userRole == "admin" ? (
           <li className="nav-item">
             <a
               className="nav-link collapsed"
@@ -215,10 +220,10 @@ function Sidebar() {
             >
               <div className="bg-white py-2 collapse-inner rounded">
                 <Link to="/penelitian" className="collapse-item">
-                    Daftar Penelitian
+                  Daftar Penelitian
                 </Link>
                 <Link to="/penelitian/admin/insert" className="collapse-item">
-                    Tambah Penelitian
+                  Tambah Penelitian
                 </Link>
               </div>
             </div>
@@ -243,20 +248,21 @@ function Sidebar() {
               data-parent="#accordionSidebar"
             >
               <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/penelitian/${userAuth}` }} className="collapse-item">
-                    Daftar Penelitian
+                <Link
+                  to={{ pathname: `/penelitian/${userAuth}` }}
+                  className="collapse-item"
+                >
+                  Daftar Penelitian
                 </Link>
                 <Link to="/penelitian/insert" className="collapse-item">
-                    Tambah Penelitian
+                  Tambah Penelitian
                 </Link>
               </div>
             </div>
           </li>
         )}
 
-        {userRole == 'admin' ? (
-          null
-        ) : (
+        {userRole == "admin" ? null : (
           <li className="nav-item">
             <a
               className="nav-link collapsed"
@@ -276,18 +282,20 @@ function Sidebar() {
               data-parent="#accordionSidebar"
             >
               <div className="bg-white py-2 collapse-inner rounded">
-                <Link to={{ pathname: `/pendidikan/${userAuth}` }} className="collapse-item">
-                    Daftar Pendidikan
+                <Link
+                  to={{ pathname: `/pendidikan/${userAuth}` }}
+                  className="collapse-item"
+                >
+                  Daftar Pendidikan
                 </Link>
                 <Link to="/pendidikan/insert" className="collapse-item">
-                    Tambah Pendidikan
+                  Tambah Pendidikan
                 </Link>
               </div>
             </div>
           </li>
         )}
-    
-        
+
         <hr className="sidebar-divider d-none d-md-block" />
       </ul>
     </>

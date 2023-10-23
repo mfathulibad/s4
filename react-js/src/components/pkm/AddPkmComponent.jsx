@@ -81,6 +81,7 @@ const AddPkmComponent = () => {
                 className="form-control"
                 placeholder="Masukkan Judul Pengabdian"
                 name="judul_pengabdian"
+                autocomplete={"off"}
                 value={pkm.judul_pengabdian}
                 onChange={handleChange}
                 onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
