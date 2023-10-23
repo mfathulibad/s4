@@ -74,13 +74,19 @@ const AddMataKuliahComponent = () => {
     });
     setSearchResult([]); // Kosongkan hasil pencarian
   };
+
   
-  
+  const formStyle = {
+    maxWidth: "650px",
+    margin: "0 auto",
+  };
 
   return (
     <div className="container">
-        <h2 className="mt-4">Add Mata Kuliah</h2>
-        <form onSubmit={handleSubmit}>
+      <div className="row">
+        <div className="col offset border rounded p-4 mt-2 shadow" style={formStyle}>
+          <h2 className="text-center m-4">Tambah Mata Kuliah</h2>
+          <form onSubmit={handleSubmit}>
           
           <div className="mb-3">
             <label htmlFor="nama_mata_kuliah" className="form-label">Nama Mata Kuliah</label>
@@ -155,7 +161,9 @@ const AddMataKuliahComponent = () => {
 
           </div>
         </form>
+        </div>
       </div>
+    </div>
   );
 };
 

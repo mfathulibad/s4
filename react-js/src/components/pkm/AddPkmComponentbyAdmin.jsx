@@ -68,10 +68,20 @@ const AddPkmComponent = () => {
     setSearchResult([]); // Kosongkan hasil pencarian
   };
 
+  const formStyle = {
+    maxWidth: "650px",
+    margin: "0 auto",
+  };
+
   return (
     <div className="container">
-      <h2 className="mt-4">Add Pkm</h2>
-      <form onSubmit={handleSubmit}>
+      <div className="row">
+      <div
+          className="col offset border rounded p-4 mt-2 shadow"
+          style={formStyle}
+        >  
+         <h2 className="text-center m-4">Tambah PKM</h2>
+        <form onSubmit={handleSubmit}>
       <div className="mb-3">
               <label htmlFor="judulPengabdian" className="form-label">
                 Judul Pengabdian
@@ -138,6 +148,8 @@ const AddPkmComponent = () => {
 
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+        </div>
+      </div>
     </div>
   );
 };
