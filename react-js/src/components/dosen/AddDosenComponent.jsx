@@ -42,70 +42,86 @@ const AddDosenComponent = () => {
   return (
     <div className="container">
       <div className="row">
-        <div
-          className="col offset border rounded p-4 mt-2 shadow"
-          style={formStyle}
-        >
+        <div className="col-md-8 offset-md-2 border rounded p-4 mt-2 shadow mx-auto">
           <h2 className="text-center m-4">Tambah Dosen</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label">NIDN</label>
+          <form onSubmit={handleSubmit} className="mt-4">
+            <div className="mb-3 row">
+              <label className="col-md-4 col-form-label" >NIDN</label>
+              <div className="col-md-8">
               <input
                 type="text"
                 name="nidn"
+                placeholder="Masukkan NIDN"
+
                 value={formData.nidn}
                 onChange={handleChange}
                 className="form-control"
                 required
               />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label">Email</label>
+            <div className="mb-3 row">
+              <label className="col-md-4 col-form-label">Email</label>
+              <div className="col-md-8">
               <input
                 type="email"
                 name="email"
+                placeholder="Masukkan Email"
+
                 value={formData.email}
                 onChange={handleChange}
                 className="form-control"
                 required
               />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label">Nama Lengkap</label>
+            <div className="mb-3 row">
+              <label className="col-md-4 col-form-label">Nama Lengkap</label>
+              <div className="col-md-8">
               <input
                 type="text"
                 name="nama_lengkap"
+                placeholder="Masukkan Nama Lengkap"
+
                 value={formData.nama_lengkap}
                 onChange={handleChange}
                 className="form-control"
                 required
               />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label">Jabatan Fungsional</label>
+            <div className="mb-3 row">
+              <label className="col-md-4 col-form-label">Jabatan Fungsional</label>
+              <div className="col-md-8">
               <input
                 type="text"
                 name="jabatan_fungsional"
+                placeholder="Masukkan Jabatan Fungsional"
+
                 value={formData.jabatan_fungsional}
                 onChange={handleChange}
                 className="form-control"
                 required
               />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className="form-label">Jurusan</label>
+            <div className="mb-3 row">
+              <label className="col-md-4 col-form-label">Jurusan</label>
+              <div className="col-md-8">
               <input
                 type="text"
                 name="jurusan"
+                placeholder="Masukkan Jurusan"
                 value={formData.jurusan}
                 onChange={handleChange}
                 className="form-control"
                 required
               />
+              </div>
             </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+            <div className="d-flex justify-content-end">
+            <button type="submit" className="btn btn-outline-primary">Submit</button>
+            </div>
           </form>
         </div>
       </div>

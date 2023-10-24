@@ -59,7 +59,7 @@ const ListDosen = () => {
       ) : (
         <div className="card shadow mb-4">
           <div className="card-header py-3 d-flex justify-content-end">
-            <Link to="/dosen/insert" className="btn btn-primary">Tambah Dosen</Link>
+            <Link to="/dosen/insert" className="btn btn-outline-primary">Tambah Dosen</Link>
           </div>
           <div className="card-body">
             <div className="table-responsive">
