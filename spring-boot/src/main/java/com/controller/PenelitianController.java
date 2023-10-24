@@ -100,7 +100,7 @@ public class PenelitianController {
 
 	        // Simpan file PDF ke direktori tertentu
 	        String fileName = id_penelitian + ".pdf"; // Nama file sesuai dengan ID penelitian
-	        String uploadDir = "D:\\Kuliah\\Semester 5\\Pengembangan Web\\s4\\react-js\\public\\file_upload"; 
+	        String uploadDir = "C:\\Users\\ASUS\\Documents\\TINGKAT 3\\Pengembangan Web\\Praktek\\2. TUGASKEL\\V2\\s4\\react-js\\public\\file_upload"; 
 	        File uploadPath = new File(uploadDir);
 
 	        if (!uploadPath.exists()) {
@@ -130,7 +130,7 @@ public class PenelitianController {
 	    String fileName = penelitian.getPath_pdf();
 
 	    // Lokasi direktori tempat file PDF disimpan
-	    String uploadDir = "D:\\Kuliah\\Semester 5\\Pengembangan Web\\s4\\react-js\\public\\file_upload";
+	    String uploadDir = "C:\\Users\\ASUS\\Documents\\TINGKAT 3\\Pengembangan Web\\Praktek\\2. TUGASKEL\\V2\\s4\\react-js\\public\\file_upload";
 
 	    try {
 	        // Buat objek Resource untuk file PDF

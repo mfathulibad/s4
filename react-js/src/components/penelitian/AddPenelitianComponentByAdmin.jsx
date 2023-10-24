@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export default function AddPenelitianComponentByAdmin() {
   let navigate = useNavigate();
@@ -31,10 +32,10 @@ export default function AddPenelitianComponentByAdmin() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (!selectedFile) {
-      alert("Please upload the file !")
-      return;
-    }
+    // if (!selectedFile) {
+    //   alert("Please upload the file !")
+    //   return;
+    // }
     
     const response = await axios.post(`http://localhost:8082/penelitian/admin/insert`, penelitian);
     let idPenelitian = response.data;
