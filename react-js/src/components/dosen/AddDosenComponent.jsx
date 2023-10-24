@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const AddDosenComponent = () => {
   const [formData, setFormData] = useState({
-    nidn: '',
-    email: '',
-    nama_lengkap: '',
-    jabatan_fungsional: '',
-    jurusan: '',
+    nidn: "",
+    email: "",
+    nama_lengkap: "",
+    jabatan_fungsional: "",
+    jurusan: "",
   });
 
   const handleChange = (e) => {
@@ -20,12 +20,13 @@ const AddDosenComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Make a POST request to your backend endpoint
-    axios.post('http://localhost:8082/dosen/insert', formData)
+    axios
+      .post("http://localhost:8082/dosen/insert", formData)
       .then((response) => {
         console.log(response.data);
-        alert("Dosen Berhasil Ditambahkan !")
+        alert("Dosen Berhasil Ditambahkan !");
       })
       .catch((error) => {
         console.error(error);
@@ -33,67 +34,81 @@ const AddDosenComponent = () => {
       });
   };
 
+  const formStyle = {
+    maxWidth: "650px",
+    margin: "0 auto",
+  };
+
   return (
     <div className="container">
-      <h2 className="mt-4">Add Dosen</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">NIDN</label>
-          <input
-            type="text"
-            name="nidn"
-            value={formData.nidn}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
+      <div className="row">
+        <div
+          className="col offset border rounded p-4 mt-2 shadow"
+          style={formStyle}
+        >
+          <h2 className="text-center m-4">Tambah Dosen</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label className="form-label">NIDN</label>
+              <input
+                type="text"
+                name="nidn"
+                value={formData.nidn}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Nama Lengkap</label>
+              <input
+                type="text"
+                name="nama_lengkap"
+                value={formData.nama_lengkap}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Jabatan Fungsional</label>
+              <input
+                type="text"
+                name="jabatan_fungsional"
+                value={formData.jabatan_fungsional}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Jurusan</label>
+              <input
+                type="text"
+                name="jurusan"
+                value={formData.jurusan}
+                onChange={handleChange}
+                className="form-control"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Nama Lengkap</label>
-          <input
-            type="text"
-            name="nama_lengkap"
-            value={formData.nama_lengkap}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Jabatan Fungsional</label>
-          <input
-            type="text"
-            name="jabatan_fungsional"
-            value={formData.jabatan_fungsional}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Jurusan</label>
-          <input
-            type="text"
-            name="jurusan"
-            value={formData.jurusan}
-            onChange={handleChange}
-            className="form-control"
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
   );
 };

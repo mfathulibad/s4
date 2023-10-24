@@ -40,7 +40,7 @@ export default function ListPendidikanDosen() {
           <h1 className="text-center p-3 m-3">Daftar Riwayat Pendidikan</h1>
             <div className="card shadow mb-4">
               <div className="card-header py-3 d-flex justify-content-end">
-                <Link to="/pendidikan/insert" className="btn btn-primary">Tambah Pendidikan</Link>
+                <Link to="/pendidikan/insert" className="btn btn-outline-primary">Tambah Pendidikan</Link>
               </div>
               <div className="card-body">
                 <div className="table-responsive">

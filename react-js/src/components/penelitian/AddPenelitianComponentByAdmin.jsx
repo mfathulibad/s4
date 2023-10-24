@@ -90,110 +90,127 @@ export default function AddPenelitianComponentByAdmin() {
     });
     setSearchResult([]); // Kosongkan hasil pencarian
   };
+
+  const formStyle = {
+    maxWidth: "650px", 
+    margin: "0 auto", 
+  };
   
   return (
     <div className="container">
       <div className="row">
-        <div className="col offset border rounded p-4 mt-2 shadow">
+        <div className="col-md-8 offset-md-2 border rounded p-4 mt-2 shadow mx-auto">
           <h2 className="text-center m-4">Tambah Data Penelitian</h2>
-
-          <form onSubmit={onSubmit}>
-            <div className="mb-3">
-              <label htmlFor="judulPenelitian" className="form-label">
+  
+          <form onSubmit={onSubmit} className="mt-4">
+            <div className="mb-3 row">
+              <label htmlFor="judulPenelitian" className="col-md-4 col-form-label">
                 Judul Penelitian
               </label>
-              <input
-                type={"text"}
-                className="form-control"
-                placeholder="Masukkan Judul Penelitian"
-                name="judul_penelitian"
-                value={penelitian.judul_penelitian}
-                autocomplete={"off"}
-                onChange={onInputChange}
-                onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
-              />
-              {searchResult.length > 0 && (
-                <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto"}}>
-                  {searchResult.map((result) => (
-                    <button
-                      key={result.id_penelitian}
-                      className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0" 
-                      onClick={() => selectSearchResult(result)}
-                    >
-                      {result.judul_penelitian}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Masukkan Judul Penelitian"
+                  name="judul_penelitian"
+                  value={penelitian.judul_penelitian}
+                  autoComplete="off"
+                  onChange={onInputChange}
+                  onInput={(e) => setSearchKeyword(e.target.value)} // Menyimpan kata kunci pencarian
+                />
+                {searchResult.length > 0 && (
+                  <div className="search-results p-2" style={{ maxHeight: "150px", overflowY: "auto" }}>
+                    {searchResult.map((result) => (
+                      <button
+                        key={result.id_penelitian}
+                        className="d-block w-100 text-left p-2 bg-light border-bottom border-left-0 border-right-0 border-top-0"
+                        onClick={() => selectSearchResult(result)}
+                      >
+                        {result.judul_penelitian}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-            
-            <div className="mb-3">
-              <label htmlFor="bidangPenelitian" className="form-label">
+  
+            <div className="mb-3 row">
+              <label htmlFor="bidangPenelitian" className="col-md-4 col-form-label">
                 Bidang Penelitian
               </label>
-              <input
-                type={"text"}
-                className="form-control"
-                placeholder="Masukkan Bidang Penelitian"
-                name="bidang_penelitian"
-                value={penelitian.bidang_penelitian}
-                onChange={onInputChange}
-              />
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Masukkan Bidang Penelitian"
+                  name="bidang_penelitian"
+                  value={penelitian.bidang_penelitian}
+                  onChange={onInputChange}
+                />
+              </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="tglPenelitian" className="form-label">
+            <div className="mb-3 row">
+              <label htmlFor="tglPenelitian" className="col-md-4 col-form-label">
                 Tanggal Penelitian
               </label>
-              <input
-                type="date"
-                className="form-control"
-                placeholder="YYYY-MM-DD"
-                name="tgl_penelitian"
-                value={penelitian.tgl_penelitian}
-                onChange={onInputChange}
-              />
+              <div className="col-md-8">
+                <input
+                  type="date"
+                  className="form-control"
+                  placeholder="YYYY-MM-DD"
+                  name="tgl_penelitian"
+                  value={penelitian.tgl_penelitian}
+                  onChange={onInputChange}
+                />
+              </div>
             </div>
-
-            <div className='mb-3'>
-                <label htmlFor='URL' className='form-label'>
-                  URL Penelitian
-                </label>
-                <input 
+  
+            <div className='mb-3 row'>
+              <label htmlFor='URL' className='col-md-4 col-form-label'>
+                URL Penelitian
+              </label>
+              <div className='col-md-8'>
+                <input
                   type='url'
-                  className='form-control' 
-                  placeholder='Masukkan URL Penelitian' 
-                  name='url' 
+                  className='form-control'
+                  placeholder='Masukkan URL Penelitian'
+                  name='url'
                   value={penelitian.url}
                   onChange={onInputChange}
                 />
+              </div>
             </div>
-
-            <div className='mb-3'>
+  
+            <div className='mb-3 row'>
               {showFormBelow && (
-                <div className="mb-3">
-                  <label htmlFor="pdfPenelitian" className="form-label">
-                    PDF Penelitian
-                  </label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    accept=".pdf"
-                    name="file_pdf"
-                    onChange={handleFileChange}
-                  />
-                </div>
+                <>
+                  <div className='col-md-4'></div> {/* Empty column to maintain consistent spacing */}
+                  <div className='col-md-8'>
+                    <label htmlFor='pdfPenelitian' className='form-label'>
+                      PDF Penelitian
+                    </label>
+                    <input
+                      type='file'
+                      className='form-control'
+                      accept='.pdf'
+                      name='file_pdf'
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                </>
               )}
-              <button
-                type="button"
-                className={`btn ${showFormBelow ? 'btn-danger' : 'btn-primary'}`}
-                onClick={() => setShowFormBelow(!showFormBelow)}
-              >
-                {showFormBelow ? "Urungkan" : "Tambah File PDF"}
-              </button>
             </div>
-
+  
+            <button
+              type='button'
+              className={`btn ${showFormBelow ? 'btn-danger' : 'btn-primary'}`}
+              onClick={() => setShowFormBelow(!showFormBelow)}
+            >
+              {showFormBelow ? 'Urungkan' : 'Tambah File PDF'}
+            </button>
+  
             <div className="d-flex justify-content-end"> 
-              <button type="submit" className="btn btn-primary">Submit</button>
+              <button type="submit" className="btn btn-outline-primary">Submit</button>
             </div>
           </form>
         </div>

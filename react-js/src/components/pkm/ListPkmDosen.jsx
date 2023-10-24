@@ -43,7 +43,7 @@ export default function ListPkm() {
       <h1 className="text-center p-3 m-3">Daftar PKM</h1>
       <div className="card shadow mb-4">
         <div className="card-header py-3 d-flex justify-content-end">
-          <Link to="/pkm/admin/insert" className="btn btn-primary">Tambah PKM</Link>
+          <Link to="/pkm/admin/insert" className="btn btn-outline-primary">Tambah PKM</Link>
         </div>
         <div className="card-body">
           <div className="table-responsive">
